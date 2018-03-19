@@ -153,10 +153,6 @@ export class KindPage {
     this.Arr_second_checked = [];
     console.log(this.Arr_second[i]);
     this.Arr_second_checked = this.Arr_second[i]
-    // this.Arr_second[i].forEach(e => {
-    //   this.Arr_second_checked.push(e.name)
-    //   this.Arr_second_checked.push(e.pcode)
-    // });
     console.log(this.Arr_second_checked);
     this.getCommodity(code);
     

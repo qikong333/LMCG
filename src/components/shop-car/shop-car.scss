@@ -1,0 +1,14 @@
+shop-car {
+    color: #a2a6a8;
+    font-size: r(34px);
+    height: r(80px);
+    position: absolute;
+    bottom: r(-3px);
+    background: #fff;
+    width: 100%;
+    z-index: 9999;
+    .car_l {}
+    .car_r {
+        background: #dde0e4;
+    }
+}

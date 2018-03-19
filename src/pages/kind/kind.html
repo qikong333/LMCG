@@ -1,0 +1,66 @@
+<!--
+  Generated template for the KindPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>产品分类</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-row>
+        <div class="left_box">
+            <ul>
+                <li (click)="clickitem(i,item.code)" *ngFor="let item of Arr_first,let i = index ">
+                    <span [ngClass]="{'in':first_clicked == i} ">{{item.name}}</span>
+                </li>
+            </ul>
+        </div>
+        <ion-col class="right_box">
+            <ion-row class="r_box1">
+                <ion-col col-6 class="selectBox">
+                    {{selectKindText}}
+                </ion-col>
+                <ion-col col-6 class="selectBox">
+                    价格
+                </ion-col>
+            </ion-row>
+            <ion-row class="r_box2" *ngIf="!state">
+                <ion-col>
+                    <img src="assets/imgs/addr.png" alt=" ">
+                </ion-col>
+            </ion-row>
+            <ion-row class="r_box3" *ngIf="state">
+                <ion-col col-12>
+                    <ul>
+                        <li *ngFor="let item2 of Arr_second_checked " col-4 (click)="selectKind(item2.name,item2.code)">
+                            <span [ngClass]="{'in':selectKindText == item2.name}">{{item2.name}}</span>
+                        </li>
+                    </ul>
+                </ion-col>
+            </ion-row>
+            <ion-row class="r_box4">
+                <ion-col col-6 class=" item_box" *ngFor="let item3 of product">
+                    <ion-row class="i_box1 ">
+                        <img src=" " alt=" ">
+                    </ion-row>
+                    <ion-row class="i_box2 ">
+                        {{item3.name}}
+                    </ion-row>
+                    <ion-row class="i_box3 ">
+                        ￥{{item3.sprice}}
+                    </ion-row>
+                    <number-item></number-item>
+                </ion-col>
+            </ion-row>
+        </ion-col>
+    </ion-row>
+    <shop-car></shop-car>
+</ion-content>

@@ -31,7 +31,7 @@ export class KindPage {
     this.Distribution();
     this.shopInfo();
     this.shopcarNum();
-    this.getCommodity(10);
+    this.getCommodity(10,1);
   }
 
   ionViewDidLoad() {
@@ -47,9 +47,10 @@ export class KindPage {
 
 
   //首页商品列表
-  getCommodity(code) {
+  getCommodity(code, isparent) {
     let params = {
-      code: code
+      code: code,
+      isparent: isparent
     }
     this.http.get('/api/shop/home/list/' + localStorage.getItem('shopId'), params)
       .map(r => r.json())
@@ -154,7 +155,7 @@ export class KindPage {
     console.log(this.Arr_second[i]);
     this.Arr_second_checked = this.Arr_second[i]
     console.log(this.Arr_second_checked);
-    this.getCommodity(code);
+    this.getCommodity(code,1);
     
   }
 
@@ -163,6 +164,6 @@ export class KindPage {
     console.log(code);
     
     this.selectKindText = e;
-    this.getCommodity(code);
+    this.getCommodity(code,0);
   }
 }

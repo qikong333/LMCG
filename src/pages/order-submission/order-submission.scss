@@ -1,0 +1,104 @@
+page-order-submission {
+    ion-content {
+        background: #f4f6f9;
+    }
+    font-size: r(20px);
+    .box1 {
+        padding: r(35px) 0;
+        background-color: #fff;
+        [col-10] {
+            font-size: r(30px);
+            line-height: r(36px);
+            color: #2e3133;
+            p {
+                font-size: r(24px);
+                line-height: r(36px);
+                letter-spacing: 0px;
+                color: #a2a6a8;
+                margin-top: r(29px);
+            }
+        }
+    }
+    .xian {
+        background-image: url(../assets/imgs/ordersubmit.png);
+        background-color: #fff;
+        height: r(6px);
+    }
+    .box2 {
+        height: r(100px);
+        line-height: r(100px);
+        border-bottom: r(1px) solid #dde0e4;
+        [col-10] {
+            font-size: r(30px);
+            // line-height: r(32px);
+            color: #2e3133;
+        }
+    }
+    .box3 {
+        padding: r(35px) r(22px) 0 r(22px);
+        [col-9] {
+            border-bottom: r(1px) solid #dde0e4;
+            padding-bottom: r(39px);
+            p {
+                font-size: r(30px);
+                line-height: r(32px);
+                color: #2e3133;
+                margin-bottom: r(34px);
+            }
+            span {
+                font-size: r(34px);
+                line-height: r(30px);
+                color: #ff5733;
+            }
+            i {
+                font-size: r(26px);
+                line-height: 0px;
+                letter-spacing: 0px;
+                color: #a2a6a8;
+                position: absolute;
+                right: 0;
+                margin-top: 15px;
+            }
+        }
+    }
+    .box3:last-child {
+        [col-9] {
+            border-bottom: none
+        }
+        margin-bottom: r(22px);
+    }
+    .box4 {
+        div {
+            height: r(100px);
+            line-height: r(90px);
+            font-size: r(30px);
+            display: flex;
+            width: 100%;
+            border-bottom: r(1px) solid #dde0e4;
+        }
+        div:last-child {
+            margin-bottom: r(22px);
+            padding-left: r(22px);
+            padding-right: r(22px);
+            line-height: auto;
+            height: auto;
+            ion-textarea {
+                background-color: #f4f6f9;
+                border-radius: r(10px);
+            }
+        }
+        [col-6] {
+            font-size: r(30px);
+            color: #2e3133;
+            padding-left: r(22px);
+        }
+        [col-5] {
+            font-size: r(26px);
+            color: #a2a6a8;
+            text-align: right;
+        }
+        [col-1] {
+            color: #c3c7cc;
+        }
+    }
+}

@@ -10,7 +10,7 @@ $app-direction: ltr;
 @import "ionic.globals";
 @import "./base.scss";
 @import "./ionicApi.scss";
-// @import "./native.scss";
+@import "./native.scss";
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -50,3 +50,4 @@ $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4
 // --------------------------------------------------
 @import "roboto";
 @import "noto-sans";
+// <i class="icon-btn_arrow iconfont"></i>

@@ -39,7 +39,14 @@ export class MyApp {
     this.test();
       this.News();
 
+
+
+      console.log(localStorage.getItem("shopId"))
     });
+
+
+   
+    
   }
 
 
@@ -137,5 +144,7 @@ export class MyApp {
   })
 
   }
+
+  
 
 }

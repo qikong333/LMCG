@@ -1,0 +1,107 @@
+product-scroll-type-item-home {
+
+    .box-item {
+        .item {
+            border-top: r(22px) solid #f4f6f9;
+            padding-top: r(36px);
+            padding-bottom: r(36px); //标题
+            .item-title {
+                position: relative;
+                height: r(52px);
+                .title {
+                    float: left;
+                    padding-left: r(22px);
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(34px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                } //  更多字体
+                .go-more {
+                    float: right;
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(26px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    margin-top: 0;
+                    margin-right: r(57px);
+                    letter-spacing: 0px;
+                    color: #a2a6a8;
+                } // 更多按钮
+                .btn-right {
+                    width: r(28px);
+                    height: r(28px);
+                    position: absolute;
+                    top: r(2px);
+                    right: r(22px);
+                    background-image: url("../../assets/imgs/btn_right.svg");
+                    background-size: r(28px) r(28px);
+                }
+            }
+            .item-content {
+                // [scroll-ys] {
+                //     // width: 100%;
+                //     // height: 43px;
+                //     height: r(274px);
+                //     // background-color: #fff;
+                //     // border-bottom: 1px solid #dadada;
+                //     // height: r(274px);
+                //     // white-space: nowrap;  
+                // }
+                overflow: scroll; // 左右滑动
+                .product-item-scroll {
+                    margin-top: r(20px);
+                    height: r(274px);
+                    margin-left: 0;
+                    padding-left: 0; 
+                    width:r(181*10px)+r(22*10px);
+                    .product-item-scroll-x {
+                        position: relative;
+                        float: left;
+                        width: r(181px);
+                        height: r(274px); // display: flex;
+                        // display: -webkit-flex;
+                        // flex-direction: row; 
+                        //  flex-wrap: nowrap;
+                        //  justify-content:  center;
+                        //  align-items:  center;
+                        list-style: none;
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        margin-left: r(21px);
+                        .product-item-img {}
+                        .product-item-title {
+                            position: absolute;
+                            bottom: r(84px);
+                            left: 0;
+                            margin-top: 0;
+                            margin-bottom: 0;
+                            font-family: "PingFang-SC-Medium";
+                            font-size: r(24px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #2e3133;
+                        } // 价格
+                        .product-item-price {
+                            margin-top: 0;
+                            margin-bottom: 0;
+                            position: absolute;
+                            bottom: r(36px);
+                            left: 0;
+                            font-family: "PingFang-SC-Medium";
+                            font-size: r(34px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ff5733;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

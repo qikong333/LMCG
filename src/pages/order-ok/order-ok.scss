@@ -1,0 +1,68 @@
+    page-order-ok {
+        font-size: r(20px);
+        ion-content {
+            background-color: rgba(0, 0, 0, 0.3)!important;
+        }
+        .box0 {
+            padding: 0;
+            position: absolute;
+            bottom: 0;
+            .box1 {
+                height: r(85px);
+                font-size: r(30px);
+                line-height: r(85px);
+                color: #2e3133;
+                text-align: center;
+                background-color: #fff;
+                span {
+                    padding: 0 r(40px);
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+            .box2 {
+                padding: r(35px) 0;
+                font-size: r(72px);
+                color: #2e3133;
+                text-align: center;
+                background-color: #f4f6f9;
+                p {
+                    font-size: r(20px);
+                }
+            }
+            .box3 {
+                background-color: #fff;
+                padding: r(35px) r(22px);
+                [col-10] {
+                    p {
+                        display: flex;
+                        width: 100%;
+                    }
+                    .s1 {
+                        font-size: r(26px);
+                        line-height: r(42px);
+                        color: #a2a6a8;
+                    }
+                    .s2 {
+                        font-size: r(20px);
+                        color: #fff;
+                        background: #fa474c;
+                        border-radius: r(10px);
+                        padding: r(2px) r(10px);
+                        position: absolute;
+                        right: 0;
+                        top: 12%;
+                    }
+                }
+            }
+            .box4 {
+                height: r(250px);
+                background: #fff;
+            }
+        }
+        ion-footer {
+            background: #fff;
+            padding: r(22px);
+        }
+    }

@@ -22,6 +22,9 @@ export class NumberItemComponent {
   @Input("goods")
   goods: any = '';//商品数据，用来判断所修改的数量属于哪个商品
 
+  @Input("sprice")
+  sprice: any = '';//商品j价格
+
   @Input("maxQty")
   maxQty: number;//最大限制数
 
@@ -100,7 +103,7 @@ export class NumberItemComponent {
    * 向父组件传递事件
    */
   onEvent() {
-    this.onUpdate.emit({ number: this.buyNumber, goods: this.goods });
+    this.onUpdate.emit({ number: this.buyNumber, goods: this.goods, sprice: this.sprice});
   }
 
   /**

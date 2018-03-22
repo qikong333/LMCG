@@ -1,0 +1,25 @@
+<div class="box-item">
+
+
+    <ion-row>
+        <ion-col class="item" col-6 *ngFor="let item of productList">
+            <!-- 类别标题 -->
+            <h2 class="item-title">{{item.title}}</h2>
+            <!-- 促销词语 -->
+            <p class="item-desc">{{item.desc}}</p>
+            <!-- 两个产品Flex布局 -->
+            <ion-row class="product-item-half-img">
+                <div class="product-img" col-6>
+                    <img src="../../assets/product/product_scroll_item.png" alt="">
+                </div>
+                <div class="product-img" col-6>
+                    <img src="../../assets/product/product_scroll_item.png" alt="">
+                </div>
+            </ion-row>
+        </ion-col>
+
+
+       
+    </ion-row>
+
+</div>

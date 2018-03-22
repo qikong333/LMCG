@@ -1,15 +1,26 @@
 import { ComponentsModule } from './../components/components.module';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
+
+
 import { MyApp } from './app.component';
 import { Http, XHRBackend, RequestOptions, ConnectionBackend, HttpModule, JsonpModule } from "@angular/http";
 
+import { CategrayPage } from '../pages/categray/categray';
+import { FoundPage } from '../pages/found/found';
+import { MinePage } from '../pages/mine/mine';
+import { SearchPage } from '../pages/search/search';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { KindPage } from '../pages/kind/kind';
 import { TabsPage } from '../pages/tabs/tabs';
+
+
+import { SelectStorePage } from '../pages/select-store/select-store';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,11 +34,16 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
 @NgModule({
   declarations: [
     MyApp,
+    TabsPage,
+    HomePage,
+    CategrayPage,
+    FoundPage,
+    MinePage,
+    SearchPage,
+    SelectStorePage,
     AboutPage,
     ContactPage, 
-    HomePage,
     KindPage,
-    TabsPage
   ],
   imports: [
     HttpModule,
@@ -35,33 +51,42 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
     HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp,{
-      tabsHideOnSubPages: 'true',//所有子页面tabs隐藏
+    tabsHideOnSubPages: 'true',//������ҳ��tabs����
       backButtonText: '',
       iconMode: 'ios',
       mode: 'ios',
-      // cache: false,             //禁止应用缓存
-      autoFocusassist: false,   //自动聚焦
-      scrollAssist: false,      // 禁止智能滚动
-      tabsHighlight: false,      //是否在选择该选项卡时显示高亮线。
+      // cache: false,             //��ֹӦ�û���
+      autoFocusassist: false,   //�Զ��۽�
+      scrollAssist: false,      // ��ֹ���ܹ���
+      tabsHighlight: false,      //�Ƿ���ѡ���ѡ�ʱ��ʾ�����ߡ�
 
       modalEnter: 'modal-slide-in',
       modalLeave: 'modal-slide-out',
       tabsPlacement: 'bottom',
       pageTransition: 'ios-transition',
       backButtonIcon: 'backicon'
-
-      // backButtonIcon:'arrow-back'
-      // 后面这两是应对手机键盘弹出时会把界面撑上去的问题
+   
     })
-  ],
+  
+      ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    TabsPage,
+    HomePage,
+    CategrayPage,
+    FoundPage,
+    MinePage,
+    SearchPage,
+    SelectStorePage,
+
+     AboutPage,
     ContactPage,
     HomePage,
     KindPage,
     TabsPage
+
+
   ],
   providers: [
     StatusBar,
@@ -74,4 +99,4 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
     PublicServiceProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

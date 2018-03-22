@@ -1,0 +1,104 @@
+<ion-content>
+    <ion-row class='paybox'>
+        <ion-col col-12 class="paytop">
+            更多支付方式
+            <button (click)="closewin()"></button>
+        </ion-col>
+        <ion-col col-12 class='pay_title'>M卡支付 <span>{{coupText}}</span></ion-col>
+
+        <ion-col col-6 class="pay_item_left"> <img src="assets/img/icon_Payment_SCard.png" alt="">消费M卡 </ion-col>
+        <label col-6 class="pay_item_right">￥ {{payye1*0.01|number:'.2-2'}}元可用
+          <span [ngClass]="{
+            'checked':radio1.checked==true,
+            'nochecked':radio1.checked==false,
+            'disabled':payye1 == 0
+          }"></span> 
+            
+          <input 
+          type="radio" 
+          name="payf" 
+          id="" 
+           [disabled]="payye1 == 0"
+          #radio1
+          (change)="radioChange($event,1,payye1)"
+           [checked]="checkedID==1"
+            [value]='payye1'
+          ></label>
+
+        <ion-col col-6 class="pay_item_left"> <img src="assets/img/icon_Payment_Star.png" alt="">消费积分 </ion-col>
+        <label col-6 class="pay_item_right">{{payye2}}积分可用<span 
+          [ngClass]="{
+            'checked':radio2.checked==true,
+            'nochecked':radio2.checked==false,
+            'disabled':payye2 == 0
+          }"></span>
+          <input 
+          type="radio" 
+          name="payf" 
+          id=""
+           [disabled]="payye2 == 0"
+          #radio2
+           (change)="radioChange($event,2,payye2)"
+           [checked]="checkedID==2"
+            [value]='payye2'
+          ></label>
+
+        <ion-col col-6 class="pay_item_left"> <img src="assets/img/icon_Payment_SCard.png" alt="">投资M卡 </ion-col>
+        <label col-6 class="pay_item_right">￥{{payye3*0.01|number:'.2-2'}}元可用<span 
+          [ngClass]="{
+            'checked':radio3.checked==true,
+            'nochecked':radio3.checked==false,
+            'disabled':payye3 == 0
+          }"
+          ></span> 
+          <input 
+          type="radio" 
+          name="payf" 
+          id=""
+          [disabled]="payye3 == 0"
+           #radio3
+           (change)="radioChange($event,3,payye3)"
+           [checked]="checkedID==3"
+            [value]='payye3'
+          ></label>
+
+        <ion-col col-6 class="pay_item_left"> <img src="assets/img/icon_Payment_Star.png" alt="">投资积分 </ion-col>
+        <label col-6 class="pay_item_right">{{payye4}}积分可用<span 
+          [ngClass]="{
+           'checked':radio4.checked==true,
+            'nochecked':radio4.checked==false,
+            'disabled':payye4 == 0
+          }"></span> 
+          <input 
+          type="radio" 
+          name="payf" 
+          id=""
+          [disabled]="payye4 == 0"
+          #radio4
+          (change)="radioChange($event,4,payye4)"
+           [checked]="checkedID==4"
+            [value]='payye4'
+          ></label>
+
+        <ion-col col-12 class='pay_title'>余额支付</ion-col>
+
+        <ion-col col-6 class="pay_item_left"> <img src="assets/img/icon_Payment_Balance.png" alt="">账户余额 </ion-col>
+        <label col-6 class="pay_item_right">{{payye5*0.01|number:'.2-2'}}元可用 <span 
+          [ngClass]="{
+            'checked':radio5.checked==true,
+            'nochecked':radio5.checked==false,
+            'disabled':payye5 == 0
+          }"></span>
+         <input 
+          type="radio" 
+          name="payf" 
+          id=""
+          [disabled]="payye5 == 0"
+           #radio5
+           (change)="radioChange($event,5,payye5)"
+           [checked]="checkedID==5"
+           [value]='payye5'
+          ></label>
+    </ion-row>
+
+</ion-content>

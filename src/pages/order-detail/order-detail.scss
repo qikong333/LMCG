@@ -1,0 +1,51 @@
+page-order-detail {
+    ion-content {
+        background-color: #f4f6f9!important;
+    }
+    font-size: r(20px);
+    .box1 {
+        background: #fff;
+        padding: r(35px) r(22px);
+        background-color: #29aff6;
+        [col-10] {
+            font-size: r(30px);
+            color: #f5fbff;
+            span {
+                font-size: r(30px);
+                color: #ffff66;
+            }
+            p {
+                margin-top: r(18px);
+                font-size: r(24px);
+                color: #f5fbff;
+            }
+        }
+    }
+    .box2 {
+        background: #fff;
+        padding: r(35px) r(22px);
+        .box2_1 {
+            font-size: r(30px);
+            color: #2e3133;
+        }
+        .box2_2 {
+            font-size: r(24px);
+            color: #a2a6a8;
+        }
+    }
+    .box3 {
+        background: #fff;
+    }
+    .box4 {
+        background: #fff;
+    }
+    .box5 {
+        background: #fff;
+    }
+    .box6 {
+        background: #fff;
+    }
+    .box7 {
+        background: #fff;
+    }
+}

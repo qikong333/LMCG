@@ -1,0 +1,54 @@
+cart-pay-home {
+    .cart-pay-footer {
+        .item {
+            width: r(750px);
+            height: r(80px);
+            // background-color: #ff0;
+            position: relative;
+            .item-left {
+                .icon-cart {
+                    position: absolute;
+                    top: r(24px);
+                    left: r(22px);
+                    width: r(36px);
+                    height: r(36px);
+                    // background-color: #f00;
+                    background-image: url("../../assets/imgs/cart_home.svg");
+                    background-size: r(36px) r(36px);
+                }
+                .item-text {
+                    position: absolute;
+                    top: r(26px);
+                    left: r(80px);
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(30px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #a2a6a8;
+                }
+            }
+            // 支付
+            .btn-pay {
+                float: right;
+                width: r(247px);
+                height: r(80px);
+                background-color: #dde0e4;
+                text-align: center;
+                .go-pay {
+                    // width: r(142px);
+                    height: r(32px);
+                    margin: 0 auto;
+                    display: block;
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(34px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    line-height: r(80px);
+                    letter-spacing: 0px;
+                    color: #a2a6a8;
+                }
+            }
+        }
+    }
+}

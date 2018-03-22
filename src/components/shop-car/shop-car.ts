@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, Input } from '@angular/core';
 
 /**
  * Generated class for the ShopCarComponent component.
@@ -12,11 +12,19 @@ import { Component } from '@angular/core';
 })
 export class ShopCarComponent {
 
-  text: string;
+  @Input("buyNumber")
+  buyNumber: any = 0;//购买数
+
+  @Input("sprice")
+  sprice: any = 0;//购买数
+
+  @Input("datas")
+  datas: any = 0;//购买数
+
 
   constructor() {
     console.log('Hello ShopCarComponent Component');
-    this.text = 'Hello World';
+     
   }
 
 }

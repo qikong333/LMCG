@@ -1,0 +1,66 @@
+product-half-type-item-home {
+    .box-item {
+       // border-bottom:r(22px) solid #f4f6f9;
+        .item {
+           
+            padding:0;  
+            width: r(375px);
+            height: r(245px);
+            background-color: #fff;
+            position: relative;
+            // 折扣标题
+            .item-title {
+                // position: absolute;
+                // top: r(20px);
+                margin-top: r(20px);
+                margin-bottom: 0px;
+                margin-left: r(22px);
+                font-family: "PingFang-SC-Medium";
+                font-size: r(30px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #2e3133;
+            }
+            // 促销描述
+            .item-desc {
+                margin-top: r(12px);
+                margin-left: r(22px);
+                font-family: "PingFang-SC-Medium";
+                font-size: r(24px);
+                font-weight: normal;
+                font-stretch: normal;
+            
+                letter-spacing: 0px;
+                color: #a2a6a8;
+            }
+            // 两个商品 Flex
+            .product-item-half-img .product-img{
+                padding:0;
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: row;
+                justify-content:  center;  
+                height: r(159px);
+                img{
+                    height: r(159px);
+                    display: block;
+                    // height: r(100px);
+                }
+              
+            }
+
+
+               // 边框
+               &:nth-child(odd){
+                    border-right: 1px solid #dde0e4;
+               }
+               &:nth-child(1){
+                border-bottom: 1px solid #dde0e4;
+           }
+           &:nth-child(2){
+            border-bottom: 1px solid #dde0e4;
+       }
+        }
+    }
+}

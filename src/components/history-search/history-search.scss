@@ -1,0 +1,71 @@
+history-search {
+    .history-search{
+        .history-title{
+            display: block;
+    
+            .history-text{
+                    display: block;
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(30px);
+                    padding-top: r(32px);
+                    padding-bottom: r(32px);
+                    padding-left: r(22px);
+                    font-weight: normal;
+                    font-stretch: normal;                   
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                 
+            }
+        }
+
+        .history-item{
+            display: block;
+         
+            .item{
+                display: block;
+                height: r(100px);
+                list-style: none;
+                padding-left: r(22px);
+                border-top: 1px solid #dde0e4;
+                .text{
+                    display: block;
+
+                    height: r(100px);
+                    line-height: r(100px);
+                    font-size: r(30px);
+                    text-decoration: none;
+                    color: #a2a6a8;
+                }
+            }
+        }
+
+
+        // 清除按钮
+        .clear-history{
+            // margin-top: r(40px);
+            width: 100%;
+            // height: 1000px;
+           
+            // background: #f00;
+            .clear-block{
+                display: block;
+                .clear-btn{
+
+                    display: block;
+                    margin-top: r(40px);
+                    height: r(90px);
+                    font-size: r(34px);
+                    line-height: r(90px);
+                    border-radius: r(45px);
+                    border: solid 1px #29aff6;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    text-align: center;
+                    color: #29aff6;
+                }
+            }
+        }
+
+    }
+   
+}

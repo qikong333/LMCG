@@ -1,8 +1,11 @@
 <ion-row>
-    <ion-col col-8 class="car_l">
+    <ion-col col-8 class="car_l car_l_1" *ngIf="buyNumber==0">
         购物车是空的
     </ion-col>
-    <ion-col col-4 class="car_r">
-        去结算 (0)
+    <ion-col col-8 class="car_l car_l_2" *ngIf="buyNumber!=0">
+        以选购{{buyNumber}}件商品
+    </ion-col>
+    <ion-col col-4 class="car_r" [ngClass]="{'in':sprice != 0} ">
+        去结算 ({{sprice}})
     </ion-col>
 </ion-row>

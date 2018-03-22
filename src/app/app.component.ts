@@ -5,15 +5,18 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { TabsPage } from '../pages/tabs/tabs';
 
+// import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+// import { SelectStorePage } from '../pages/select-store/select-store';
+// import { SearchPage } from '../pages/search/search';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+ 
   rootPage:any = TabsPage;
-  search
-
+  search:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public http:HttpServiceProvider,public http2:Http) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -33,12 +36,15 @@ export class MyApp {
         console.log(1111)
       }
       )
-      localStorage.setItem('shopId', '9999001')//商品id
-      localStorage.setItem('userAgent', 'IOS')//环境
+      localStorage.setItem('shopId', '9999001')//ÉÌÆ·id
+      localStorage.setItem('userAgent', 'IOS')//»·¾³
    
     this.test();
       this.News();
 
+
+
+      console.log(localStorage.getItem("shopId"))
     });
   }
 
@@ -137,5 +143,7 @@ export class MyApp {
   })
 
   }
+
+  
 
 }

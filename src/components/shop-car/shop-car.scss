@@ -7,8 +7,17 @@ shop-car {
     background: #fff;
     width: 100%;
     z-index: 9999;
-    .car_l {}
+    .car_l_1 {
+        color: #a2a6a8;
+    }
+    .car_l_2 {
+        color: #2e3133;
+    }
     .car_r {
         background: #dde0e4;
+    }
+    ion-col.in {
+        background: #149fe8;
+        color: #fff;
     }
 }

@@ -7,9 +7,7 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>d'd'd'd'd'd'd'd'd'd'd'd'
-            <dl></dl>
-        </ion-title>
+        <ion-title>产品分类</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -59,10 +57,10 @@
                     <ion-row class="i_box3 ">
                         ￥{{item3.sprice}}
                     </ion-row>
-                    <number-item></number-item>
+                    <number-item (onUpdate)="onUpdate($event)" [goods]="item3.pid" [sprice]="item3.sprice"></number-item>
                 </ion-col>
             </ion-row>
         </ion-col>
     </ion-row>
-    <shop-car></shop-car>
+    <shop-car [buyNumber]="car_num_sum+local_num_sum" [sprice]="car_sprice_sum+local_sprice_sum" [datas]="Arr_car_end"></shop-car>
 </ion-content>

@@ -1,0 +1,68 @@
+hot-keywords-search {
+    width: r(750px);
+    height: r(270px);
+    background-color: #ffffff;
+    .hot-keywords-search{
+        display: block;
+        width: r(750px);
+        // height: r(270px);
+        .keywords-title{
+            display: block;
+
+            .keywords-text{
+                    display: block;
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(30px);
+                    padding-top: r(32px);
+                    padding-bottom: r(32px);
+                    padding-left: r(22px);
+                    font-weight: normal;
+                    font-stretch: normal;                   
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                 
+            }
+        }
+        // 搜索列表
+        .kewords-list{
+            // padding-left: r(26px);
+            // padding-right: r(31px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            // background: #000;
+            padding-bottom: r(40px);
+            .item{
+
+                display: block;
+                height:r(56px);             
+                background-color: #ffffff;
+                border-radius: r(8px);
+                border: solid 1px #dde0e4;  
+                font-size: r(26px);   
+                margin-left: r(22px);  
+                margin-top: r(22px);
+                
+                .text{
+                    display: block;
+                    padding-left: r(18px);
+                    padding-right: r(18px);
+                    line-height: r(56px);
+                  
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(26px);
+                    text-decoration: none;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                }
+            }
+        }
+
+
+
+    }
+}

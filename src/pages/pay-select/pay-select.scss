@@ -1,0 +1,133 @@
+page-pay-select {
+    label,
+    ion-col {
+        padding-top: 0!important;
+        padding-bottom: 0!important;
+    }
+    ion-content {
+        background-color: rgba(0, 0, 0, 0.3)!important;
+        // opacity: 0.3;
+    }
+    .paybox {
+        position: absolute;
+        bottom: 0;
+        height: 772px/3*1.5;
+        overflow: scroll;
+        .paytop {
+            height: 100px/3*1.5;
+            line-height: 100px/3*1.5;
+            font-size: 32px/3*1.5;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #333333;
+            text-align: center;
+            border-top: 1px/3*1.5 solid #e6e6e6;
+            button {
+                background: url(../assets/img/close.png) no-repeat;
+                background-size: 20px;
+                background-position: 12px;
+                width: 14px;
+                height: 14px;
+                position: absolute;
+                right: 0;
+                padding: 25px;
+                right: 0;
+            }
+        }
+        background-color: #ffffff;
+        .pay_title {
+            span {
+                margin-left: 20px/3*1.5;
+                background-color: #fa474c;
+                border-radius: 13px/3*1.5;
+                width: 155px/3*1.5;
+                height: 26px/3*1.5;
+                font-size: 20px/3*1.5;
+                font-weight: normal;
+                font-stretch: normal;
+                line-height: 36px/3*1.5;
+                letter-spacing: 0px;
+                color: #ffffff;
+                padding: 2px 6px;
+            }
+            font-size: 28px/3*1.5;
+            letter-spacing: 0px;
+            color: #666666;
+            height: 90px/3*1.5;
+            line-height: 90px/3*1.5;
+            font-size: 28px/3*1.5;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #666666;
+            border-top: 1px/3*1.5 solid #e6e6e6;
+        }
+        .pay_item_left {
+            font-size: 30px/3*1.5;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #333333;
+            border-top: 1px/3*1.5 solid #e6e6e6;
+            height: 109px/3*1.5;
+            line-height: 109px/3*1.5;
+            img {
+                width: 40px/3*1.5;
+                height: 40px/3*1.5;
+                margin-bottom: -5px;
+                margin-right: 5px;
+            }
+        }
+        .pay_item_right {
+            text-align: right;
+            font-size: 26px/3*1.5;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #999999;
+            border-top: 1px/3*1.5 solid #e6e6e6;
+            height: 109px/3*1.5;
+            line-height: 109px/3*1.5;
+        }
+        label {
+            input[type=radio] {
+                width: 0;
+                height: 0;
+                display: hide!important;
+            }
+            span {
+                float: right;
+                display: block;
+                width: 15px;
+                height: 15px;
+                background: #39c9ff;
+                margin-top: 17px;
+                width: 36px/3*1.5;
+                height: 36px/3*1.5;
+                background-size: 100%;
+            }
+            span.checked {
+                // background: #39c9ff; 
+                background: url(../assets/img/choose.png) -10px/3*1.5 -66px/3*1.5;
+                background-size: 28px;
+            }
+            span.nochecked {
+                // background: #666666;
+                background: url(../assets/img/choose.png) -10px/3*1.5 -122px/3*1.5;
+                background-size: 28px;
+            }
+            span.disabled {
+                // background: #ffe239;
+                background: url(../assets/img/choose.png) -10px/3*1.5 -10px/3*1.5;
+                background-size: 28px;
+            }
+        }
+    }
+    .icon-payment-s-card {
+        width: 36px;
+        height: 28px;
+        background-image: linear-gradient(135deg, #39c9ff 0%, #3b96fd 100%), linear-gradient( #ffe239, #ffe239);
+        background-blend-mode: normal, normal;
+    }
+}

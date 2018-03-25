@@ -50,6 +50,10 @@ export class MyApp {
 
       console.log(localStorage.getItem("shopId"))
     });
+
+
+   
+    
   }
 
 

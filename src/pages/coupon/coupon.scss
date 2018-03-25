@@ -1,0 +1,270 @@
+page-coupon {
+    ion-header {
+        background-color: #fff;
+    }
+    .coupon-content {
+        background-color: #f4f6f9;
+        height: 100%;
+        width: 100%;
+        .coupon-tabs {
+            font-size: r(30px);
+            height: r(80px);
+            background-color: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            color: #2e3133;
+            .tabs-text {
+                .text {
+                    color: #2e3133;
+                }
+                .current {
+                    color: #29aff6;
+                }
+            }
+        } // 购物券
+        .coupon-list {
+            font-size: r(34px); // 未使用,已使用,已过期的公共样式
+            .common-item {
+                margin-top: r(30px);
+                margin-left: r(22px);
+                margin-right: r(22px);
+
+        
+                .item-top {
+                   
+                   
+                    position: relative;
+                    height: r(170px);
+                    border-top-left-radius: r(14px);
+                    border-top-right-radius: r(14px);
+                    background-size:  100%  r(170px);
+                   &.unused-bg1{
+                    background-image:url("../../assets/imgs/coupon_unused_1.png");
+                
+                   }
+                   &.unused-bg2{
+                    background-image:url("../../assets/imgs/coupon_unused_2.png");
+                
+                   }
+                   &.unused-bg3{
+                    background-image:url("../../assets/imgs/coupon_unused_3.png");
+                
+                   }
+                 
+                    .price {
+                        float: left;
+                        margin-left: r(40px);
+                        .price-icon {
+                            display: inline-block;
+                            font-size: r(30px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            margin-top: r(100px);
+                            color: #ffffff;
+                        }
+                        .price-number {
+                            display: inline-block;
+                            font-size: r(100px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                            margin-left: r(4px);
+                        }
+                    }
+                    .desc {
+                        float: right;
+                        margin-right: r(40px);
+                        .desc-title {
+                            text-align: right;
+                            margin-top: r(50px);
+                            font-size: r(34px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                        }
+                        .desc-detail {
+                            text-align: right;
+                            margin-top: r(26px);
+                            font-size: r(24px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                        }
+                    }
+                }
+
+
+                .usedBG {
+                   
+                   
+                    position: relative;
+                    height: r(170px);
+                    border-top-left-radius: r(14px);
+                    border-top-right-radius: r(14px);
+ 
+                    background-size:  100%  r(170px);
+                    &.used-bg{
+                     background-image:url("../../assets/imgs/coupon_used.png");
+                 
+                    }
+                    .price {
+                        float: left;
+                        margin-left: r(40px);
+                        .price-icon {
+                            display: inline-block;
+                            font-size: r(30px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            margin-top: r(100px);
+                            color: #ffffff;
+                        }
+                        .price-number {
+                            display: inline-block;
+                            font-size: r(100px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                            margin-left: r(4px);
+                        }
+                    }
+                    .desc {
+                        float: right;
+                        margin-right: r(40px);
+                        .desc-title {
+                            text-align: right;
+                            margin-top: r(50px);
+                            font-size: r(34px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                        }
+                        .desc-detail {
+                            text-align: right;
+                            margin-top: r(26px);
+                            font-size: r(24px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                        }
+                    }
+                }
+
+
+
+                .overdueBG {
+                   
+                   
+                    position: relative;
+                    height: r(170px);
+                    border-top-left-radius: r(14px);
+                    border-top-right-radius: r(14px);
+ 
+                    background-size:  100%  r(170px);
+                    &.overdue-bg{
+                     background-image:url("../../assets/imgs/coupon_overdue.png");
+                 
+                    }
+                    .price {
+                        float: left;
+                        margin-left: r(40px);
+                        .price-icon {
+                            display: inline-block;
+                            font-size: r(30px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            margin-top: r(100px);
+                            color: #ffffff;
+                        }
+                        .price-number {
+                            display: inline-block;
+                            font-size: r(100px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                            margin-left: r(4px);
+                        }
+                    }
+                    .desc {
+                        float: right;
+                        margin-right: r(40px);
+                        .desc-title {
+                            text-align: right;
+                            margin-top: r(50px);
+                            font-size: r(34px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                        }
+                        .desc-detail {
+                            text-align: right;
+                            margin-top: r(26px);
+                            font-size: r(24px);
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 0px;
+                            color: #ffffff;
+                        }
+                    }
+                }
+
+          
+
+                .item-bottom {
+                    height: r(80px);
+                    background: #fff;
+                    .time {
+                        float: left;
+                        margin-left: r(20px);
+                        font-size: r(24px);
+                        font-weight: normal;
+                        font-stretch: normal;
+                        height: r(80px);
+                        line-height: r(80px);
+                        letter-spacing: 0px;
+                        color: #a2a6a8;
+                    }
+                    .status {
+                        float: right;
+                        margin-right: r(20px);
+                        height: r(80px);
+                        line-height: r(80px);
+                        font-size: r(24px);
+                        font-weight: normal;
+                        font-stretch: normal;
+                        letter-spacing: 0px;
+                        color: #a2a6a8;
+                    }
+                }
+            } // 未使用
+            .unused {}
+            // 已使用
+            .used {}
+            // 过期的
+            .overdue {}
+        } // .coupon-tabs {
+        //     height: r(80px);
+        //     width: 100%;
+        //     .tabs-text {
+        //         list-style: none;
+        //         float: left;
+        //         .text {
+        //             font-size: r(30px);
+        //             font-weight: normal;
+        //             font-stretch: normal;
+        //             letter-spacing: 0px;
+        //             color: #29aff6;
+        //         }
+        //     }
+        // }
+    }
+}

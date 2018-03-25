@@ -6,15 +6,93 @@
 -->
 <ion-header class="select-store-header">
 
- 
-    <ion-title class="select-store-title">便利店选择</ion-title>
-    <span class="reset-position">重新定位</span> 
+
+  <ion-title class="select-store-title">便利店选择</ion-title>
+  <span class="reset-position">重新定位</span>
 
 </ion-header>
 
 
-<ion-content>
+<ion-content class="select-content">
   <div class="select-item">
-    
+
+    <div *ngIf="selectCondition" class="select-sussess">
+      <div class="sussess-icon">
+
+      </div>
+      <p class="sussess-text">广东省东莞市南城街道宏伟东四路明致商厦</p>
+    </div>
+
+    <div *ngIf="!selectCondition" class="select-fail">
+      <div class="fail-icon"></div>
+      <p class="fail-text">定位失败 请重新定位</p>
+    </div>
+
+    <p class="select-desc">1公里内免费配送，超出范围请到门店自提</p>
+  </div>
+
+
+
+  <div class="select-list">
+    <div class="select-title">
+      <span class="thread-left"></span>
+      <span class="center-text">附近便利店</span>
+
+      <span class="thread-right"></span>
+    </div>
+    <div class="select-item clearfix">
+      <h2 class="item-title">
+        南城石竹店
+      </h2>
+      <p class="item-distance">2587m</p>
+      <p class="item-address">
+        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
+      <p class="item-tel">
+        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
+    </div>
+
+    <div class="select-item clearfix">
+      <h2 class="item-title">
+        南城石竹店
+      </h2>
+      <p class="item-distance">2587m</p>
+      <p class="item-address">
+        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
+      <p class="item-tel">
+        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
+    </div>
+
+    <div class="select-item clearfix">
+      <h2 class="item-title">
+        南城石竹店
+      </h2>
+      <p class="item-distance">2587m</p>
+      <p class="item-address">
+        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
+      <p class="item-tel">
+        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
+    </div>
+
+    <div class="select-item clearfix">
+      <h2 class="item-title">
+        南城石竹店
+      </h2>
+      <p class="item-distance">2587m</p>
+      <p class="item-address">
+        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
+      <p class="item-tel">
+        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
+    </div>
+
+    <div class="select-item clearfix">
+      <h2 class="item-title">
+        南城石竹店
+      </h2>
+      <p class="item-distance">2587m</p>
+      <p class="item-address">
+        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
+      <p class="item-tel">
+        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
+    </div>
   </div>
 </ion-content>

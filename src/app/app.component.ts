@@ -6,16 +6,20 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 // import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-// import { SelectStorePage } from '../pages/select-store/select-store';
+// import { TabsPage } from '../pages/tabs/tabs';
+// import { StoreDetailsPage } from '../pages/store-details/store-details';
+// import { CouponPage } from '../pages/coupon/coupon';
+// import { MinePage } from '../pages/mine/mine';
+import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
 // import { SearchPage } from '../pages/search/search';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
  
-  rootPage:any = TabsPage;
+  rootPage:any = ReceivingAddressPage;
   search:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public http:HttpServiceProvider,public http2:Http) {
     platform.ready().then(() => {

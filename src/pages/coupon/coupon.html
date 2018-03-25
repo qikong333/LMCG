@@ -1,0 +1,76 @@
+<!--
+  Generated template for the CouponPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+  <ion-title>优惠券</ion-title>
+
+</ion-header>
+
+
+<ion-content class="coupon-content">
+  <div class="coupon-tabs">
+    <li class="tabs-text" *ngFor="let item of tabsArr,let i=index ">
+      <span [ngClass]="{'current':clickTab==i}" #tabsUnused (touchend)="selectTabs(item,i)">{{item}}</span>
+    </li>
+
+  </div>
+
+  <div class="coupon-list">
+    <!-- 未使用 -->
+    <div class="unused common-item " *ngFor="let coupon of coupons">
+      <ul *ngIf="coupon.cStatus==couponList">
+        <li>
+          <div [ngClass]="{'item-top':coupon.cStatus==0,'unused-bg1':coupon.cPrice <= 10,
+          'unused-bg2':coupon.cPrice > 10 && coupon.cPrice < 20,
+          'unused-bg3':coupon.cPrice >= 20,
+ 
+
+
+                           'usedBG':coupon.cStatus==1,'used-bg':coupon.cStatus==1,
+                           'overdueBG':coupon.cStatus==2,'overdue-bg':coupon.cStatus==2}">
+            <div class="price">
+              <span class="price-icon">￥</span>
+              <span class="price-number">{{coupon.cPrice}}</span>
+            </div>
+            <div class="desc">
+              <p class="desc-title">{{coupon.cTitle}}</p>
+              <p class="desc-detail">{{coupon.cDetail}}</p>
+            </div>
+          </div>
+          <div class="item-bottom">
+            <div class="time">有效期：{{coupon.cTime}}</div>
+            <div class="status" *ngIf="coupon.cStatus==0">未使用</div>
+            <div class="status" *ngIf="coupon.cStatus==1">已使用</div>
+            <div class="status" *ngIf="coupon.cStatus==2">已过期</div>
+
+          </div>
+        </li>
+      </ul>
+
+
+    </div>
+    <!-- 已使用 -->
+    <!-- <div class="used common-item" #usedList  *ngIf="couponList == 1">
+      <ul>
+        <li>
+          <div class="item-top">未使用</div>
+          <div class="item-bottom"></div>
+        </li>
+      </ul>
+    </div> -->
+    <!-- 过期的 -->
+    <!-- <div class="overdue common-item" #overdueList *ngIf="couponList == 2"> 
+      <ul>
+        <li>
+          <div class="item-top">已使用</div>
+          <div class="item-bottom"></div>
+        </li>
+      </ul>
+    </div> -->
+  </div>
+</ion-content>

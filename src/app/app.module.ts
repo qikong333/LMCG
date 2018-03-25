@@ -30,6 +30,9 @@ import { UtilsProvider } from '../providers/utils/utils';
 import { NativeServiceProvider } from '../providers/native-service/native-service';
 import { AipServiceProvider } from '../providers/aip-service/aip-service';
 import { PublicServiceProvider } from '../providers/public-service/public-service';
+import { StoreDetailsPage } from '../pages/store-details/store-details';
+import { CouponPage } from '../pages/coupon/coupon';
+import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,11 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
     MinePage,
     SearchPage,
     SelectStorePage,
+    StoreDetailsPage,
+    CouponPage,
+    ReceivingAddressPage,
+
+    
     AboutPage,
     ContactPage, 
     KindPage,
@@ -51,14 +59,14 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
     HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp,{
-    tabsHideOnSubPages: 'true',//������ҳ��tabs����
+    tabsHideOnSubPages: 'true', 
       backButtonText: '',
       iconMode: 'ios',
       mode: 'ios',
-      // cache: false,             //��ֹӦ�û���
-      autoFocusassist: false,   //�Զ��۽�
-      scrollAssist: false,      // ��ֹ���ܹ���
-      tabsHighlight: false,      //�Ƿ���ѡ���ѡ�ʱ��ʾ�����ߡ�
+      // cache: false,             
+      autoFocusassist: false,   
+      scrollAssist: false,      
+      tabsHighlight: false,      
 
       modalEnter: 'modal-slide-in',
       modalLeave: 'modal-slide-out',
@@ -79,12 +87,16 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
     MinePage,
     SearchPage,
     SelectStorePage,
-
+    StoreDetailsPage,
+    CouponPage,
+    ReceivingAddressPage,
+    
      AboutPage,
     ContactPage,
     HomePage,
     KindPage,
     TabsPage
+
 
 
   ],

@@ -1,46 +1,204 @@
 page-select-store {
-    .select-store-header{
+    .select-store-header {
         position: relative;
-        .select-store-title{
-     
-      
+        .select-store-title {
             font-family: "PingFang-SC-Medium";
             font-size: r(36px);
             font-weight: normal;
             font-stretch: normal;
-      
             letter-spacing: 0px;
             color: #000000;
         }
-        .reset-position{
+        .reset-position {
             position: absolute;
             right: r(22px);
             top: r(30px);
-     
             font-family: "PingFang-SC-Medium";
             font-size: r(30px);
             font-weight: normal;
             font-stretch: normal;
-
             letter-spacing: 0px;
             color: #2e3133;
-        
+        }
+    } // 内容部分
+    .select-content {
+        .select-item {
+            width: r(750px); // height: r(300px);
+            margin: 0 auto;
+            background-color: #ffffff;
+            position: relative; // 选择成功,和定位失败
+            .select-sussess {
+                .sussess-icon {
+                    width: r(90px);
+                    height: r(90px);
+                    background-image: linear-gradient(135deg, #39c9ff 0%, #3b96fd 100%), linear-gradient(#ffba00, #ffba00);
+                    background-blend-mode: normal, normal;
+                    margin-top: r(50px);
+                    margin-left: r(330px);
+                    border-radius: 50%;
+                    display: flex;
+                    display: -webkit-flex;
+                    /* Safari */
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .sussess-text {
+                    margin-top: r(38px);
+                    text-align: center;
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(30px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                }
+            } // 定位失败
+            .select-fail {
+                display: block;
+                .fail-icon {
+                    width: r(90px);
+                    height: r(90px);
+                    background-image: linear-gradient(135deg, #39c9ff 0%, #3b96fd 100%), linear-gradient(#ffba00, #ffba00);
+                    background-blend-mode: normal, normal;
+                    margin-top: r(50px);
+                    margin-left: r(330px);
+                    border-radius: 50%;
+                    display: flex;
+                    display: -webkit-flex;
+                    /* Safari */
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .fail-text {
+                    margin-top: r(38px);
+                    text-align: center;
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(30px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                }
+            }
+            .select-desc {
+                display: block;
+                margin-top: r(22px);
+                text-align: center;
+                font-family: "PingFang-SC-Medium";
+                font-size: r(24px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #a2a6a8;
+            }
+        } // 门店选择列表
+        .select-list {
+            .select-title {
+                position: relative;
+                margin-top: r(50px);
+                width: 100%;
+                height: r(113px);
+                background-color: #f4f6f9; // padding-top: r(57px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                text-align: center;
+                .center-text {
+                    display: block;
+                    padding-top: r(57px);
+                    font-size: r(30px);
+                    color: #a2a6a8;
+                }
+                .thread-left {
+                    width: r(250px);
+                    height: 1px;
+                    background-color: #c5cacc;
+                    display: block;
+                    position: absolute;
+                    top: r(75px);
+                    left: r(22px);
+                }
+                .thread-right {
+                    width: r(250px);
+                    height: 1px;
+                    background-color: #c5cacc;
+                    display: block;
+                    position: absolute;
+                    top: r(75px);
+                    right: r(22px);
+                }
+            } // 内容
+            .select-item {
+                width: r(750px);
+                height: r(267px);
+                background-color: #ffffff;
+                border-bottom:r(22px) solid #f4f6f9;
+               
+                .item-title {
+                    float: left;
+                    font-size: r(34px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                    margin-top: r(46px);
+                    margin-left: r(21px);
+                    margin-bottom: 0;
+                }
+                .item-distance {
+                    float: right;
+                    font-size: r(28px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #29aff6;
+                    margin-top: r(51px);
+                    margin-right: r(23px);
+                    margin-bottom: 0;
+                }
+                .item-address {
+                    margin-top: r(116px);
+                    padding-left: r(66px);
+                    font-size: r(28px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #a2a6a8;
+                    position: relative;
+                    .address-icon {
+                        position: absolute;
+                        top: r(5px);
+                        left: r(22px);
+                        width: r(30px);
+                        height: r(30px);
+                        background-color: #29aff6;
+                    }
+                }
+                .item-tel {
+
+                    margin-top: r(29px);
+                    padding-left: r(66px);
+                    padding-bottom: r(47px);
+                    font-size: r(28px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    letter-spacing: 0px;
+                    color: #a2a6a8;
+                    position: relative;
+                    .tel-icon {
+                        position: absolute;
+                        top: r(5px);
+                        left: r(22px);
+                        width: r(30px);
+                        height: r(30px);
+                        background-color: #29aff6;
+                    }
+                }
+            }
         }
     }
-
-    .select-content{
-        .select-item{    
-            width: 750px;
-            height: 301px;
-            background-color: #ffffff;   
-
-            .select-sussess       
-        }
-
-
-        .select-list{
-
-        }
-    }
-  
 }

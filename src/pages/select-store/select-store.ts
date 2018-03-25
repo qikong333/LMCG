@@ -16,10 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class SelectStorePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.randomShow();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectStorePage');
+  }
+  // 是否显示的定位成功和失败的图标和定位地址
+  selectCondition: boolean = true;
+  randomShow() {
+    let s = Math.random() * 10;
+    this.selectCondition = s > 5 ? true : false;
   }
 
 }

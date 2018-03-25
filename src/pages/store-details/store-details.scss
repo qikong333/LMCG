@@ -1,0 +1,117 @@
+page-store-details {
+    .store-details {
+        display: block;
+        background-color: #f4f6f9;
+        height: 100%;
+        .title-top {
+            height: r(160px);
+            background-color: #ffffff;
+            .item-title {
+                float: left;
+                margin-left: r(22px);
+                margin-top: r(36px);
+             
+ 
+                margin-bottom: 0;
+                font-size: r(30px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #2e3133;
+            }
+            .item-distance {
+                float: right;
+                margin-right: r(22px);
+                margin-top: r(40px);
+                background-color: #ffffff;
+                font-size: r(26px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #29aff6;
+            }
+        }
+        .item-address {
+            padding-left: r(56px);
+            margin-top: r(97px);
+            font-size: r(24px);
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #a2a6a8;
+            background-color: #ffffff;
+            position: relative;
+            .address-icon {
+       
+              
+                    position: absolute;
+                    top: r(5px);
+                    left: r(22px);
+                    width: r(22px);
+                    height: r(30px);
+                    background-color: #29aff6;
+               
+            }
+        }
+        .details-list {
+            .detail-list-time {
+                background-color: #ffffff;
+                border-bottom: 1px solid #dde0e4;
+                height: r(100px);
+                padding-left: r(22px);
+                padding-right: r(22px);
+                .time-title {
+                    float: left;
+                    display: block;
+                    height: r(100px);
+                    font-size: r(30px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    line-height: r(100px);
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                }
+                .time-detail {
+                    display: block;
+                    float: right;
+                    height: r(100px);
+                    font-size: r(26px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    line-height: r(100px);
+                    letter-spacing: 0px;
+                    color: #a2a6a8;
+                }
+            }
+            .detail-list-tel {
+                padding-left: r(22px);
+                padding-right: r(22px);
+                height: r(100px);
+                background-color: #ffffff;
+                .tel-title {
+                    float: left;
+                    display: block;
+                    height: r(100px);
+                    font-size: r(30px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    line-height: r(100px);
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                }
+                .tel-detail {
+                    display: block;
+                    float: right;
+                    height: r(100px);
+                    font-size: r(26px);
+                    font-weight: normal;
+                    font-stretch: normal;
+                    line-height: r(100px);
+                    letter-spacing: 0px;
+                    color: #a2a6a8;
+                    // margin-right: r(57px);
+                }
+            }
+        }
+    }
+}

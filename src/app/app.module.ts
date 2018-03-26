@@ -35,6 +35,7 @@ import { CouponPage } from '../pages/coupon/coupon';
 import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
 import { CreateAddressPage } from '../pages/create-address/create-address';
 import { CitySelectModalPage } from '../pages/city-select-modal/city-select-modal';
+import { MyOrderListPage } from '../pages/my-order-list/my-order-list';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { CitySelectModalPage } from '../pages/city-select-modal/city-select-moda
     ReceivingAddressPage,
     CreateAddressPage,
     CitySelectModalPage,
-
+    MyOrderListPage,
 
 
     AboutPage,
@@ -96,8 +97,8 @@ import { CitySelectModalPage } from '../pages/city-select-modal/city-select-moda
     CouponPage,
     ReceivingAddressPage,
     CreateAddressPage,
-CitySelectModalPage,
-
+    CitySelectModalPage,
+    MyOrderListPage,
 
 
      AboutPage,

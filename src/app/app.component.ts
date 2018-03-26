@@ -14,14 +14,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { MinePage } from '../pages/mine/mine';
 // import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
 // import { CreateAddressPage } from '../pages/create-address/create-address';
-import { CitySelectModalPage } from '../pages/city-select-modal/city-select-modal';
+// import { CitySelectModalPage } from '../pages/city-select-modal/city-select-modal';
+// import { CreateAddressPage } from '../pages/create-address/create-address';
+import { MyOrderListPage } from '../pages/my-order-list/my-order-list';
 // import { SearchPage } from '../pages/search/search';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
  
-  rootPage:any = CitySelectModalPage;
+  rootPage:any = MyOrderListPage;
   search:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public http:HttpServiceProvider,public http2:Http) {
     platform.ready().then(() => {

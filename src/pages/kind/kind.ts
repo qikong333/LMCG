@@ -38,11 +38,7 @@ export class KindPage {
     this.Distribution();
     this.shopInfo();
     this.shopcarNum();
-<<<<<<< HEAD
     this.getCommodity(10, 1);
-=======
-    this.getCommodity(10,1);
->>>>>>> b689a858f7b2ff37d6f4a18525d2907c944a043e
   }
 
   ionViewDidLoad() {
@@ -168,13 +164,8 @@ export class KindPage {
     console.log(this.Arr_second[i]);
     this.Arr_second_checked = this.Arr_second[i]
     console.log(this.Arr_second_checked);
-<<<<<<< HEAD
-    this.getCommodity(code, 1);
-
-=======
     this.getCommodity(code,1);
     
->>>>>>> b689a858f7b2ff37d6f4a18525d2907c944a043e
   }
 
   //点击筛选
@@ -182,11 +173,7 @@ export class KindPage {
     console.log(code);
 
     this.selectKindText = e;
-<<<<<<< HEAD
     this.getCommodity(code, 0);
-=======
-    this.getCommodity(code,0);
->>>>>>> b689a858f7b2ff37d6f4a18525d2907c944a043e
   }
 
 

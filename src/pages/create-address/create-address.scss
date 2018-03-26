@@ -1,0 +1,75 @@
+page-create-address {
+    .create-form {
+        .form {
+            margin-top: 0;
+            margin-bottom: 0;
+            .item {
+                position: relative;
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-left: r(22px);
+                font-size: r(30px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #2e3133;
+                font-family: "PingFang-SC-Medium";
+                height: r(100px);
+                .title {
+                    font-size: r(30px);
+                    position: absolute;
+                    left: r(22px);
+                    height: r(100px);
+                    font-weight: bold;
+                    font-stretch: normal;
+                    line-height: r(100px); // top: r(35px);
+                }
+                .input {
+                    font-weight: normal;
+                    font-stretch: normal;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    // background: #000;
+                    font-size: r(30px);
+                    // padding-top: r(35px);
+                    border: none;
+                    outline: 0 none;
+                    height: r(100px);
+                    margin-left: r(182px);
+                    width: r(500px);
+                }
+                .icon-close {
+                    display: block;
+                    position: absolute;
+                    right: r(22px);
+                    top: r(35px);
+                    // height: r(100px);
+                    // line-height: r(100px); // top: r(35px);
+                    width: r(30px);
+                    height: r(30px);
+                    background-image: url("../../assets/imgs/close.svg");
+                    background-size: r(30px) r(30px);
+                }
+                .icon-btn-right {
+                    display: block;
+                    position: absolute;
+                    right: r(22px);
+                    top: r(35px);
+                    width: r(30px);
+                    height: r(30px);
+                    // background-color: #c3c7cc;
+                    background-image: url("../../assets/imgs/create-address-btn.svg");
+                    background-size: r(30px) r(30px);
+                }
+            }
+        }
+        .create-desc {
+            font-size: r(26px);
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #a2a6a8;
+            padding-left: r(22px);
+        }
+    }
+}

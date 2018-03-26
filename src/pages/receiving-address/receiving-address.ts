@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { CreateAddressPage } from '../create-address/create-address';
  
 
 @IonicPage()
@@ -13,10 +14,7 @@ export class ReceivingAddressPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.getAddress();
   }
-
-  delete(){
-    alert(666)
-  }
+ 
   presentAlert() {
     
  
@@ -29,7 +27,7 @@ export class ReceivingAddressPage {
       buttons: [
         {
           text: '删除',
-          role: 'cancel',
+      
           handler: () => {
             console.log('Cancel clicked');
           }
@@ -70,6 +68,18 @@ export class ReceivingAddressPage {
 
 
     this.isCreate = this.addresses.length !== 0 ? true : false;
+  }
+
+
+
+
+
+
+
+
+  // 进入新增加页面的逻辑
+  pushCreateAddress(){
+    this.navCtrl.push(CreateAddressPage);
   }
 }
 

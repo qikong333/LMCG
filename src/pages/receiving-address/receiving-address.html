@@ -6,49 +6,49 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>收货地址</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>收货地址</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="receiving-addresss">
-  <div class="no-address" *ngIf="!isCreate">
+    <div class="no-address" *ngIf="!isCreate">
 
 
-    <img class="no-address-bg" src="../../assets/imgs/no-address.png" alt="">
-    <p class="no-address-text">您还没添加收货地址哦~</p>
-  </div>
-  <ul class="address-list">
-    <li class="item" *ngFor="let address of addresses">
-      <div class="item-top">
-        <p class="item-title"><span class="name">{{address.aName}}</span>
-            <span class="tel">{{address.aTel}}</span></p>
-         <p class="item-desc">{{address.aDesc}}</p>
-      </div>
-      <div class="item-bottom">
-      
-        <label class="label">
+        <img class="no-address-bg" src="../../assets/imgs/no-address.png" alt="">
+        <p class="no-address-text">您还没添加收货地址哦~</p>
+    </div>
+    <ul class="address-list">
+        <li class="item" *ngFor="let address of addresses">
+            <div class="item-top">
+                <p class="item-title"><span class="name">{{address.aName}}</span>
+                    <span class="tel">{{address.aTel}}</span></p>
+                <p class="item-desc">{{address.aDesc}}</p>
+            </div>
+            <div class="item-bottom">
+
+                <label class="label">
            
             <input class="input" type="checkbox" value="默认地址"  >
        
         <span class="default-text ">默认地址</span>
       </label>
-        <span class="icon-edit">编辑</span>
-        <span class="icon-remove" (touchend)="presentAlert()">删除</span>
-      </div>
-    </li>
-  </ul>
+                <span class="icon-edit">编辑</span>
+                <span class="icon-remove" (touchend)="presentAlert()">删除</span>
+            </div>
+        </li>
+    </ul>
 
 
 
 
- 
-  
+
+
 </ion-content>
 
 <ion-footer>
-   
-    <button class="btn-add-address">+&nbsp;新建收货地址</button>
+
+    <button class="btn-add-address" (touchend)="pushCreateAddress()">+&nbsp;新建收货地址</button>
 </ion-footer>

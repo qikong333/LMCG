@@ -1,0 +1,31 @@
+page-city-select-modal {
+    display: block;
+    background-color: #fff;
+    .city-select-modal {
+        display: block;
+        background-color: #fff;
+        position: relative;
+        bottom: 0;
+        height: r(874px);
+        width: r(750px);
+        // 标题
+        .title {
+            height: r(92px);
+            font-size: r(30px);
+            font-weight: normal;
+            font-stretch: normal;
+            line-height: r(92px);
+            text-align: center;
+            letter-spacing: 0px;
+            color: #2e3133;
+            .icon-close {
+                width: r(27px);
+                height: r(92px);
+                color: #77797a;
+                position: absolute;
+                right: r(22px);
+                line-height: r(92px);
+            }
+        }
+    }
+}

@@ -63,11 +63,16 @@
         }
         .alert-button-group {
             margin-top: r(49px);
+            display: flex;
             button {
+                // width: r(250px);
+                // height: r(90px);
+                // background-color: #29aff6;
+                float: left;
                 .button-inner {
                     display: block;
-                    margin-left: r(10px);
-                    width: r(250px);
+                    float: left;
+                    // width: r(250px);
                     height: r(90px);
                     line-height: r(90px);
                     background-color: #29aff6;

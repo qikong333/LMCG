@@ -33,6 +33,8 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
 import { StoreDetailsPage } from '../pages/store-details/store-details';
 import { CouponPage } from '../pages/coupon/coupon';
 import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
+import { CreateAddressPage } from '../pages/create-address/create-address';
+import { CitySelectModalPage } from '../pages/city-select-modal/city-select-modal';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,11 @@ import { ReceivingAddressPage } from '../pages/receiving-address/receiving-addre
     StoreDetailsPage,
     CouponPage,
     ReceivingAddressPage,
+    CreateAddressPage,
+    CitySelectModalPage,
 
-    
+
+
     AboutPage,
     ContactPage, 
     KindPage,
@@ -90,7 +95,11 @@ import { ReceivingAddressPage } from '../pages/receiving-address/receiving-addre
     StoreDetailsPage,
     CouponPage,
     ReceivingAddressPage,
-    
+    CreateAddressPage,
+CitySelectModalPage,
+
+
+
      AboutPage,
     ContactPage,
     HomePage,

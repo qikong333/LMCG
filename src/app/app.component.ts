@@ -12,14 +12,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { StoreDetailsPage } from '../pages/store-details/store-details';
 // import { CouponPage } from '../pages/coupon/coupon';
 // import { MinePage } from '../pages/mine/mine';
-import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
+// import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
+// import { CreateAddressPage } from '../pages/create-address/create-address';
+import { CitySelectModalPage } from '../pages/city-select-modal/city-select-modal';
 // import { SearchPage } from '../pages/search/search';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
  
-  rootPage:any = ReceivingAddressPage;
+  rootPage:any = CitySelectModalPage;
   search:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public http:HttpServiceProvider,public http2:Http) {
     platform.ready().then(() => {

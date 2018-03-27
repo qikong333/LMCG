@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
  
 @IonicPage()
@@ -9,20 +9,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MyOrderListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-   
+
  
     this.getGoodList();
+  
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyOrderListPage');
+    this.selectGoodsWith();
   }
+
+
+  // 设置已选商品的宽度
+ 
+  @ViewChild("goodsItems")  goodsItems:ElementRef;
+  
+  selectGoodsWith(){
+  // let goodsItems =  this.goodsItems.nativeElement;
+  let goodsLi = parseInt(this.goodsItems.nativeElement.children[0].style.width);
+  let goodsLength = this.goodsItems.nativeElement.children.length;
+  this.goodsItems.nativeElement.style.width = goodsLi*goodsLength+"px";
+  this.goodsItems.nativeElement.style.overflowX = "scroll";
+
+    console.log(this.goodsItems);
+    
+  }
+  
 // tabs页面
 clickTab:number = 3;
 tabsArr:Array<string> =['待付款','待收货','已完成','全部订单'];
 selectTabs(index){
   this.clickTab =index;
 }
+
 
   // 订单item
   orders: Order;

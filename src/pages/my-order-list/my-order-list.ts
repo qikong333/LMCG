@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MyOrderListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+ 
 @IonicPage()
 @Component({
   selector: 'page-my-order-list',
@@ -24,8 +17,16 @@ export class MyOrderListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyOrderListPage');
   }
+// tabs页面
+clickTab:number = 3;
+tabsArr:Array<string> =['待付款','待收货','已完成','全部订单'];
+selectTabs(index){
+  this.clickTab =index;
+}
+
   // 订单item
   orders: Order;
+  isNoOrder:boolean=true;
   getGoodList() {
     let orderSumCount = 0;
     let orderSumPrice = 0;
@@ -57,6 +58,7 @@ export class MyOrderListPage {
         new goods(6, "煎饼果子", 2, 15)], "order_thumbnail.png"),
     ];
 
+    this.isNoOrder= orderTmp.length!==0?false:true;
 
      console.log(orderTmp[3].goodsList.length);
   }

@@ -13,14 +13,61 @@
 
 
 <ion-content class="order-list">
-  <div class="no-order">
+
+    <div class="no-order" *ngIf="isNoOrder">
+        <img class="no-order-bg" src="../../assets/imgs/no-order.png" alt="">
+        <p class="no-order-text">您还没有相关订单哦~~</p>
+    </div>
+
+    <div class="order-tabs-status clearfix">
+        <li *ngFor="let item of tabsArr,let i = index" [ngClass]="{'tabs-status':true}" (touchend)="selectTabs(i)">
+            <span class="item-text" [ngClass]="{'current':clickTab==i}">{{item}}</span>
+
+        </li>
+    </div>
 
 
-    <img class="no-order-bg" src="../../assets/imgs/no-order.png" alt="">
-    <p class="no-order-text">您还没有相关订单哦~~</p>
 
-</div>
+    <div class="order-item">
+        <div class="item-header">
+            <div class="item-title">南城天安店</div>
+            <div class="status-wait-pay">待付款</div>
+            <div class="status-wait-goods">待收货</div>
+            <div class="status-complete">已完成</div>
+        </div>
+        <div class="item-content clearfix">
+            <li class="goods-item">
+                <img src="" alt="">
+            </li>
+            <li class="goods-item">
+                2
+            </li>
+            <li class="goods-item">
+                3
+            </li>
+            <li class="goods-item">
+                4
+            </li>
+            <li class="goods-item">
+                5
+            </li>
+            <li class="goods-item">
+                6
+            </li>
+            <li class="goods-item">
+                7
+            </li>
+        </div>
+        <div class="item-footer">
+            <div class="item-goods-sum-price">共7333333件商品，实付：<span class="price">&yen; 666w</span> </div>
+
+        </div>
+        <div class="item-btn clearfix">
+            <div class="btn-group">
+                <span class="btn-cancel">取消订单</span>
+                <span class="btn-true">确认收货</span>
+                <span class="btn-delete">删除</span>
+            </div>
+        </div>
+    </div>
 </ion-content>
-
-
- 

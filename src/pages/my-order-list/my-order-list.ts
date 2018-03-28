@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer,AfterViewChecked ,AfterViewInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
  
 @IonicPage()
@@ -8,31 +8,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyOrderListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private renderer:Renderer) {
 
- 
-    this.getGoodList();
+
   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyOrderListPage');
-    this.selectGoodsWith();
+ 
+  // 设置已选商品的宽度
+  // this.getGoodList();
   }
 
+  ngAfterViewInit(){
+    this.getGoodList();
+  }
 
   // 设置已选商品的宽度
  
   @ViewChild("goodsItems")  goodsItems:ElementRef;
   
   selectGoodsWith(){
-  // let goodsItems =  this.goodsItems.nativeElement;
-  let goodsLi = parseInt(this.goodsItems.nativeElement.children[0].style.width);
-  let goodsLength = this.goodsItems.nativeElement.children.length;
-  this.goodsItems.nativeElement.style.width = goodsLi*goodsLength+"px";
-  this.goodsItems.nativeElement.style.overflowX = "scroll";
+  // let goodsItems =  this.goodsItems;
+  // console.log(goodsItems);
+  // 获取每个产品li的宽度
+  let goodsLi = this.goodsItems.nativeElement.children[0].offsetWidth+this.goodsItems.nativeElement.children[0].offsetLeft+1;
+// console.log(goodsLi+100000000000);
+// 设置产品列表的宽度
 
-    console.log(this.goodsItems);
+  let goodsLength = this.goodsItems.nativeElement.children.length;
+ 
+this.renderer.setElementStyle(this.goodsItems.nativeElement,'width',goodsLi*goodsLength+"px");
+ 
     
   }
   
@@ -45,14 +53,14 @@ selectTabs(index){
 
 
   // 订单item
-  orders: Order;
+  orders: any;
   isNoOrder:boolean=true;
   getGoodList() {
     let orderSumCount = 0;
     let orderSumPrice = 0;
 
     let orderTmp = [
-      new Order(1, '南城天安店', -1, [
+        new Order(1, '南城天安店', -1, [
         new goods(1, "山药", 1, 15),
         new goods(2, "小米", 1, 15),
         new goods(3, "鸡蛋", 1, 15),
@@ -60,7 +68,7 @@ selectTabs(index){
         new goods(5, "苹果", 1, 15),
         new goods(6, "煎饼果子", 2, 15)], "order_thumbnail.png"),
 
-      new Order(1, '南城天安店', -1, [
+      new Order(1, '南城天安店', 0, [
         new goods(1, "山药", 1, 15),
         new goods(2, "小米", 1, 15)], "order_thumbnail.png"),
 
@@ -69,7 +77,7 @@ selectTabs(index){
         new goods(2, "小米", 1, 15),
         new goods(3, "煎饼果子", 2, 15)], "order_thumbnail.png"),
 
-      new Order(1, '南城天安店', -1, [
+      new Order(1, '南城天安店', 1, [
         new goods(1, "山药", 1, 15),
         new goods(2, "小米", 1, 15),
         new goods(3, "鸡蛋", 1, 15),
@@ -79,7 +87,7 @@ selectTabs(index){
     ];
 
     this.isNoOrder= orderTmp.length!==0?false:true;
-
+this.orders =  orderTmp;
      console.log(orderTmp[3].goodsList.length);
   }
 }

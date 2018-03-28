@@ -28,39 +28,39 @@
 
 
 
-    <div class="order-item">
+    <div class="order-item" *ngFor="let order of orders">
         <div class="item-header">
-            <div class="item-title">南城天安店</div>
-            <div class="status-wait-pay">待付款</div>
-            <div class="status-wait-goods">待收货</div>
-            <div class="status-complete">已完成</div>
+            <div class="item-title"> {{order.shopName}}</div>
+            <div class="status-wait-pay" *ngIf="order.goodsStatus==-1">待付款</div>
+            <div class="status-wait-goods" *ngIf="order.goodsStatus==0">待收货</div>
+            <div class="status-complete" *ngIf="order.goodsStatus==1">已完成</div>
         </div>
-        <div class="item-content" >
+        <div class="item-content">
             <ul class="scrool" #goodsItems>
 
-          
-            <li class="goods-item">
-                <img src="" alt="">
-            </li>
-            <li class="goods-item">
-                2
-            </li>
-            <li class="goods-item">
-                3
-            </li>
-            <li class="goods-item">
-                4
-            </li>
-            <li class="goods-item">
-                5
-            </li>
-            <li class="goods-item">
-                6
-            </li>
-            <li class="goods-item">
-                7
-            </li>
-        </ul>
+
+                <li class="goods-item">
+                    <img class="img" src="" alt="">
+                </li>
+                <li class="goods-item">
+                    2
+                </li>
+                <li class="goods-item">
+                    3
+                </li>
+                <li class="goods-item">
+                    4
+                </li>
+                <li class="goods-item">
+                    5
+                </li>
+                <li class="goods-item">
+                    6
+                </li>
+                <li class="goods-item">
+                    7
+                </li>
+            </ul>
         </div>
         <div class="item-footer clearfix">
             <div class="item-goods-sum-price">共7333333件商品，实付：<span class="price">&yen; 666w</span> </div>

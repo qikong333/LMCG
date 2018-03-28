@@ -52,6 +52,25 @@ selectTabs(index){
 }
 
 
+// 删除
+
+
+
+
+deleteOrder(){
+  alert("是否取消");
+}
+
+
+
+
+
+
+
+
+
+
+
   // 订单item
   orders: any;
   isNoOrder:boolean=true;

@@ -32,17 +32,17 @@ export class NativeServiceProvider {
     alert.present();
   }
 
-    // /**
-  //  * 黑色闪窗
-  //  */
-  // showBlock(text: string = '操作成功', time: number = 1200) {
-  //   let toast = this.toastCtrl.create({
-  //     message: text,
-  //     duration: time,
-  //     position: 'middle'
-  //   });
-  //   toast.present();
-  // }
+    /**
+   * 黑色闪窗
+   */
+  showBlock(text: string = '操作成功', time: number = 1200) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: time,
+      position: 'middle'
+    });
+    toast.present();
+  }
 
 
   /**

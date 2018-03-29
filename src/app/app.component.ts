@@ -24,7 +24,7 @@ import { CarListPage } from '../pages/car-list/car-list';
 })
 export class MyApp {
  
-  rootPage:any = CouponPage;
+  rootPage:any = HomePage;
   search:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public http:HttpServiceProvider,public http2:Http) {
     platform.ready().then(() => {

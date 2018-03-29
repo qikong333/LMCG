@@ -24,8 +24,8 @@ header-home {
                     text-align: center;
                     // background-color: #f00;
                 }
-                .title-text:after{
-                    content:"";
+                .title-text::after {
+                    content: "";
                     display: block;
                     width: 0px;
                     height: 0px;

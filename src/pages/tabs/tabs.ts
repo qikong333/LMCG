@@ -18,7 +18,7 @@ import { MinePage } from "../mine/mine";
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
+  tab1Root = MinePage;
   tab2Root = CategrayPage;
   tab3Root = FoundPage;
   tab4Root = MinePage;

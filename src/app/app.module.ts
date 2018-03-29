@@ -28,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
 import { UtilsProvider } from '../providers/utils/utils';
 import { NativeServiceProvider } from '../providers/native-service/native-service';
-import { AipServiceProvider } from '../providers/aip-service/aip-service';
+import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { PublicServiceProvider } from '../providers/public-service/public-service';
 import { StoreDetailsPage } from '../pages/store-details/store-details';
 import { CouponPage } from '../pages/coupon/coupon';
@@ -117,7 +117,7 @@ import { MyOrderListPage } from '../pages/my-order-list/my-order-list';
     HttpServiceProvider,
     UtilsProvider,
     NativeServiceProvider,
-    AipServiceProvider,
+    ApiServiceProvider,
     PublicServiceProvider
   ]
 })

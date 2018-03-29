@@ -6,7 +6,7 @@ import { SERVER_URL } from '../constants/constants';
 
 
 @Injectable()
-export class AipServiceProvider {
+export class ApiServiceProvider {
 
   constructor(public http: HttpServiceProvider) {
     console.log('Hello AipServiceProvider Provider');
@@ -79,7 +79,7 @@ export class AipServiceProvider {
       tokenid: localStorage.getItem('tokenId'),
       userAgent: localStorage.getItem('userAgent'),
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.postFormData('/api/shop/shopcar/odShopcarDetail/add', params)
   }
@@ -92,7 +92,7 @@ export class AipServiceProvider {
     let params = {
       passId: localStorage.getItem('userId')
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.get('/api/shop/address/msAddress/getAddressDefByPassId', params)
   }
@@ -111,7 +111,7 @@ export class AipServiceProvider {
       size: size,
       userAgent: localStorage.getItem('userAgent'),
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.get('/api/shop/couponActivity/couponActivityListByPassId', params)
   }
@@ -129,7 +129,7 @@ export class AipServiceProvider {
       shopid: localStorage.getItem('shopId'),
       items: items,
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.postFormData('/api/shop/order/orderPreview/getOdProds', params)
   }
@@ -144,7 +144,7 @@ export class AipServiceProvider {
       userToken: localStorage.getItem('userToken'),
       userCode: localStorage.getItem('userCodes'),
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.get('/api/shop/lmcard/getBalanceAll', params)
   }
@@ -189,7 +189,7 @@ export class AipServiceProvider {
       odProductList: odProductList,
       odBase: odBase,
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.postFormData('/api/shop/order/submitOrder', params)
   }
@@ -207,7 +207,7 @@ export class AipServiceProvider {
       orderno: orderno,
       amount: amount,
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.get('/api/shop/lmcard/generatePayment', params)
   }
@@ -225,7 +225,7 @@ export class AipServiceProvider {
       timestamp: timestamp, 
       userPayInfo: userPayInfo
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.get('/api/shop/lmcard/confirmPay', params)
   }
@@ -252,7 +252,7 @@ export class AipServiceProvider {
       shopid: localStorage.getItem('shopId'),
       itemids: itemids, 
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.postFormData('/api/shop/lmcard/confirmPay', params)
   }
@@ -266,7 +266,7 @@ export class AipServiceProvider {
       shopId: localStorage.getItem('shopId'),
       productIds: itm.toString(),
     }
-    console.log(params);
+    // console.log(params);
     return this.http.get('/api/shop/product/prodProduct/isDiscounts', params)
   }
 
@@ -287,15 +287,22 @@ export class AipServiceProvider {
 
 
 
+/************************Mine.ts 个人中心 ***************************************/
 
+/**
+ * @author qiyue
+ * @returns userData
+*/
 
-
-  // list(code) {
-  //   let param = {
-  //     code: code,
-  //   }
-  //   return this.http.get('api/shop/home/list/', param)
-  // }
+msMember(){
+  let params = {
+    userId: localStorage.getItem('userId'),
+ 
+  }
+  console.log(params);
+  return this.http.get('/api/shop/member/msMember/'+localStorage.getItem('userId'), params)
+}
+ 
 
 
   // list(code) {

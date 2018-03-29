@@ -5,7 +5,7 @@ import "Rxjs/Rx";
 import { map, filter, scan } from 'rxjs/operators';
 
 // 测试api,勿删
-import {AipServiceProvider} from "../../providers/aip-service/aip-service";
+import {ApiServiceProvider} from "../../providers/api-service/api-service";
 
 @IonicPage({
   name:"HomePage"
@@ -18,8 +18,8 @@ import {AipServiceProvider} from "../../providers/aip-service/aip-service";
 
 export class HomePage {
 
-  constructor(public navCtrl: NavController,private aipServiceProvider:AipServiceProvider) {
-      this.testController();
+  constructor(public navCtrl: NavController,private apiServiceProvider:ApiServiceProvider) {
+      // this.testController();
    }
 
 
@@ -28,7 +28,7 @@ export class HomePage {
   testController(){
     // return this.aipServiceProvider.itemInfo(11);
 
-    this.aipServiceProvider.itemInfo(1)
+    this.apiServiceProvider.itemInfo(1)
     // .map(e=>e.json())
  
     // .subscribe(

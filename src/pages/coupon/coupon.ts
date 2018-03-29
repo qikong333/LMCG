@@ -8,7 +8,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name:"CouponPage"
+})
 @Component({
   selector: 'page-coupon',
   templateUrl: 'coupon.html',

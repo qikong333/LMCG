@@ -7,23 +7,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-// import { HomePage } from '../pages/home/home';
-// import { TabsPage } from '../pages/tabs/tabs';
-// import { StoreDetailsPage } from '../pages/store-details/store-details';
-// import { CouponPage } from '../pages/coupon/coupon';
-// import { MinePage } from '../pages/mine/mine';
-// import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
-// import { CreateAddressPage } from '../pages/create-address/create-address';
-// import { CitySelectModalPage } from '../pages/city-select-modal/city-select-modal';
-// import { CreateAddressPage } from '../pages/create-address/create-address';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+import { StoreDetailsPage } from '../pages/store-details/store-details';
+import { CouponPage } from '../pages/coupon/coupon';
+import { MinePage } from '../pages/mine/mine';
+import { ReceivingAddressPage } from '../pages/receiving-address/receiving-address';
+import { CitySelectModalPage } from '../pages/city-select-modal/city-select-modal';
+import { CreateAddressPage } from '../pages/create-address/create-address';
 import { MyOrderListPage } from '../pages/my-order-list/my-order-list';
-// import { SearchPage } from '../pages/search/search';
+import { SearchPage } from '../pages/search/search';
+import { AboutPage } from '../pages/about/about';
+import { CarListPage } from '../pages/car-list/car-list';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
  
-  rootPage:any = MyOrderListPage;
+  rootPage:any = CouponPage;
   search:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public http:HttpServiceProvider,public http2:Http) {
     platform.ready().then(() => {

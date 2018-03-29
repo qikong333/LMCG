@@ -4,7 +4,9 @@ import { AlertController } from 'ionic-angular';
 import { CreateAddressPage } from '../create-address/create-address';
  
 
-@IonicPage()
+@IonicPage({
+  name:"ReceivingAddressPage"
+})
 @Component({
   selector: 'page-receiving-address',
   templateUrl: 'receiving-address.html',

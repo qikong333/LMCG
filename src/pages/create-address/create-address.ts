@@ -8,7 +8,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name:"CreateAddressPage"
+})
 @Component({
   selector: 'page-create-address',
   templateUrl: 'create-address.html',

@@ -10,7 +10,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name:"KindPage"
+})
 @Component({
   selector: 'page-kind',
   templateUrl: 'kind.html',

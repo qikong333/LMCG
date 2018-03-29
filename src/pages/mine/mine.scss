@@ -6,7 +6,7 @@ page-mine {
             position: relative;
             width: r(750px);
             height: r(470px);
-            background-image: url("../../assets/imgs/mine-banner.png");
+            background-image: url("../assets/imgs/mine-banner.png");
             background-size: r(750px) r(470px); // 头像样式
             .avatar-item {
                 text-align: center;
@@ -41,7 +41,6 @@ page-mine {
             padding-bottom: r(30px);
         }
         .order-list {
-  
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -65,23 +64,18 @@ page-mine {
                     height: r(55px);
                     background-size: r(55px) r(55px);
                 }
-                .icon3{
+                .icon3 {
                     padding-left: r(37px);
                 }
-          
             }
-
             // 分割线
-            .cut_thread{
+            .cut_thread {
                 position: absolute;
                 right: r(190px);
                 z-index: 100;
-            
-                    width:r(8px);
-                    height: r(105px);
-                    
-           
-                background-image: url("../../assets/imgs/cut_thread.png");
+                width: r(8px);
+                height: r(105px);
+                background-image: url("../assets/imgs/cut_thread.png");
                 background-size: r(8px) r(105px);
                 background-repeat: no-repeat;
             }
@@ -114,25 +108,25 @@ page-mine {
                 .btn-right {
                     width: r(30px);
                     height: r(30px);
-                    background-image: url("../../assets/imgs/btn_right.svg");
+                    background-image: url("../assets/imgs/btn_right.svg");
                     background-size: r(30px) r(30px);
                     position: absolute;
                     right: r(22px);
                 }
                 .icon0 {
-                    background-image: url("../../assets/imgs/mine-icon1.png")
+                    background-image: url("../assets/imgs/mine-icon1.png")
                 }
                 .icon1 {
-                    background-image: url("../../assets/imgs/mine-icon2.png")
+                    background-image: url("../assets/imgs/mine-icon2.png")
                 }
                 .icon2 {
-                    background-image: url("../../assets/imgs/mine-icon3.png")
+                    background-image: url("../assets/imgs/mine-icon3.png")
                 }
                 .icon3 {
-                    background-image: url("../../assets/imgs/mine-icon4.png")
+                    background-image: url("../assets/imgs/mine-icon4.png")
                 }
                 .icon4 {
-                    background-image: url("../../assets/imgs/mine-icon5.png")
+                    background-image: url("../assets/imgs/mine-icon5.png")
                 }
             }
             .item3 {

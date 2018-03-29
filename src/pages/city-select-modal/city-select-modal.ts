@@ -8,7 +8,11 @@ import { IonicPage, ModalController} from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage(
+  {
+    name:"CitySelectModalPage"
+  }
+)
 @Component({
   selector: 'page-city-select-modal',
   templateUrl: 'city-select-modal.html',

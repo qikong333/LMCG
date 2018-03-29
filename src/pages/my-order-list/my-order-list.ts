@@ -1,7 +1,9 @@
 import { Component, ViewChild, ElementRef, Renderer,AfterViewChecked ,AfterViewInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
  
-@IonicPage()
+@IonicPage({
+  name:"MyOrderListPage"
+})
 @Component({
   selector: 'page-my-order-list',
   templateUrl: 'my-order-list.html',

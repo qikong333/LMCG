@@ -40,7 +40,7 @@ export class MinePage {
    * **********/
   // 用户基本信息
   mineInfo: any;
-  // userName: string;
+  
 
 
 
@@ -69,8 +69,8 @@ export class MinePage {
           console.log(item)
 
         },
-        (err) => { console.error("无法得到用户信息") },
-        () => { console.log("getMsMember() is ends") })
+        (err) => { console.error("无法得到用户信息")},
+        () => { console.log("getMsMember() is ends")})
 
 
   }}

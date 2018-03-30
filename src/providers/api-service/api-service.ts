@@ -299,7 +299,7 @@ msMember(){
     userId: localStorage.getItem('userId'),
  
   }
-  console.log(params);
+  // console.log(params);
   return this.http.get('/api/shop/member/msMember/'+localStorage.getItem('userId'), params)
 }
  

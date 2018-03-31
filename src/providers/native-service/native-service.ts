@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController, Platform, Loading, AlertController, ModalController } from 'ionic-angular';
-import { REQUEST_TIMEOUT } from "../constants/constants" 
+import { REQUEST_TIMEOUT } from "../constants/constants"
 
 
 @Injectable()
@@ -16,7 +16,7 @@ export class NativeServiceProvider {
     public toastCtrl: ToastController,
     private platform: Platform,
     private loadingCtrl: LoadingController,
-    ) {
+  ) {
     console.log('Hello NativeServiceProvider Provider');
   }
 
@@ -32,9 +32,9 @@ export class NativeServiceProvider {
     alert.present();
   }
 
-    /**
-   * 黑色闪窗
-   */
+  /**
+ * 黑色闪窗
+ */
   showBlock(text: string = '操作成功', time: number = 1200) {
     let toast = this.toastCtrl.create({
       message: text,
@@ -115,32 +115,79 @@ export class NativeServiceProvider {
     return this.isMobile() && (this.platform.is('ios') || this.platform.is('ipad') || this.platform.is('iphone'));
   }
 
-//   /**
-//    * 判断网络
-//    */
-//   getnetwork() {
+  //   /**
+  //    * 判断网络
+  //    */
+  //   getnetwork() {
 
-//     if (this.isMobile) {
-//       return this.network.type != 'none' ? true : false;
-//     }
-//   }
+  //     if (this.isMobile) {
+  //       return this.network.type != 'none' ? true : false;
+  //     }
+  //   }
 
-//   /**
-//  * 获取网络类型 如`unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
-//  */
-//   getNetworkType(): string {
-//     if (!this.isMobile()) {
-//       return 'wifi';
-//     }
-//     return this.network.type;
-//   }
+  //   /**
+  //  * 获取网络类型 如`unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
+  //  */
+  //   getNetworkType(): string {
+  //     if (!this.isMobile()) {
+  //       return 'wifi';
+  //     }
+  //     return this.network.type;
+  //   }
 
-//   /**
-//  * 判断是否有网络
-//  */
-//   isConnecting(): boolean {
-//     return this.getNetworkType() != 'none';
-//   }
+  //   /**
+  //  * 判断是否有网络
+  //  */
+  //   isConnecting(): boolean {
+  //     return this.getNetworkType() != 'none';
+  //   }
+
+
+
+
+
+
+
+
+
+
+
+
+  /********************七月*********************/
+// 一个方方的白色的块,添加地址成功提示
+  // showToastBlock(
+  // message:any="",
+  // duration:number=3000000,
+  // position:string="middle",
+  // cssClass:string="showToastBlock") {
+  //   let toast = this.toastCtrl.create({
+  //     message,
+  //     duration,
+  //     position,
+  //     cssClass
+  //   });
+  
+  //   toast.onDidDismiss(() => {
+  //     console.log('Dismissed toast');
+  //   });
+  
+  //   toast.present();
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

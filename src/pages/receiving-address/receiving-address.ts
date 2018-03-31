@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { CreateAddressPage } from '../create-address/create-address';
- 
+import { ApiServiceProvider } from '../../providers/api-service/api-service';
+import { NativeServiceProvider } from '../../providers/native-service/native-service';
+
 
 @IonicPage({
-  name:"ReceivingAddressPage"
+  name: "ReceivingAddressPage"
 })
 @Component({
   selector: 'page-receiving-address',
@@ -13,76 +15,121 @@ import { CreateAddressPage } from '../create-address/create-address';
 })
 export class ReceivingAddressPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
-    this.getAddress();
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private alertCtrl: AlertController,
+    private apiService: ApiServiceProvider,
+    private nativeService: NativeServiceProvider 
+  ) {
+
+    this.getMsAddress();
+    // this.getAddress();
   }
- 
-  presentAlert() {
-    
- 
- 
+
+
+
+  // 得到后台的地址列表数据
+  addresses: Address[] = [];
+  // 是否有地址,如果没有地址那么显示无地址的背景图片,否则不显示
+  isCreate: boolean = true;
+
+
+
+
+  // 接受参数用户ID
+  userId: number = parseInt(localStorage.getItem("userId"));
+
+  // 接受参数用户ID
+  ngOnInit() {
+    this.userId = this.navParams.get('uId') ? this.navParams.get('uId') : parseInt(localStorage.getItem("userId"));
+    // console.log(this.userId);
+    this.getMsAddress();
+  }
+  // 得到用户收货全部地址
+  getMsAddress() {
+    let that = this;
+    this.apiService.msAddress(that.userId)
+      .map(e => e.json())
+      .subscribe(
+        (item) => {
+
+          this.addresses = item;
+
+          this.isCreate = this.addresses.length !== 0 ? true : false;
+          console.log(this.addresses)
+        },
+        (err) => { console.log("获取地址失败") }
+      )
+  }
+
+  // 删除某一个地址
+  deleteAddress(addressId) {
+    this.apiService.msAddressDelete(addressId, this.userId)
+      .subscribe(
+        (item) => {
+          if (item.status==200) { 
+            
+            // 显示删除成功的提示
+            this.nativeService.showBlock("地址删除成功",1000);
+            this.getMsAddress();
+            
+          }
+          
+        }
+      )
+  }
+
+  // 弹出删除对话框
+  deletePresentAlert(addressId) {
     let alert = this.alertCtrl.create({
       title: '删除地址',
       // message:myAlertTemplets
       subTitle: '是否要删除收货地址？删除后无法恢复，如使用需重新增加。',
-      cssClass:"receivng-address-alert",
+      // cssClass: "receivng-address-alert",
       buttons: [
         {
           text: '删除',
-      
+
           handler: () => {
-            console.log('Cancel clicked');
+            // 删除函数
+            this.deleteAddress(addressId);
+           
           }
         },
         {
           text: '取消',
           handler: () => {
-            console.log('Buy clicked');
+
           }
         }
       ]
     });
     alert.present();
   }
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad ReceivingAddressPage');
-  // }
-
-
-  // 得到后台的地址列表数据
-
-  addresses: Address[] = [];
-  // 是否需要新增
-  isCreate: boolean = true;
-  getAddress() {
-    this.addresses = [new Address(0, "小柠檬", 13712345678, "广东省东莞市南城区西平宏伟东二路明致商厦二楼六沐网(如果两行就这样显示...)", true),
-    new Address(1, "冰淇淋", 13712345678, "东莞市南城区西平明致商厦六沐网(一行的时候就这样)", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    new Address(2, "小猫猫", 13712345678, "广东省东莞市东城区莞龙路下桥路段东城丰田销售部", false),
-    ]
-
-
-    this.isCreate = this.addresses.length !== 0 ? true : false;
+ 
+  // 进入编辑页面的逻辑
+  /**
+   * 
+   * @param addressId 地址的全部对象传递过去,可以减少一个http请求
+   */
+  pushEditeAddress(address) {
+  
+    this.navCtrl.push("EditeAddressPage", {
+      uId: this.userId,
+      address,
+    });
+  }
+ 
+  // 进入增加页面的逻辑
+  pushCreateAddress() {
+    let that = this;
+    this.navCtrl.push("CreateAddressPage", {
+      uId: that.userId
+    });
   }
 
 
 
-
-
-
-
-
-  // 进入新增加页面的逻辑
-  pushCreateAddress(){
-    this.navCtrl.push(CreateAddressPage);
-  }
 }
 
 

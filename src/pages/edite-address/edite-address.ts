@@ -12,32 +12,80 @@ import { elementAt } from 'rxjs/operators';
  */
 
 @IonicPage({
-  name: "CreateAddressPage"
+  name: "EditeAddressPage"
 })
 @Component({
-  selector: 'page-create-address',
-  templateUrl: 'create-address.html',
+  selector: 'page-edite-address',
+  templateUrl: 'edite-address.html',
 })
-export class CreateAddressPage {
+export class EditeAddressPage {
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private apiService: ApiServiceProvider,
     private nativeService: NativeServiceProvider,
-    private renderer:Renderer
+    private renderer: Renderer
   ) {
 
-
+    console.log(this.address);
   }
 
+  addressId:number;
+  userId: number;
+
+  username: string;
+
+  phone: number;
+
+  provinceNameCode: number = 410000;
+
+  cityNameCode: number = 410100;
+
+  countyNameCode: number = 410105;
+
+
+  provinceName: string;
+
+  cityName: string;
+
+  countyName: string;
+
+  addressDetail: string;
+
+  checkedDef: any = 0;
   // 接受参数用户ID
   // userId:number=parseInt(localStorage.getItem("userId"));
 
   // 接受参数用户ID
+  address: any;
   ngOnInit() {
     this.userId = this.navParams.get("uId");
-    // console.log(this.userId);
+    this.address = this.navParams.get("address");
+   this.addressId=this.address.addressId;
+    this.userId = this.userId ? this.userId : parseInt(localStorage.getItem("userId"));
+
+    this.username = this.address.username;
+
+    this.phone = this.address.mobileno;
+
+    this.provinceNameCode = 410000;
+
+    this.cityNameCode = 410100;
+
+    this.countyNameCode = 410105;
+
+
+    this.provinceName = this.address.provinceName;
+
+    this.cityName = this.address.cityName;
+
+    this.countyName = this.address.countyName;
+
+    this.addressDetail = this.address.addressDetail;
+
+    this.checkedDef = 1;
+    console.log(this.address);
     // console.log(1111111111111111111111111);
 
   }
@@ -63,40 +111,32 @@ export class CreateAddressPage {
     }
   }
   // 页面加载完毕获取值
-  ionViewDidLoad() {
-    // this.username=this.userValue.nativeElement.value ;
-    // this.phone=parseInt(this.telValue.nativeElement.value );
-    // // console.log(this.phone);
-    // this.addressDetail =this.detailsValue.nativeElement.value ;
-  }
+  // ionViewDidLoad() {
+  // this.username=this.userValue.nativeElement.value ;
+  // this.phone=parseInt(this.telValue.nativeElement.value );
+  // // console.log(this.phone);
+  // this.addressDetail =this.detailsValue.nativeElement.value ;
+  // }
 
-  // 成功增加地址显示蒙板内容
-  time:number=3;
-  showToastBlock() {
-    this.renderer.setElementStyle(this.toastBlock.nativeElement,"display","block");
+  // 成功修改地址并跳转回去
 
-   let timerOut = setTimeout(() => {
-      
-      this.renderer.setElementStyle(this.toastBlock.nativeElement,"display","none");
-       clearTimeout(timerOut);
+  //   showToastBlock() {
 
-    },3000);
-   
-   let timerInter = setInterval(()=>{
-      this.time -= 1; 
-      if(this.time==0||this.time<0){
-        clearTimeout(timerInter);
-        // 返回上一级
-        this.navCtrl.pop();
-      }
-   },1000)
-// this.toastBlock
-  }
+  //    let timerOut = setTimeout(()=>{
+
+
+  //         clearTimeout(timerOut);
+  //         // 返回上一级
+  //         this.navCtrl.pop();
+
+  //    },1000)
+  // // this.toastBlock
+  //   }
   // DOM操作END
 
 
   /**
-   * @name 增加地址
+   * @name 修改地址
    * @param    
    * 用户ID
    *  userId: number,
@@ -126,33 +166,14 @@ export class CreateAddressPage {
    * 
    * 
    * 
-  新增加一个地址
+  修改一个地址
   */
-  userId: number = this.userId ? this.userId : parseInt(localStorage.getItem("userId"));
 
-  username: string = "小猫咪";
+ updateAddress() {
+    // this.time=3;
+    this.apiService.updateAddress(
 
-  phone: number = 15839521352;
-
-  provinceNameCode: number = 410000;
-
-  cityNameCode: number = 410100;
-
-  countyNameCode: number = 410105;
-
-
-  provinceName: string = "河南省";
-
-  cityName: string = "郑州市";
-
-  countyName: string = "金水区";
-
-  addressDetail: string = "会展中心CBD商务外环路";
-
-  checkedDef: any = 0;
-  createAddess() {
-    this.time=3;
-    this.apiService.addAddress(
+      this.addressId,
       this.userId,
 
       this.username,
@@ -182,15 +203,24 @@ export class CreateAddressPage {
           // console.log(item);
           if (item.status == 200) {
 
-            this.showToastBlock();
+            // this.showToastBlock();
+            this.nativeService.showBlock("地址修改成功", 1000);
+            let timerOut = setTimeout(() => {
+
+
+              clearTimeout(timerOut);
+              // 返回上一级
+              this.navCtrl.pop();
+
+            }, 1000)
           }
         })
-     
-      }
-    }
 
-  
+  }
+}
 
-    
-      
- 
+
+
+
+
+

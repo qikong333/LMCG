@@ -111,7 +111,7 @@ export class ApiServiceProvider {
       size: size,
       userAgent: localStorage.getItem('userAgent'),
     }
-    // console.log(params);
+    console.log(params);
 
     return this.http.get('/api/shop/couponActivity/couponActivityListByPassId', params)
   }
@@ -194,12 +194,12 @@ export class ApiServiceProvider {
 
 
 
-/**
- * @name 预支付信息生成1
- * @param orderno 提交订单的接口生成的orderNo字段
- * @param amount  订单总价(所有商品单价*数量的和)
- */
-  generatePayment(orderno, amount){
+  /**
+   * @name 预支付信息生成1
+   * @param orderno 提交订单的接口生成的orderNo字段
+   * @param amount  订单总价(所有商品单价*数量的和)
+   */
+  generatePayment(orderno, amount) {
 
     let params = {
       orderno: orderno,
@@ -211,19 +211,19 @@ export class ApiServiceProvider {
   }
 
 
-/**
- * @name 预支付信息2
- * @param prepayNo 预支付信息生成1 generatePayment() 接口返回的prepayNo
- * @param timestamp 预支付信息生成1 generatePayment() 接口返回的systemTime
- * @param userPayInfo ???
- * @param iscountAmount 折扣金额(100元打9.5折传入5元)
- * @param orderNo 订单号
- * 
- */
-  confirmPay(prepayNo, timestamp, userPayInfo, discountAmount, orderNo){
+  /**
+   * @name 预支付信息2
+   * @param prepayNo 预支付信息生成1 generatePayment() 接口返回的prepayNo
+   * @param timestamp 预支付信息生成1 generatePayment() 接口返回的systemTime
+   * @param userPayInfo ???
+   * @param iscountAmount 折扣金额(100元打9.5折传入5元)
+   * @param orderNo 订单号
+   * 
+   */
+  confirmPay(prepayNo, timestamp, userPayInfo, discountAmount, orderNo) {
     let params = {
-      prepayNo: prepayNo, 
-      timestamp: timestamp, 
+      prepayNo: prepayNo,
+      timestamp: timestamp,
       userPayInfo: userPayInfo,
       discountAmount: discountAmount,
       orderNo: orderNo,
@@ -234,37 +234,37 @@ export class ApiServiceProvider {
   }
 
 
-/**
- * @name 支付完成后删除当前商品
- * @param itemids 数组
- * {
-    itemid: this.carPile[i].ids,//商品ID
-    productName: this.carPile[i].name,//商品名称
-    productTitle: this.carPile[i].title,//商品标题
-    productQty: this.carPile[i].num,//商品数量
-    salePrice: this.carPile[i].sprice,//商品单价
-    productTotleprice: this.carPile[i].sprice * this.carPile[i].num, //商品总价
-    shopid: Variable.getInstance().shopid, //商家ID
-    isUseActivity: 0//是否是活动价(0:否,1:是)
-  }
- */
-  deleteByItem(itemids){
+  /**
+   * @name 支付完成后删除当前商品
+   * @param itemids 数组
+   * {
+      itemid: this.carPile[i].ids,//商品ID
+      productName: this.carPile[i].name,//商品名称
+      productTitle: this.carPile[i].title,//商品标题
+      productQty: this.carPile[i].num,//商品数量
+      salePrice: this.carPile[i].sprice,//商品单价
+      productTotleprice: this.carPile[i].sprice * this.carPile[i].num, //商品总价
+      shopid: Variable.getInstance().shopid, //商家ID
+      isUseActivity: 0//是否是活动价(0:否,1:是)
+    }
+   */
+  deleteByItem(itemids) {
     let params = {
       tokenid: localStorage.getItem('tokenId'),
       userAgent: localStorage.getItem('userAgent'),
       shopid: localStorage.getItem('shopId'),
-      itemids: itemids, 
+      itemids: itemids,
     }
     // console.log(params);
 
     return this.http.postFormData('/api/shop/lmcard/confirmPay', params)
   }
 
-/**
- * @name 店铺分类是否享受折扣-判断
- * @param itm   itm.push(this.carPile[i].ids)//商品ID的集合
- */
-  isDiscounts(itm){
+  /**
+   * @name 店铺分类是否享受折扣-判断
+   * @param itm   itm.push(this.carPile[i].ids)//商品ID的集合
+   */
+  isDiscounts(itm) {
     let params = {
       shopId: localStorage.getItem('shopId'),
       productIds: itm.toString(),
@@ -277,12 +277,12 @@ export class ApiServiceProvider {
   /**
    * @name 实现了否享受折扣-判断后调用的
    */
-  getDiscountRatio(){
+  getDiscountRatio() {
     let params = {
       shopid: localStorage.getItem('shopId'),
     }
-    console.log(params);
-    
+    // console.log(params);
+
     return this.http.get('/api/shop/shopActivity/activity/getDiscountRatio', params)
   }
 
@@ -290,37 +290,145 @@ export class ApiServiceProvider {
 
 
 
-/************************Mine.ts 个人中心 ***************************************/
+  /************************Mine.ts 个人中心 ***************************************/
 
-/**
- * @author qiyue
- * @returns userData
-*/
+  /**
+   * @author qiyue
+   * @returns Function;
+  */
+  /**
+   * @name 用户基本信息
+   */
+  msMember() {
+    let params = {
+      userId: localStorage.getItem('userId'),
 
-msMember(){
-  let params = {
-    userId: localStorage.getItem('userId'),
- 
+    }
+    // console.log(params);
+    return this.http.get('/api/shop/member/msMember/' + localStorage.getItem('userId'), params)
   }
-  // console.log(params);
-  return this.http.get('/api/shop/member/msMember/'+localStorage.getItem('userId'), params)
-}
+  /**
+  * @name 用户优惠券
+  */
+  couponInfo(userId) {
+    let params = {
+      eq_userid: localStorage.getItem('userId') ? localStorage.getItem('userId') : userId
+
+    }
+    // console.log(params);
+    return this.http.get('/api/shop/coupon/couponInfo/search', params)
+  }
+
+  /**
+   * @name 用户收货地址
+   */
+
+  msAddress(userId: number) {
+    let param = {
+      eq_passId: userId,
+      tokenid: localStorage.getItem("tokenId"),
+      userAgent: localStorage.getItem("userAgent")
+    }
+    return this.http.get('/api/shop/address/msAddress/search', param)
+  }
+
+
+  /**
+   * @name 用户新增地址
+   */
  
+ 
+  addAddress(
+    userId: number,
+    username:string,
+    phone:number,
+
+    provinceNameCode:number,
+    cityNameCode:number,
+    countyNameCode: number,
+
+    provinceName:string,
+    cityName:string,
+    countyName:string,
+
+    addressDetail:string,
+
+    checkedDef:any
+  ) {
+    let param = {
+      passId: userId,
+      username: username,
+      mobileno: phone,
+
+      provinceId: provinceNameCode,
+      cityId: cityNameCode,
+      countyId: countyNameCode,
+
+      provinceName: provinceName,
+      cityName: cityName,   
+      countyName: countyName,
+
+      addressDetail: addressDetail,
+
+      def: checkedDef
+    }
+    return this.http.post('/api/shop/address/msAddress/addOrUpdateAddress', param);
+  }
+  updateAddress(
+    addressId: number,
+    userId: number,
+    username:string,
+    phone:number,
+
+    provinceNameCode:number,
+    cityNameCode:number,
+    countyNameCode: number,
+
+    provinceName:string,
+    cityName:string,
+    countyName:string,
+
+    addressDetail:string,
+
+    checkedDef:any
+  ) {
+    let param = {
+      addressId:addressId,
+      passId: userId,
+      username: username,
+      mobileno: phone,
+
+      provinceId: provinceNameCode,
+      cityId: cityNameCode,
+      countyId: countyNameCode,
+
+      provinceName: provinceName,
+      cityName: cityName,   
+      countyName: countyName,
+
+      addressDetail: addressDetail,
+
+      def: checkedDef
+    }
+    return this.http.post('/api/shop/address/msAddress/addOrUpdateAddress', param);
+  }
 
 
-  // list(code) {
-  //   let param = {
-  //     code: code,
-  //   }
-  //   return this.http.get('api/shop/home/list/', param)
-  // }
+  /**
+   * @name 用户删除地址
+   */
 
-  // list(code) {
-  //   let param = {
-  //     code: code,
-  //   }
-  //   return this.http.get('api/shop/home/list/', param)
-  // }
+  // '/api/shop/address/msAddress/delete?eq_addressId='
+  //  + addressId + 
+  //  '&&eq_passId=' + 
+  //  this.userId
+  msAddressDelete(addressId,userId) {
+    let param = {
+      eq_addressId:addressId,
+      eq_passId:userId
+    }
+    return this.http.get('/api/shop/address/msAddress/delete/', param)
+  }
 
 
   // list(code) {

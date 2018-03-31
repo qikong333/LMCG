@@ -1,4 +1,4 @@
-page-create-address {
+page-edite-address {
     .create-form {
         .form {
             margin-top: 0;
@@ -89,51 +89,5 @@ page-create-address {
         }
     }
 
-    // 创建成功的时候显示的蒙板
-    .showToastBlock {
-        display: none;
-        width: r(750px);
-        height: 100%;
-        background-color:rgba(0,0,0,0.38);
-        border-radius: r(18px);
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 9999;
-     
-       .item{
-           
-            font-weight: normal;
-            font-stretch: normal;
-           
-            width: r(600px);
-            height: r(500px);
-            border-radius: r(18px);
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: r(-300px);
-            margin-top: r(-250px);
-            font-size: r(28px);
-            text-align: center;
-            color: #2e3133;
-            background-image: url("../assets/imgs/success_address.png");
-            background-size: r(600px) r(500px);
-            .title{
-                margin-top: r(366px);
-            }
-            .desc{
-                margin-top: r(27px);
-               
-                    font-size: r(24px);
-                    font-weight: normal;
-                    font-stretch: normal;
-               
-                    letter-spacing: 0px;
-                    color: #a2a6a8;
-                
-            }
-        }
-    }
+ 
 }

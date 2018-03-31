@@ -23,9 +23,9 @@
     <ul class="address-list">
         <li class="item" *ngFor="let address of addresses">
             <div class="item-top">
-                <p class="item-title"><span class="name">{{address.aName}}</span>
-                    <span class="tel">{{address.aTel}}</span></p>
-                <p class="item-desc">{{address.aDesc}}</p>
+                <p class="item-title"><span class="name">{{address?.username}}</span>
+                    <span class="tel">{{address.mobileno}}</span></p>
+                <p class="item-desc">{{address.provinceName}}{{address.cityName}}{{address.addressDetail }}</p>
             </div>
             <div class="item-bottom">
 
@@ -35,8 +35,8 @@
        
         <span class="default-text ">默认地址</span>
       </label>
-                <span class="icon-edit">编辑</span>
-                <span class="icon-remove" (touchend)="presentAlert()">删除</span>
+                <span class="icon-edit" (touchend)="pushEditeAddress(address)">编辑</span>
+                <span class="icon-remove" (touchend)="deletePresentAlert(address?.addressId)">删除</span>
             </div>
         </li>
     </ul>

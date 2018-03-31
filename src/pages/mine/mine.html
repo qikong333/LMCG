@@ -27,9 +27,9 @@
     </div>
 
     <div class="mine-list">
-        <li class="item item0"><span class="icon icon0"></span> 优惠券<span class="btn-right"></span></li>
+        <li class="item item0" (touchend)="pushCouponPage()"><span class="icon icon0"></span> 优惠券<span class="btn-right"></span></li>
         <li class="item item1"><span class="icon icon1"></span> 我的收藏<span class="btn-right"></span></li>
-        <li class="item item2"><span class="icon icon2"></span> 收货地址<span class="btn-right"></span></li>
+        <li class="item item2"  (touchend)="pushReceivingAddressPage()"><span class="icon icon2"></span> 收货地址<span class="btn-right"></span></li>
         <li class="item item3"><span class="icon icon3"></span> 投诉建议<span class="btn-right"></span></li>
         <li class="item item4"><span class="icon icon4"></span> 关于我们<span class="btn-right"></span></li>
     </div>

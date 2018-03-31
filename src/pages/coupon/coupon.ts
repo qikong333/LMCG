@@ -1,15 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the CouponPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+import { ApiServiceProvider } from "../../providers/api-service/api-service";
 
 @IonicPage({
-  name:"CouponPage"
+  name: "CouponPage"
 })
 @Component({
   selector: 'page-coupon',
@@ -17,16 +13,67 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CouponPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams ) {
-
-    this.clickTab=0;  
-    this.couponList= 0;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private apiService: ApiServiceProvider) {
+    // DOM操作
+    this.clickTab = 0;
+    this.couponList = 0;
     this.getCouponList();
+    // DOM操作END
+
+    // 查询操作
+    // 获得优惠券
+    this.getCounponInfo();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CouponPage');
+  // 参数声明
+
+  // 用户ID
+  userId: number;
+
+
+
+  // 接受参数用户ID
+  ngOnInit() {
+    this.userId = this.navParams.data;
+    console.log(this.userId);
   }
+
+
+
+  // 获得优惠券0
+  getCounponInfo() {
+
+    this.apiService.couponActivityListByPassId(1)
+
+      .map(e => e.json())
+
+      .subscribe(
+        (item) => {
+          console.log(item);
+          if (item.code == 200) {
+            // console.log(item);
+
+
+          } else {
+
+          }
+
+        },
+        (err) => { console.error("无法得到优惠券信息") },
+        () => { console.log("getCounponInfo() is ends") })
+
+
+  }
+
+
+
+
+
+
+
+
 
 
   // 选择tabs页面
@@ -41,8 +88,35 @@ export class CouponPage {
     // this.getCouponList();
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // 优惠券
-  coupons:Counpon[];
+  coupons: Counpon[];
   getCouponList() {
     this.coupons = [
       new Counpon(1, 10, "饮品折扣券", "满100可使用", "2018.02.28-2018.04.28", 0),

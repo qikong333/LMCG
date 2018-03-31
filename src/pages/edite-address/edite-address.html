@@ -7,7 +7,7 @@
 <ion-header>
 
 
-    <ion-title>新增地址</ion-title>
+    <ion-title>修改地址</ion-title>
 
 
 </ion-header>
@@ -24,12 +24,6 @@
 
 </ion-content>
 <ion-footer>
-    <button class="btn-add-address" (touchend)="createAddess()">提交</button> 
-    
-    <div class="showToastBlock" #showToastBlock>
-        <div class="item">
-            <p class="title">地址新建成功!</p>
-            <p class="desc">页面将在 {{time}}s 后返回</p>
-        </div>
-    </div>
+    <button class="btn-add-address" (touchend)="updateAddress()">提交</button> 
+ 
 </ion-footer>

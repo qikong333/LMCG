@@ -30,6 +30,35 @@ export class MinePage {
     
   }
 
+  // DOM页面跳转函数
+  // 跳转到优惠券页面
+  pushCouponPage(){
+    this.navCtrl.push("CouponPage",{
+       uId: this.mineInfo.uId
+    });
+  }
+  // 跳转到我的收藏页面
+  // pushMyFavoritePage(){
+  //   this.navCtrl.push("CouponPage",{
+  //      uId: this.mineInfo.uId
+  //   });
+  // }
+  
+  // 跳转到收货地址页面
+    pushReceivingAddressPage(){
+    this.navCtrl.push("ReceivingAddressPage",{
+       uId: this.mineInfo.uId
+    });
+  }
+  // 跳转到投诉建议页面
+    // pushMyFavoritePage(){
+  //   this.navCtrl.push("CouponPage",{
+  //      uId: this.mineInfo.uId
+  //   });
+  // }
+  // 跳转到关于我们页面
+
+
 
 
   /****
@@ -45,15 +74,15 @@ export class MinePage {
  
  
   onLogin: boolean;//手机登录判断
-  isLogin: boolean;//未登录
+  // isLogin: boolean;//未登录
   userName: any; //用户名为手机号
-  tokenId: any;//会话密钥
-  userId: any;//消息页面进入判断
+  // tokenId: any;//会话密钥
+  // userId: any;//消息页面进入判断
  
-  DaiFuKuanTotal: any;//查询待付款总数
-  DaiShouKuanTotal: any;//查询待收货总数
-  DaiPenJaiTotal: any;//查询待评价总数
-  ShouHouTotal: any;//查询退款或售后总数
+  // DaiFuKuanTotal: any;//查询待付款总数
+  // DaiShouKuanTotal: any;//查询待收货总数
+  // DaiPenJaiTotal: any;//查询待评价总数
+  // ShouHouTotal: any;//查询退款或售后总数
  
   userAgent: string;
 
@@ -79,11 +108,12 @@ export class MinePage {
       .subscribe(
         (item) => {
           if (item.code == 200) {
-
-            this.mineInfo = new MineInfo(item.nickname,1,item.avatarpath,that.randomSignature());
+            console.log(item);
+            this.mineInfo = new MineInfo(item.nickname,item.memberId,item.avatarpath,that.randomSignature());
            
+          }else{
+            this.mineInfo = new MineInfo("六沐便利店",1,item.avatarpath,that.randomSignature());
           }
-          console.log(item)
 
         },
         (err) => { console.error("无法得到用户信息")},
@@ -119,6 +149,7 @@ let signature = [
 
 }
 
+// 类型约束
 /**
  * @author 七月
  * @returns [name,id,headerImg,signature]
@@ -131,6 +162,8 @@ export class MineInfo {
     public uSignature:string
   ) { }
 }
+
+
 
 
 

@@ -13,151 +13,148 @@
 </ion-header>
 
 
-
 <ion-content style="background:#f4f6f9;">
-
-
-    <ion-row class="box1">
+    <ion-row class="box1" *ngIf="isAddress">
         <ion-col col-1>
             <i class="icon-icon_MapMark iconfont"></i>
         </ion-col>
         <ion-col col-10>
-            <span>小柠檬</span> 13712345678
-            <p>广东省东莞市南城区西平宏伟东二路明致商厦二楼六沐网... 如果地址太长就换个行~ </p>
+            <span>{{odBase.userName}}</span> {{odBase.userMobile}}
+            <p>{{odBase.userAddress}} </p>
         </ion-col>
         <ion-col col-1>
             <i class="icon-btn_arrow iconfont"></i>
         </ion-col>
+    </ion-row>
+    <ion-row class="box1_no" *ngIf="!isAddress">
 
-        <ion-row class="box1_no">
-            <ion-col col-1>
-            </ion-col>
-            <ion-col col-10>
-                还没有添加收货地址哦~请添加吧！
-            </ion-col>
-            <ion-col col-1>
-                <i class="icon-btn_arrow iconfont"></i>
-            </ion-col>
+        <ion-col col-12>
+            <i class="iconfont icon-icon_MapMark"></i>
+        </ion-col>
+        <ion-col col-1>
+        </ion-col>
+        <ion-col col-10>
+            还没有添加收货地址哦~请添加吧！
+        </ion-col>
+        <ion-col col-1>
+            <i class="icon-btn_arrow iconfont"></i>
+        </ion-col>
+    </ion-row>
 
+    <ion-row class="xian"> </ion-row>
 
-
-        </ion-row>
-
-        <ion-row class="xian"> </ion-row>
-
-        <ion-row class="box2">
-            <ion-col col-1>
-                <i class="icon-icon_Store iconfont"></i>
-            </ion-col>
-            <ion-col col-10>
-                天安数码城
-            </ion-col>
-            <ion-col col-1>
-                <i class="icon-btn_arrow iconfont"></i>
-            </ion-col>
-        </ion-row>
-        <ion-row class="box3">
+    <ion-row class="box2">
+        <ion-col col-1 text-right>
+            <i class="icon-icon_Store iconfont"></i>
+        </ion-col>
+        <ion-col col-10>
+            天安数码城
+        </ion-col>
+        <ion-col col-1>
+            <i class="icon-btn_arrow iconfont"></i>
+        </ion-col>
+    </ion-row>
+    <ion-row class="box3_out">
+        <ion-row class="box3" *ngFor="let item of getParams">
             <ion-col col-3>
-                产品图片
+                <img [src]="item?.mainpic" alt="" onerror="src='assets/imgs/erro_img.png'">
             </ion-col>
             <ion-col col-9>
-                <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
-                <span>$5.00</span><i>x2</i>
+                <p>{{item?.productName}}</p>
+                <span>￥{{item?.salePrice}}</span><i>x{{item?.productQty}}</i>
             </ion-col>
         </ion-row>
-        <ion-row class="box3">
-            <ion-col col-3>
-                产品图片
+    </ion-row>
+
+    <ion-row class="box4">
+        <div>
+            <ion-col col-6>
+                配送方式
             </ion-col>
-            <ion-col col-9>
-                <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
-                <span>$5.00</span><i>x2</i>
-            </ion-col>
-        </ion-row>
-
-        <ion-row class="box4">
-            <div>
-                <ion-col col-6>
-                    配送方式
-                </ion-col>
-                <ion-col col-5>
-                    自提
-                </ion-col>
-                <ion-col col-1>
-                    <i class="icon-btn_arrow iconfont"></i>
-                </ion-col>
-            </div>
-
-            <div>
-                <ion-col col-6>
-                    自提时间
-                </ion-col>
-                <ion-col col-5>
-
-                </ion-col>
-                <ion-col col-1>
-                    <i class="icon-btn_arrow iconfont"></i>
-                </ion-col>
-            </div>
-
-            <div>
-                <ion-col col-6>
-                    优惠券
-                </ion-col>
-                <ion-col col-5>
-                    暂无可用
-                </ion-col>
-                <ion-col col-1>
-                    <i class="icon-btn_arrow iconfont"></i>
-                </ion-col>
-            </div>
-
-
-            <div>
-                <ion-col col-12>
-                    备注
-                    <ion-textarea></ion-textarea>
-                </ion-col>
-            </div>
-
-        </ion-row>
-
-        <ion-row class="box5">
-            <<<<<<< HEAD <div>
-                <ion-col col-7>
-                    商品总额
-                </ion-col>
-                <ion-col col-5>
-                    ￥20.00
-                </ion-col>
-                </div>
-
-                <div>
-                    <ion-col col-7>
-                        商品优惠
-                    </ion-col>
-                    <ion-col col-5>
-                        -￥2.00
-                    </ion-col>
-                </div>
-
-                <p>
-                    (烟酒商品不能享用M卡折扣)
-                </p>
-        </ion-row>
-
-        <ion-row class="box6">
-            <ion-col col-1>
-                <img src="assets/imgs/weixin.png" alt="">
-            </ion-col>
-            <ion-col col-10>
-                微信支付
-                <p>优先使用此支付方式付款</p>
+            <ion-col col-5>
+                <select name="" id="" [(ngModel)]="odBase.transportType">
+                    <option value=" ">请选择</option>
+                    <option value="1">自提</option>
+                    <option value="0">配送</option>
+                </select>
             </ion-col>
             <ion-col col-1>
                 <i class="icon-btn_arrow iconfont"></i>
             </ion-col>
-        </ion-row>
+        </div>
+
+        <div>
+            <ion-col col-6>
+                自提时间
+            </ion-col>
+            <ion-col col-5>
+                <select name="" id="" [(ngModel)]="timed">
+                    <option value="0">请选择</option>
+                    <option [value]="time" *ngFor="let time of timeSelect">{{time}}</option>
+                </select>
+            </ion-col>
+            <ion-col col-1>
+                <i class="icon-btn_arrow iconfont"></i>
+            </ion-col>
+        </div>
+        <div>
+            <ion-col col-6>
+                优惠券
+            </ion-col>
+            <ion-col col-5>
+                {{coupontext}}
+            </ion-col>
+            <ion-col col-1>
+                <i class="icon-btn_arrow iconfont"></i>
+            </ion-col>
+        </div>
+
+
+        <div>
+            <ion-col col-12>
+                备注
+                <ion-textarea></ion-textarea>
+            </ion-col>
+        </div>
+
+    </ion-row>
+
+    <ion-row class="box5">
+        <div>
+            <ion-col col-7>
+                商品总额
+            </ion-col>
+            <ion-col col-5>
+                ￥{{odBase.orderTotalprice}}
+            </ion-col>
+        </div>
+
+        <div>
+            <ion-col col-7>
+                商品优惠
+            </ion-col>
+            <ion-col col-5>
+                -￥{{odBase.usedCouponAmount}}
+            </ion-col>
+        </div>
+
+        <p *ngIf="isDiscounts">
+            (烟酒商品不能享用M卡折扣)
+        </p>
+    </ion-row>
+
+    <ion-row class="box6" tappable (click)="openPaySelect()">
+        <ion-col col-1>
+            <img [src]="payUrl" alt="">
+        </ion-col>
+        <ion-col col-10>
+            {{payName}}
+            <p *ngIf="!payTip">优先使用此支付方式付款</p>
+        </ion-col>
+        <ion-col col-1>
+            <i class="icon-btn_arrow iconfont"></i>
+        </ion-col>
+    </ion-row>
 
 </ion-content>
 
@@ -168,16 +165,10 @@
             共计2件
         </ion-col>
         <ion-col col-6>
-            <span>需付款：</span><span>￥20.<i>00</i></span>
+            <span>需付款：</span><span>￥{{odBase.receivable}}</span>
         </ion-col>
-        <ion-col col-3>
+        <ion-col col-3 tappable (click)="submit()">
             去付款
         </ion-col>
     </ion-row>
 </ion-footer>
-=======
-
-</ion-row>
-
-</ion-content>
->>>>>>> b689a858f7b2ff37d6f4a18525d2907c944a043e

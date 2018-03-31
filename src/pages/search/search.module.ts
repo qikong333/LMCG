@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SearchPage } from './search';
@@ -8,6 +9,7 @@ import { SearchPage } from './search';
   ],
   imports: [
     IonicPageModule.forChild(SearchPage),
+    ComponentsModule
   ],
 })
 export class SearchPageModule {}

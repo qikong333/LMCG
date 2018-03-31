@@ -22,6 +22,7 @@ page-order-detail {
         }
     }
     .box2 {
+        margin-bottom: r(22px);
         background: #fff;
         padding: r(35px) r(22px);
         .box2_1 {
@@ -34,18 +35,91 @@ page-order-detail {
         }
     }
     .box3 {
+        margin-bottom: r(22px);
         background: #fff;
     }
-    .box4 {
+    .box4,
+    {
+        margin-bottom: r(22px);
+        padding: r(35px) r(22px);
         background: #fff;
+        [col-4] {
+            font-size: r(30px);
+            line-height: r(50px);
+            color: #a2a6a8;
+        }
+        [col-8] {
+            text-align: right;
+            font-size: r(30px);
+            line-height: r(50px);
+            color: #2e3133;
+        }
     }
     .box5 {
+        border-bottom: r(1px) solid #f4f6f9;
+        padding: r(35px) r(22px);
         background: #fff;
+        [col-4] {
+            font-size: r(30px);
+            line-height: r(50px);
+            color: #a2a6a8;
+        }
+        [col-8] {
+            text-align: right;
+            font-size: r(30px);
+            line-height: r(50px);
+            color: #2e3133;
+        }
     }
     .box6 {
+        margin-bottom: r(22px);
+        padding: r(35px) r(22px);
         background: #fff;
+        .box6_1 {
+            font-size: r(30px);
+            color: #a2a6a8;
+        }
+        .box6_2 {
+            font-size: r(30px);
+            color: #2e3133;
+        }
     }
     .box7 {
+        margin-bottom: r(100px);
         background: #fff;
+        col-ion {
+            padding: 0 r(22px);
+        }
+        [col-4] {
+            font-size: r(30px);
+            line-height: r(50px);
+            color: #a2a6a8;
+        }
+        [col-8] {
+            text-align: right;
+            font-size: r(30px);
+            line-height: r(50px);
+            color: #2e3133;
+        }
+        [col-12] {
+            text-align: right;
+            font-size: r(26px);
+            line-height: r(30px);
+            letter-spacing: 0px;
+            color: #2e3133;
+            border-top: r(1px) solid #f4f6f9;
+            span {
+                height: r(80px);
+                line-height: r(70px);
+                font-size: r(30px);
+                color: #ff5733;
+            }
+        }
+    }
+    ion-footer {
+        background: #fff;
+        height: r(110px);
+        line-height: r(100px);
+        text-align: right;
     }
 }

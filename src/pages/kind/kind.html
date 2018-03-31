@@ -18,18 +18,20 @@
     <ion-row>
         <div class="left_box">
             <ul>
-                <li (click)="clickitem(i,item.code)" *ngFor="let item of Arr_first,let i = index ">
+                <li tappable (click)="clickitem(i,item.code)" *ngFor="let item of Arr_first,let i = index ">
                     <span [ngClass]="{'in':first_clicked == i} ">{{item.name}}</span>
                 </li>
             </ul>
         </div>
         <ion-col class="right_box">
             <ion-row class="r_box1">
-                <ion-col col-6 class="selectBox">
+                <ion-col col-6 class="selectBox" tappable (click)="selectAll()">
                     {{selectKindText}}
                 </ion-col>
-                <ion-col col-6 class="selectBox">
+                <ion-col col-6 class="selectBox" tappable (click)="orderbyFn()">
+
                     价格
+                    <img [src]="orderbyImg" alt="">
                 </ion-col>
             </ion-row>
             <ion-row class="r_box2" *ngIf="!state">
@@ -47,10 +49,12 @@
                 </ion-col>
             </ion-row>
             <ion-row class="r_box4">
-                <ion-col col-6 class=" item_box" *ngFor="let item3 of product">
+                <ion-col col-6 class=" item_box" *ngFor="let item3 of product|orderBy:['sprice']:orderby" tappable (click)="toItemDetail(item3)">
+
+
+
                     <ion-row class="i_box1 ">
-                        <img src=" " alt=" ">
-                    </ion-row>
+                        <img src=" " alt=" " onerror="src='assets/imgs/erro_img.png'"> </ion-row>
                     <ion-row class="i_box2 ">
                         {{item3.name}}
                     </ion-row>

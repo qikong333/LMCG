@@ -34,6 +34,9 @@ page-kind {
         width: 72%;
         right: 0;
         .selectBox {
+            img {
+                width: r(30px);
+            }
             font-size: r(28px);
             color: #2e3133;
         }
@@ -75,10 +78,16 @@ page-kind {
             }
         }
         .item_box {
-            .i_box1 {}
+            .i_box1 {
+                img {
+                    height: r(200px);
+                    // margin: 0 auto;
+                }
+            }
             .i_box2 {
                 font-size: r(24px);
                 color: #2e3133;
+                padding: 0 r(10px);
             }
             .i_box3 {
                 font-size: r(34px);

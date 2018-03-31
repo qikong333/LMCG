@@ -13,8 +13,6 @@ import { HotKeywordsSearchComponent } from './hot-keywords-search/hot-keywords-s
 import { HistorySearchComponent } from './history-search/history-search';
 import { ShopCarComponent } from './shop-car/shop-car';
 import { NumberItemComponent } from './number-item/number-item';
-
-
 @NgModule({
 	declarations: [HeaderHomeComponent,
     NoticeHomeComponent,

@@ -1,21 +1,21 @@
 <ion-content>
     <div class="box0" col-12>
         <div class="box1">
-            确认支付<span>X</span>
+            确认支付<span tappable (click)="close()">X</span>
         </div>
         <div class="box2">
-            ￥18.00
-            <p>(烟酒商品不能享用M卡折扣)</p>
+            ￥{{getdatas?.receivable}}
+            <p *ngIf="getdatas?.isDiscounts">(烟酒商品不能享用M卡折扣)</p>
         </div>
         <div class="box3">
             <ion-row>
                 <ion-col col-1>
-                    <img src="assets/imgs/weixin.png" alt="">
+                    <img [src]="getdatas?.payUrl" alt="">
                 </ion-col>
 
                 <ion-col col-10>
-                    <p>微信支付</p> <span class="s1">优先使用此支付方式付款</span>
-                    <span class="s2">使用M卡支付享9折</span>
+                    <p>{{getdatas?.payName}}</p> <span class="s1">优先使用此支付方式付款</span>
+                    <span class="s2" *ngIf="getdatas?.isDiscounts">{{coupText}}</span>
                 </ion-col>
 
                 <ion-col col-1>
@@ -29,5 +29,5 @@
 
 </ion-content>
 <ion-footer>
-    <button ion-button full>确认支付</button>
+    <button ion-button full tappable (click)="ok()">确认支付</button>
 </ion-footer>

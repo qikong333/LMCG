@@ -1,18 +1,105 @@
 page-car-list {
+    ion-content {
+        background: #f4f6f9!important;
+    }
+    font-size: r(20px);
     input[type=checkbox] {
         display: none;
+    }
+    .box1 {
+        [col-2] {
+            position: relative;
+        }
+        i.iconfont {
+            font-size: r(46px);
+            position: absolute;
+            top: 35%;
+        }
+        img {
+            height: r(190px);
+            width: r(190px);
+            float: right;
+        }
     }
     .box2 {
         .box2_1 {
             font-size: r(30px);
-            height: r(32px);
-            line-height: r(22px);
+            height: r(102px);
             color: #2e3133;
         }
         .box2_2 {
             .box2_2_1 {
                 font-size: r(34px);
                 color: #ff5733;
+            }
+        }
+    }
+    ion-item div,
+    ion-item .input-cover,
+    ion-item .input-wrapper,
+    ion-item .item-inner {
+        height: auto!important;
+        ion-item-options {
+            width: 100px;
+            button {
+                width: 100px;
+            }
+        }
+    }
+    .list-ios ion-item-options .button {
+        width: r(130px);
+    }
+    .item-wrapper::after {
+        position: absolute;
+        content: " ";
+        height: 1px;
+        width: 88%;
+        bottom: 0px;
+        right: 0px;
+        display: block;
+        z-index: 999;
+        background: #dde0e4;
+    }
+    .item-wrapper {
+        // position: relative;
+    }
+    ion-footer {
+        height: r(99px);
+        background: #fff;
+        .foot1 {
+            font-size: r(26px);
+            color: #a2a6a8;
+            line-height: r(89px);
+        }
+        .foot2 {
+            p {
+                font-size: r(22px);
+                line-height: r(36px);
+                color: #a2a6a8;
+            }
+            span {
+                font-size: r(34px);
+                line-height: r(30px);
+                color: #ff5733;
+            }
+        }
+        .foot3 {
+            background-color: #29aff6;
+            font-size: r(34px);
+            line-height: r(89px);
+            color: #fff;
+            text-align: center;
+        }
+        .foot4 {
+            position: relative;
+            span {
+                display: block;
+                height: 100%;
+                width: 100%;
+                line-height: r(34px);
+                padding: r(21px);
+                font-size: r(26px);
+                color: #a2a6a8;
             }
         }
     }

@@ -1,7 +1,7 @@
 
 // 初始化
 
-// export const SERVER_URL = 'https://www.rongyudai.cn/'  //正式地址
+// export const SERVER_URL = 'http://api.lmchaoshi.com'  //正式地址
 export const SERVER_URL = 'http://121.40.188.31:8080'//////本地服务器
 // export const  SERVER_URL = 'http://192.168.3.140:8080/'//景亮地址
 // export const SERVER_URL = 'http://192.168.3.54:8080/'  //学良地址

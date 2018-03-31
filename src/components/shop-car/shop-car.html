@@ -3,9 +3,9 @@
         购物车是空的
     </ion-col>
     <ion-col col-8 class="car_l car_l_2" *ngIf="buyNumber!=0">
-        以选购{{buyNumber}}件商品
+        已选购{{buyNumber}}件商品
     </ion-col>
-    <ion-col col-4 class="car_r" [ngClass]="{'in':sprice != 0} ">
+    <ion-col col-4 class="car_r" [ngClass]="{'in':sprice != 0} " tappable (click)="toCarList()">
         去结算 ({{sprice}})
     </ion-col>
 </ion-row>

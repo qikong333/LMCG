@@ -12,7 +12,7 @@ import { ModalController } from 'ionic-angular';
 export class HttpServiceProvider {
 
   constructor(public http: Http,public modalCtrl:ModalController) {
-    // console.log('Hello HttpServiceProvider Provider');
+    console.log('Hello HttpServiceProvider Provider');
   }
 
   public postFormData(url: string, paramMap?: any): Observable<Response> {

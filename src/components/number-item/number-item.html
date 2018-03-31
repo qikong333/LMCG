@@ -1,11 +1,11 @@
 <ion-row>
     <ion-col col-4 *ngIf="buyNumber!=0">
-        <button ion-button clear [disabled]='minus || disabled' (click)="onMinus($event)">
+        <button ion-button clear [disabled]='minus || disabled' tappable (click)="onMinus($event)">
             <ion-icon name="remove-circle" color="primary" ></ion-icon>
         </button>
     </ion-col>
     <ion-col col-4 *ngIf="buyNumber!=0">
-        <input [(ngModel)]="buyNumber" (input)="onInput($event)" (click)="onMyInput($event)" [disabled]='disabled' #input>
+        <input [(ngModel)]="buyNumber" (input)="onInput($event)" tappable (change)="onMyInput($event)" [disabled]='disabled' #input>
     </ion-col>
     <ion-col col-4>
         <button ion-button clear [disabled]='add || disabled' (click)="onAdd($event)">

@@ -11,8 +11,6 @@ page-pay-select {
     .paybox {
         position: absolute;
         bottom: 0;
-        height: 772px/3*1.5;
-        overflow: scroll;
         .paytop {
             height: 100px/3*1.5;
             line-height: 100px/3*1.5;
@@ -22,7 +20,6 @@ page-pay-select {
             letter-spacing: 0px;
             color: #333333;
             text-align: center;
-            border-top: 1px/3*1.5 solid #e6e6e6;
             button {
                 background: url(../assets/img/close.png) no-repeat;
                 background-size: 20px;
@@ -69,7 +66,6 @@ page-pay-select {
             font-stretch: normal;
             letter-spacing: 0px;
             color: #333333;
-            border-top: 1px/3*1.5 solid #e6e6e6;
             height: 109px/3*1.5;
             line-height: 109px/3*1.5;
             img {
@@ -86,11 +82,19 @@ page-pay-select {
             font-stretch: normal;
             letter-spacing: 0px;
             color: #999999;
-            border-top: 1px/3*1.5 solid #e6e6e6;
+            // border-top: 1px/3*1.5 solid #e6e6e6;
             height: 109px/3*1.5;
             line-height: 109px/3*1.5;
+            position: absolute;
+            right: r(22px);
+            i {
+                color: #29aff6;
+            }
         }
         label {
+            line-height: 0;
+            border-top: 1px/3*1.5 solid #e6e6e6;
+            width: 100%;
             input[type=radio] {
                 width: 0;
                 height: 0;
@@ -129,5 +133,11 @@ page-pay-select {
         height: 28px;
         background-image: linear-gradient(135deg, #39c9ff 0%, #3b96fd 100%), linear-gradient( #ffe239, #ffe239);
         background-blend-mode: normal, normal;
+    }
+    .tip {
+        padding: r(32px) 0;
+        font-size: r(26px);
+        color: #a2a6a8;
+        background: #f4f6f9;
     }
 }

@@ -1,4 +1,7 @@
         page-item-detail {
+            .collection {
+                color: #ff5733;
+            }
             ion-row {
                 background: #fff;
             }
@@ -7,6 +10,16 @@
                 background: #f4f6f9;
             }
             .box1 {
+                .showdom {
+                    display: flex;
+                    width: 100%;
+                    -moz-box-shadow: 0px 2px 11px #706c70;
+                    -webkit-box-shadow: 0px 2px 11px #706c70;
+                    box-shadow: 0px 2px 11px #706c70;
+                }
+                img {
+                    margin: r(100px) auto;
+                }
                 margin-bottom: r(22px);
                 p {
                     padding: r(14px) r(22px);
@@ -17,8 +30,10 @@
                     font-size: r(30px);
                     line-height: r(42px);
                     color: #2e3133;
+                    padding-top: r(35px);
                 }
                 p.p2 {
+                    padding-bottom: r(35px);
                     font-size: r(34px);
                     line-height: r(30px);
                     color: #ff5733;
@@ -51,6 +66,11 @@
                 }
                 [col-4] {
                     color: #2e3133;
+                    text-align: right;
+                }
+                span {
+                    line-height: r(76px);
+                    padding-right: r(22px)
                 }
             }
             .box4 {
@@ -90,6 +110,10 @@
                 .f3 {
                     background-color: #29aff6;
                     color: #f5fbff;
+                }
+                button:disabled {
+                    background: #a2a6a8!important;
+                    color: #f5fbff!important;
                 }
                 font-size: r(34px);
                 color: #f5fbff;

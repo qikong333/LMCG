@@ -1,3 +1,4 @@
+import { NavController } from 'ionic-angular';
 import { Component, Output, Input } from '@angular/core';
 
 /**
@@ -22,9 +23,16 @@ export class ShopCarComponent {
   datas: any = 0;//购买数
 
 
-  constructor() {
+  constructor(
+    public navCtrl:NavController,
+  ) {
     console.log('Hello ShopCarComponent Component');
      
+  }
+
+  toCarList() {
+
+    this.navCtrl.push('CarListPage', {datas:this.datas})
   }
 
 }

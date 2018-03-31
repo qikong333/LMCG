@@ -8,6 +8,12 @@
 
     <ion-navbar>
         <ion-title>商品详情</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only tappable (click)="Collection()" class="collection">
+     <i class="icon-xin1 iconfont" *ngIf="isCollection"></i>  
+     <i class="icon-xin iconfont"  *ngIf="!isCollection"></i>  
+      </button>
+        </ion-buttons>
     </ion-navbar>
 
 </ion-header>
@@ -16,9 +22,12 @@
 <ion-content style="background: #f4f6f9;">
 
     <ion-row class="box1">
-        <img src="" alt="">
-        <p class="p1">名称</p>
-        <p class="p2">￥5.00</p>
+        <div class="showdom">
+            <img [src]="datas?.mainpic" alt="" onerror="src='assets/imgs/erro_img.png'">
+        </div>
+        <p class="p1">{{itemName}}</p>
+        <p class="p2">￥{{getdatas?.sprice}}</p>
+
 
     </ion-row>
 
@@ -27,20 +36,20 @@
             品牌名称
         </ion-col>
         <ion-col col-8>
-            四海
+            {{datas?.brandname}}
         </ion-col>
         <ion-col col-4>
             商品名称
         </ion-col>
         <ion-col col-8>
-            鱼丸
+            {{datas?.ctitle}}
         </ion-col>
-        <ion-col col-4>
+        <!-- <ion-col col-4>
             商品编码
         </ion-col>
         <ion-col col-8>
-            12336544856
-        </ion-col>
+            {{datas?.pid}}
+        </ion-col> -->
 
     </ion-row>
 
@@ -49,7 +58,8 @@
             限购数量
         </ion-col>
         <ion-col col-4>
-            <number-item></number-item>
+            <span *ngIf="datas?.available==0">没有库存</span>
+            <number-item *ngIf="datas?.available!=0" [minQty]="1" [maxQty]="datas?.available" [buyNumber]="1" (onUpdate)="onUpdate($event)" [goods]="datas?.pid"></number-item>
         </ion-col>
     </ion-row>
 
@@ -58,7 +68,7 @@
             南城天安店
         </ion-col>
         <ion-col col-8>
-            4.5km | 39分钟
+            4.5km
         </ion-col>
 
         <ion-col col-4>
@@ -75,22 +85,24 @@
             xxxxxxxxxxx
         </ion-col>
     </ion-row>
-
 </ion-content>
 
 <ion-footer>
+
     <ion-row>
         <ion-col class="f1" col-5>
-
-            购物车(1)
+            购物车({{cloudNum}})
         </ion-col>
-        <ion-col class="f2">
+
+        <button class="f2" col tappable (click)="add()" [disabled]="datas?.available==0">
             加入购物车
-        </ion-col>
-        <ion-col class="f3">
-
+        </button>
+        <button class="f3" col tappable (click)="toOrderSubmission()" [disabled]="datas?.available==0">
             立即购买
-        </ion-col>
+       </button>
+
+
+
 
     </ion-row>
 </ion-footer>

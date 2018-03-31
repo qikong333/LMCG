@@ -9,7 +9,7 @@ import { SERVER_URL } from '../constants/constants';
 export class ApiServiceProvider {
 
   constructor(public http: HttpServiceProvider) {
-    console.log('Hello AipServiceProvider Provider');
+    console.log('Hello ApiServiceProvider Provider');
   }
 
   public SHOPID;
@@ -189,9 +189,7 @@ export class ApiServiceProvider {
       odProductList: odProductList,
       odBase: odBase,
     }
-    // console.log(params);
-
-    return this.http.postFormData('/api/shop/order/submitOrder', params)
+    return this.http.post('/api/shop/order/submitOrder', params)
   }
 
 
@@ -218,14 +216,19 @@ export class ApiServiceProvider {
  * @param prepayNo 预支付信息生成1 generatePayment() 接口返回的prepayNo
  * @param timestamp 预支付信息生成1 generatePayment() 接口返回的systemTime
  * @param userPayInfo ???
+ * @param iscountAmount 折扣金额(100元打9.5折传入5元)
+ * @param orderNo 订单号
+ * 
  */
-  confirmPay(prepayNo, timestamp, userPayInfo){
+  confirmPay(prepayNo, timestamp, userPayInfo, discountAmount, orderNo){
     let params = {
       prepayNo: prepayNo, 
       timestamp: timestamp, 
-      userPayInfo: userPayInfo
+      userPayInfo: userPayInfo,
+      discountAmount: discountAmount,
+      orderNo: orderNo,
     }
-    // console.log(params);
+    console.log(params);
 
     return this.http.get('/api/shop/lmcard/confirmPay', params)
   }

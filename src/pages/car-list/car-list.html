@@ -8,36 +8,81 @@
 
     <ion-navbar>
         <ion-title>购物车</ion-title>
-
+        <ion-buttons end>
+            <button ion-button icon-only tappable (click)="changeeditStatu()" class="collection">
+                 {{editText}} 
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-    <ion-row *ngFor="let item of arrList,let i = index">
-        <input class="checkbox" type="checkbox" [id]="i" #checkbox/>
-        <label [for]="i" col-5 class="box1">
-          <ion-col col-2>
-            <span> </span>
-          </ion-col>
-             <ion-col col-10>
-            <img src="" alt="">
-          </ion-col>
-      </label>
-        <!-- <ion-col class="box1" col-2></ion-col> -->
-        <!-- <ion-col class="box1" col-3></ion-col> -->
-        <ion-col col-7 class="box2">
-            <ion-row class="box2_1">
-                {{item.prod.name}}
-            </ion-row>
-            <ion-row class="box2_2">
-                <ion-col col-6 class="box2_2_1">
-                    &yen; {{item.prod.perice}}
+
+    <ion-list>
+        <ion-item-sliding #slidingItem *ngFor="let item of arrList,let i = index">
+            <ion-item>
+                <ion-row>
+                    <input class="checkbox" type="checkbox" [id]="i" (change)="checkboxin($event)" [value]="item?.prod.stocknum" [title]="item?.prod.name" [textContent]="item?.prod.sprice" #checkbox/>
+                    <label col-5 class="box1" [for]="i">
+                         <ion-row>
+                <ion-col col-2>
+                    <i class="iconfont icon-weixuanzhongyuanquan"
+                          [ngClass]="{
+                            'icon-weixuanzhongyuanquan':checkbox.checked==false,
+                            'icon-dagouyouquan':checkbox.checked==true,
+                            'icon-dagouyouquan,disabled':payye2 == 0}"
+                    ></i>
                 </ion-col>
-                <ion-col col-6>
-                    <number-item></number-item>
+                <ion-col col-10>
+                   
+                    <img [src]=" " alt="" onerror="src='assets/imgs/erro_img.png'">
                 </ion-col>
             </ion-row>
+                    </label>
+                    <ion-col col-7 class="box2">
+                        <ion-row class="box2_1">
+                            {{item?.prod?.name}}
+                        </ion-row>
+                        <ion-row class="box2_2">
+                            <ion-col col-6 class="box2_2_1">
+                                ￥ {{item?.prod.sprice}}
+                            </ion-col>
+                            <ion-col col-6>
+                                <number-item [buyNumber]="item?.prod.stocknum"></number-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item-options *ngIf="editStatu">
+                <button ion-button color="danger">删除</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+    {{sum_num}}+++{{sum_sprice}}
+</ion-content>
+
+
+<ion-footer>
+    <ion-row>
+        <input class="checkbox" type="checkbox" id="all" (change)="checkboxall($event)" [checked]="all_statu" #a/>
+        <label col-4 for="all" class="foot1">
+            <i class="iconfont icon-weixuanzhongyuanquan" [ngClass]="{
+                            'icon-weixuanzhongyuanquan':a.checked==false,
+                            'icon-dagouyouquan':a.checked==true
+            }"></i> 全选
+        </label>
+        <ion-col col-4 text-right class="foot2" *ngIf="!editStatu">
+            <p>需付款</p>
+            <span>￥{{sum_sprice}}</span>
+        </ion-col>
+        <ion-col col-4 class="foot3" *ngIf="!editStatu">
+            去结算({{sum_num}})
+        </ion-col>
+        <ion-col col-8 *ngIf="editStatu" text-right class="foot4">
+            <span><i class=""iconfont icon-shanchu></i>删除</span>
         </ion-col>
     </ion-row>
-</ion-content>
+
+</ion-footer>

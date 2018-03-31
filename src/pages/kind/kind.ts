@@ -1,3 +1,5 @@
+import { NativeServiceProvider } from './../../providers/native-service/native-service';
+import { ApiServiceProvider } from './../../providers/api-service/api-service';
 import { Observable } from 'rxjs';
 import { HttpServiceProvider } from './../../providers/http-service/http-service';
 import { Component } from '@angular/core';
@@ -10,9 +12,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage({
-  name:"KindPage"
-})
+@IonicPage()
 @Component({
   selector: 'page-kind',
   templateUrl: 'kind.html',
@@ -30,9 +30,20 @@ export class KindPage {
   public Arr_car_end = []          //购物车数组结果   
   public car_num_sum = 0             //接口购物车总数量
   public car_sprice_sum = 0           //接口购物车总价格
-  public local_num_sum =0            //本地购物车总数量
+  public local_num_sum = 0            //本地购物车总数量
   public local_sprice_sum = 0         //本地购物车总数量
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpServiceProvider) {
+  public orderby: string = ' '                     //排序
+  public orderbyImg = "assets/imgs/orderby.svg"
+  public orderbyState: boolean;                 //排序状态
+  public itemCode                     //类别代号
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: HttpServiceProvider,
+    public api: ApiServiceProvider,
+    public native:NativeServiceProvider,
+
+  ) {
 
 
     this.reqCoupon();
@@ -55,12 +66,21 @@ export class KindPage {
 
 
 
-  //首页商品列表
+  // 
+  /**
+   * @name 首页商品列表
+   * @param code 列表代码
+   * @param isparent 1：一级菜单；0：二级菜单
+   */
   getCommodity(code, isparent) {
+    this.orderby = ' '
+    this.orderbyImg = "assets/imgs/orderby.svg"
     let params = {
       code: code,
       isparent: isparent
     }
+    console.log(params);
+
     this.http.get('/api/shop/home/list/' + localStorage.getItem('shopId'), params)
       .map(r => r.json())
       .subscribe(r => {
@@ -143,22 +163,24 @@ export class KindPage {
 
   // 购物车数量
   shopcarNum() {
-    let params = {
-      tokenid: localStorage.getItem('tokenId'),
-      userAgent: localStorage.getItem('userAgent'),
-    }
-    this.http.get('/api/shop/shopcar/odShopcarDetail/shpocarinfo/' + localStorage.getItem('shopId'), params)
+    this.api.shopcarNum()
       .map(r => r.json())
       .subscribe(r => {
         console.log('购物车数量')
         console.log(r)
-        this.car_num_sum = r.data.totalCount;
-        this.car_sprice_sum = r.data.totalPrice;
+        if (r.code==200) {
+          this.car_num_sum = r.data.totalCount;
+          this.car_sprice_sum = r.data.totalPrice;
+        }else{
+          this.native.showToast(r.message);
+        }
+        
       })
   }
 
   clickitem(i, code) {
     console.log(code);
+    this.itemCode = code;
     this.selectKindText = '全部'
     this.state = true;
     this.first_clicked = i;
@@ -166,8 +188,8 @@ export class KindPage {
     console.log(this.Arr_second[i]);
     this.Arr_second_checked = this.Arr_second[i]
     console.log(this.Arr_second_checked);
-    this.getCommodity(code,1);
-    
+    this.getCommodity(code, 1);
+
   }
 
   //点击筛选
@@ -196,19 +218,42 @@ export class KindPage {
     }
 
     this.Arr_car_end = a.filter(e => e.number != 0);
- 
-    console.log(this.Arr_car_end );
-    
-    this.Arr_car_end.forEach(e=>{
+
+    console.log(this.Arr_car_end);
+
+    this.Arr_car_end.forEach(e => {
       num_sum = e.number + num_sum;
-      sprice_sum = e.sprice * e.number+ sprice_sum;
+      sprice_sum = e.sprice * e.number + sprice_sum;
     })
     this.local_num_sum = num_sum;
     this.local_sprice_sum = sprice_sum;
-    
-   
+
+
   }
 
+  // 跳转详情页面
+  toItemDetail(data) {
+    this.navCtrl.push('ItemDetailPage', { data: data })
+  }
+
+  // 点击筛选返回全部
+  selectAll() {
+    this.selectKindText = "全部";
+    this.getCommodity(this.itemCode, 1);
+  }
+
+
+  // 排序
+  orderbyFn() {
+    this.orderbyState = !this.orderbyState;
+    if (this.orderbyState) {
+      this.orderby = "up";
+      this.orderbyImg = "assets/imgs/orderby_up.svg"
+    } else {
+      this.orderby = "down"
+      this.orderbyImg = "assets/imgs/orderby_down.svg"
+    }
+  }
 
 
 

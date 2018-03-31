@@ -1,4 +1,6 @@
 // http://ionicframework.com/docs/theming/
+
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -12,73 +14,3 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-.clearfix {
-    display: block;
-    height: 0;
-}
-
-.clearfix::before,
-.clearfix::after {
-    content: "";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-    overflow: auto;
-    zoom: 1;
-}
-
-.receivng-address-alert {
-    .alert-wrapper {
-        width: r(600px);
-        height: r(383px);
-        background-color: #ffffff;
-        border-radius: r(18px);
-        .alert-head {
-            padding: 0;
-            text-align: left;
-            .alert-title {
-                margin-left: r(40px);
-                margin-top: r(29px);
-                font-size: r(30px);
-                font-weight: bold;
-                font-stretch: normal;
-                letter-spacing: 0px;
-                color: #2e3133;
-            }
-            .alert-sub-title {
-                margin-top: r(67px);
-                margin-left: r(44px);
-                font-size: r(26px);
-                font-weight: normal;
-                font-stretch: normal;
-                letter-spacing: 0px;
-                color: #a2a6a8;
-            }
-        }
-        .alert-message {
-            display: block;
-            width: r(600px);
-            height: 0;
-        }
-        .alert-button-group {
-            margin-top: r(49px);
-            display: flex;
-            button {
-                // width: r(250px);
-                // height: r(90px);
-                // background-color: #29aff6;
-                float: left;
-                .button-inner {
-                    display: block;
-                    float: left;
-                    // width: r(250px);
-                    height: r(90px);
-                    line-height: r(90px);
-                    background-color: #29aff6;
-                    border-radius: r(10px);
-                }
-            }
-        }
-    }
-}

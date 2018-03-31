@@ -90,13 +90,16 @@ export class NumberItemComponent {
    */
   onAdd(event) {
     event.stopPropagation();
-    this.buyNumber++;
+    this.buyNumber++;   
     if (this.maxQty && this.buyNumber >= this.maxQty) {
       this.add = true;
-      return;
+  
     }
     this.onEvent();
     this.minus = false;
+     
+    console.log(this.buyNumber);
+    
   }
 
   /**

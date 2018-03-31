@@ -8,10 +8,10 @@
     <div class="banner">
         <div class="avatar-item">
             <div class="avatar-icon">
-                <img src="assets/imgs/avatar.png" alt="">
+                <img [src]="mineInfo?.uheaderImg?mineInfo?.uheaderImg:'assets/imgs/avatar.png'" alt="">
             </div>
-            <p class="avatar-name"> </p>
-            <p class="avatar-signature">上午好~今天的阳光真灿烂啊 </p>
+            <p class="avatar-name">{{mineInfo?.uNickName}}</p>
+            <p class="avatar-signature">{{mineInfo?.uSignature}}</p>
 
         </div>
     </div>

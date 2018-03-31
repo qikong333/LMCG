@@ -13,7 +13,7 @@ export class TabsPage {
   tab1Root = KindPage;
   tab2Root = 'PayPasswordPage';
   tab3Root = AboutPage;
-  tab4Root = ContactPage;
+  tab4Root = "MinePage";
 
   constructor() {
 

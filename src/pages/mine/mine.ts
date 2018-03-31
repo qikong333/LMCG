@@ -27,6 +27,7 @@ export class MinePage {
   ) {
 
     this.getMsMember();
+    
   }
 
 
@@ -39,9 +40,22 @@ export class MinePage {
    * 
    * **********/
   // 用户基本信息
-  mineInfo: any;
+  mineInfo:MineInfo;
   
-
+ 
+ 
+  onLogin: boolean;//手机登录判断
+  isLogin: boolean;//未登录
+  userName: any; //用户名为手机号
+  tokenId: any;//会话密钥
+  userId: any;//消息页面进入判断
+ 
+  DaiFuKuanTotal: any;//查询待付款总数
+  DaiShouKuanTotal: any;//查询待收货总数
+  DaiPenJaiTotal: any;//查询待评价总数
+  ShouHouTotal: any;//查询退款或售后总数
+ 
+  userAgent: string;
 
 
 
@@ -52,6 +66,12 @@ export class MinePage {
    *  
    */
   getMsMember() {
+    let that = this;
+    if (localStorage.getItem('headimgurl')) {
+      this.mineInfo.uheaderImg = localStorage.getItem('headimgurl');
+
+      return;
+    }
     this.apiService.msMember()
 
       .map(e => e.json())
@@ -59,12 +79,9 @@ export class MinePage {
       .subscribe(
         (item) => {
           if (item.code == 200) {
-            // console.log(2000);
-            this.mineInfo = item;
-            // console.log(this.mineInfo);
-            
-            // this.mineInfo.uId = item.memberId;
-            // this.mineInfo.headerImg = item.avatarpath;
+
+            this.mineInfo = new MineInfo(item.nickname,1,item.avatarpath,that.randomSignature());
+           
           }
           console.log(item)
 
@@ -73,16 +90,47 @@ export class MinePage {
         () => { console.log("getMsMember() is ends")})
 
 
-  }}
+  }
+/***********辅助性函数*********/
+randomSignature(){
+ let j = Math.round( Math.random()*10)   ;
+ if(j>=10){
+   j=9;
+ }
+ console.log(j);
+let signature = [
+  '年轻不是我颓废的理由，却能成为我们奋斗的资本!',
+  '人生在世，应该这样，在芬芳别人的同时美丽自己。',
+  '安慰别人的话，终究安慰不了自己。',
+  '安慰别人的话，终究安慰不了自己。',
+  '只要你开心、快乐，一切都好。',
+  '快乐要懂得分享，才能加倍的快乐。',
+  '失因为贪说真的，老实人很少上当。',
+  '每天告诉自己一次：我真的很不错。',
+  '你的爱曾是那么熟悉，刻骨又铭心',
+  '我想留长发，不再爱人渣，',
+];
+
+
+  return signature[j];
+}
+/***********辅助性函数END*********/
+
+
+}
 
 /**
  * @author 七月
- * @returns [name,id,headerImg]
+ * @returns [name,id,headerImg,signature]
 */
-// export class MineInfo {
-//   constructor(
-//     public uName: string = "便利店",
-//     public uId: number,
-//     public headerImg: string
-//   ) { }
-// }
+export class MineInfo {
+  constructor(
+    public uNickName: string = "便利店",
+    public uId: number,
+    public uheaderImg: string,
+    public uSignature:string
+  ) { }
+}
+
+
+

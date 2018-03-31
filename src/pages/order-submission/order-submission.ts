@@ -3,7 +3,7 @@ import { ApiServiceProvider } from './../../providers/api-service/api-service';
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { PublicServiceProvider } from '../../providers/public-service/public-service';
-import { JSEncrypt } from "../../assets/js/jsencrypt.js"
+// import { JSEncrypt } from "../../assets/js/jsencrypt.js";
  
 
 @IonicPage({

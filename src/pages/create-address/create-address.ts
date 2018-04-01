@@ -128,11 +128,11 @@ export class CreateAddressPage {
    * 
   新增加一个地址
   */
-  userId: number = this.userId ? this.userId : parseInt(localStorage.getItem("userId"));
+  userId: number;
 
-  username: string = "小猫咪";
+  username: string ;
 
-  phone: number = 15839521352;
+  phone: number;
 
   provinceNameCode: number = 410000;
 
@@ -141,13 +141,13 @@ export class CreateAddressPage {
   countyNameCode: number = 410105;
 
 
-  provinceName: string = "河南省";
+  provinceName: string ;
 
-  cityName: string = "郑州市";
+  cityName: string;
 
-  countyName: string = "金水区";
+  countyName: string;
 
-  addressDetail: string = "会展中心CBD商务外环路";
+  addressDetail: string ;
 
   checkedDef: any = 0;
   createAddess() {

@@ -418,10 +418,6 @@ export class ApiServiceProvider {
    * @name 用户删除地址
    */
 
-  // '/api/shop/address/msAddress/delete?eq_addressId='
-  //  + addressId + 
-  //  '&&eq_passId=' + 
-  //  this.userId
   msAddressDelete(addressId,userId) {
     let param = {
       eq_addressId:addressId,
@@ -430,13 +426,24 @@ export class ApiServiceProvider {
     return this.http.get('/api/shop/address/msAddress/delete/', param)
   }
 
+  /**
+   * @name 搜索商品   一般使用页面 搜索页面(searchPage)
+   * @param querykey
+   * @param  shopId:Variable.getInstance().shopid
+   */
 
-  // list(code) {
-  //   let param = {
-  //     code: code,
-  //   }
-  //   return this.http.get('api/shop/home/list/', param)
-  // }
+  // this.ajax.post(AppConfig.getDebugUrl + '/api/shop/search/searchproduct/search',
+  
+  // { querykey: this.search ,
+    
+  //  s hopId:Variable.getInstance().shopid}
+  searchProductSearch(querykey:string,shopid:number=9999001) {
+    let param = {
+      querykey,
+      shopid
+    }
+    return this.http.post('/api/shop/search/searchproduct/search', param)
+  }
 
   //  list(code) {
   //   let param = {

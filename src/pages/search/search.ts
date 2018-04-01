@@ -25,4 +25,16 @@ export class SearchPage {
   }
 
 
+  // 参数声明
+  userId:number;
+ngOnInit(): void {
+  //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+  //Add 'implements OnInit' to the class.
+  this.userId = this.navParams.get("userId")?this.navParams.get("userId"):localStorage.getItem("userId");
+  console.log(  this.userId);
+}
+
+
+
+
 }

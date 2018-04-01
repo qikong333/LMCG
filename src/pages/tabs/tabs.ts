@@ -10,10 +10,10 @@ import { KindPage } from '../kind/kind';
 })
 export class TabsPage {
 
-  tab1Root = KindPage;
-  tab2Root = 'PayPasswordPage';
+  tab1Root = HomePage;
+  // tab2Root = "PayPasswordPage";
   tab3Root = AboutPage;
-  tab4Root = "MinePage";
+  // tab4Root = "MinePage";
 
   constructor() {
 

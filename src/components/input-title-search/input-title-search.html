@@ -1,8 +1,8 @@
 <div class="input-title-search">
   <div class="input-title">
     <span class="search-icon"></span>
-    <span class="default-text" #defaultText (touchend)="clear()" >雀巢咖啡</span>
+    <!-- <span class="default-text" #defaultText (touchend)="clear()" ></span> -->
     <span class="cancel-text" (touchend)="cancelText()">取消</span>
-    <input type="search" name="search" class="input-text" [(ngModel)]="searchString" (keyup)="pushSearchDetail($event)" />
+    <input type="search" name="search" class="input-text" [(ngModel)]="searchString" (focus)="clearDafult()"  (keyup)="pushSearchDetail($event)" />
   </div>
 </div>

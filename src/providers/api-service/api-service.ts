@@ -312,7 +312,7 @@ export class ApiServiceProvider {
   */
   couponInfo(userId) {
     let params = {
-      eq_userid: localStorage.getItem('userId') ? localStorage.getItem('userId') : userId
+      eq_userid: userId ? userId : localStorage.getItem('userId')
 
     }
     // console.log(params);
@@ -336,24 +336,24 @@ export class ApiServiceProvider {
   /**
    * @name 用户新增地址
    */
- 
- 
+
+
   addAddress(
     userId: number,
-    username:string,
-    phone:number,
+    username: string,
+    phone: number,
 
-    provinceNameCode:number,
-    cityNameCode:number,
+    provinceNameCode: number,
+    cityNameCode: number,
     countyNameCode: number,
 
-    provinceName:string,
-    cityName:string,
-    countyName:string,
+    provinceName: string,
+    cityName: string,
+    countyName: string,
 
-    addressDetail:string,
+    addressDetail: string,
 
-    checkedDef:any
+    checkedDef: any
   ) {
     let param = {
       passId: userId,
@@ -365,7 +365,7 @@ export class ApiServiceProvider {
       countyId: countyNameCode,
 
       provinceName: provinceName,
-      cityName: cityName,   
+      cityName: cityName,
       countyName: countyName,
 
       addressDetail: addressDetail,
@@ -377,23 +377,23 @@ export class ApiServiceProvider {
   updateAddress(
     addressId: number,
     userId: number,
-    username:string,
-    phone:number,
+    username: string,
+    phone: number,
 
-    provinceNameCode:number,
-    cityNameCode:number,
+    provinceNameCode: number,
+    cityNameCode: number,
     countyNameCode: number,
 
-    provinceName:string,
-    cityName:string,
-    countyName:string,
+    provinceName: string,
+    cityName: string,
+    countyName: string,
 
-    addressDetail:string,
+    addressDetail: string,
 
-    checkedDef:any
+    checkedDef: any
   ) {
     let param = {
-      addressId:addressId,
+      addressId: addressId,
       passId: userId,
       username: username,
       mobileno: phone,
@@ -403,7 +403,7 @@ export class ApiServiceProvider {
       countyId: countyNameCode,
 
       provinceName: provinceName,
-      cityName: cityName,   
+      cityName: cityName,
       countyName: countyName,
 
       addressDetail: addressDetail,
@@ -418,10 +418,10 @@ export class ApiServiceProvider {
    * @name 用户删除地址
    */
 
-  msAddressDelete(addressId,userId) {
+  msAddressDelete(addressId, userId) {
     let param = {
-      eq_addressId:addressId,
-      eq_passId:userId
+      eq_addressId: addressId,
+      eq_passId: userId
     }
     return this.http.get('/api/shop/address/msAddress/delete/', param)
   }
@@ -433,11 +433,31 @@ export class ApiServiceProvider {
    */
 
   // this.ajax.post(AppConfig.getDebugUrl + '/api/shop/search/searchproduct/search',
-  
+
   // { querykey: this.search ,
-    
+
   //  s hopId:Variable.getInstance().shopid}
-  searchProductSearch(querykey:string,shopid:number=9999001) {
+  searchProductSearch(querykey: string, shopid: number = Number(localStorage.getItem('shopId'))) {
+    let param = {
+      querykey,
+      shopid
+    }
+    return this.http.post('/api/shop/search/searchproduct/search', param)
+  }
+
+
+ /**
+   * @name 搜索商品   一般使用页面 搜索页面(searchPage)
+   * @param querykey
+   * @param  shopId:Variable.getInstance().shopid
+   */
+
+  // this.ajax.post(AppConfig.getDebugUrl + '/api/shop/search/searchproduct/search',
+
+  // { querykey: this.search ,
+
+  //  s hopId:Variable.getInstance().shopid}
+  searchProductSe1arch(querykey: string, shopid: number = Number(localStorage.getItem('shopId'))) {
     let param = {
       querykey,
       shopid

@@ -21,6 +21,7 @@ import { UtilsProvider } from '../providers/utils/utils';
 import { NativeServiceProvider } from '../providers/native-service/native-service';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { PublicServiceProvider } from '../providers/public-service/public-service';
+import { MinePage } from '../pages/mine/mine';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
     ContactPage, 
     HomePage,
     KindPage,
+    MinePage,
     TabsPage
   ],
   imports: [
@@ -65,6 +67,7 @@ import { PublicServiceProvider } from '../providers/public-service/public-servic
     ContactPage,
     HomePage,
     KindPage,
+    MinePage,
     TabsPage
   ],
   providers: [

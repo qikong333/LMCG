@@ -446,23 +446,31 @@ export class ApiServiceProvider {
   }
 
 
- /**
-   * @name 搜索商品   一般使用页面 搜索页面(searchPage)
-   * @param querykey
-   * @param  shopId:Variable.getInstance().shopid
-   */
+  /**
+    * @name 查询订单列表 使用页面my-order-list
 
-  // this.ajax.post(AppConfig.getDebugUrl + '/api/shop/search/searchproduct/search',
+    * @param  eq_orderStatus: number, 全部订单0 待付款1  待收获3 待收获3  待评价4 
+    * @param  page: number,       //待付款当前页码1 待收货当前页码1 待评价当前页码1 全部订单当前页码1
+    * @param  size: number,      //查询出来的数量
+    * @param  userAgent: string    设备
+    * @param  tokenId: string,    //获取会话密钥
+    */
 
-  // { querykey: this.search ,
-
-  //  s hopId:Variable.getInstance().shopid}
-  searchProductSe1arch(querykey: string, shopid: number = Number(localStorage.getItem('shopId'))) {
+  queryOrders(
+    eq_orderStatus: number = 0,
+    page: number = 1,
+    size: number = 10,
+    userAgent: string = localStorage.getItem("userAgent"),
+    tokenId:string=localStorage.getItem("tokenId"),
+  ) {
     let param = {
-      querykey,
-      shopid
+      eq_orderStatus,
+      page,
+      size,
+      userAgent,
+      tokenId
     }
-    return this.http.post('/api/shop/search/searchproduct/search', param)
+    return this.http.get('/api/shop/order/queryOrders', param)
   }
 
   //  list(code) {

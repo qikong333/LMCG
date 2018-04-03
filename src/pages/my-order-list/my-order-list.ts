@@ -1,8 +1,9 @@
-import { Component, ViewChild, ElementRef, Renderer,AfterViewChecked ,AfterViewInit} from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
- 
+import { ApiServiceProvider } from '../../providers/api-service/api-service';
+
 @IonicPage({
-  name:"MyOrderListPage"
+  name: "MyOrderListPage"
 })
 @Component({
   selector: 'page-my-order-list',
@@ -10,58 +11,93 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyOrderListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private renderer:Renderer) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private renderer: Renderer,
+    private apiService: ApiServiceProvider
+  ) {
 
+  // 获取全部的订单列表
+  this.getQueryOrders()
 
-  
   }
+
+
+  // 获取全部的订单列表
+
+  getQueryOrders() {
+    this.apiService.queryOrders()
+      .map(e => e.json())
+      .subscribe(
+        (item) => {
+          console.log(item.content)
+        },
+        (err)=>{console.error(err)},
+        ()=>{console.log("getQueryOrders() is ends")}
+    )
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyOrderListPage');
- 
-  // 设置已选商品的宽度
-  // this.getGoodList();
+
+    // 设置已选商品的宽度
+    // this.getGoodList();
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.getGoodList();
   }
 
   // 设置已选商品的宽度
- 
-  @ViewChild("goodsItems")  goodsItems:ElementRef;
-  
-  selectGoodsWith(){
-  // let goodsItems =  this.goodsItems;
-  // console.log(goodsItems);
-  // 获取每个产品li的宽度
-  let goodsLi = this.goodsItems.nativeElement.children[0].offsetWidth+this.goodsItems.nativeElement.children[0].offsetLeft+1;
-// console.log(goodsLi+100000000000);
-// 设置产品列表的宽度
 
-  let goodsLength = this.goodsItems.nativeElement.children.length;
- 
-this.renderer.setElementStyle(this.goodsItems.nativeElement,'width',goodsLi*goodsLength+"px");
- 
-    
+  @ViewChild("goodsItems") goodsItems: ElementRef;
+
+  selectGoodsWith() {
+    // let goodsItems =  this.goodsItems;
+    // console.log(goodsItems);
+    // 获取每个产品li的宽度
+    let goodsLi = this.goodsItems.nativeElement.children[0].offsetWidth + this.goodsItems.nativeElement.children[0].offsetLeft + 1;
+    // console.log(goodsLi+100000000000);
+    // 设置产品列表的宽度
+
+    let goodsLength = this.goodsItems.nativeElement.children.length;
+
+    this.renderer.setElementStyle(this.goodsItems.nativeElement, 'width', goodsLi * goodsLength + "px");
+
+
   }
-  
-// tabs页面
-clickTab:number = 3;
-tabsArr:Array<string> =['待付款','待收货','已完成','全部订单'];
-selectTabs(index){
-  this.clickTab =index;
-}
+
+  // tabs页面
+  clickTab: number = 3;
+  tabsArr: Array<string> = ['待付款', '待收货', '已完成', '全部订单'];
+  selectTabs(index) {
+    this.clickTab = index;
+  }
 
 
-// 删除
+  // 删除
 
 
 
 
-deleteOrder(){
-  alert("是否取消");
-}
+  deleteOrder() {
+    alert("是否取消");
+  }
 
 
 
@@ -75,13 +111,13 @@ deleteOrder(){
 
   // 订单item
   orders: any;
-  isNoOrder:boolean=true;
+  isNoOrder: boolean = true;
   getGoodList() {
     let orderSumCount = 0;
     let orderSumPrice = 0;
 
     let orderTmp = [
-        new Order(1, '南城天安店', -1, [
+      new Order(1, '南城天安店', -1, [
         new goods(1, "山药", 1, 15),
         new goods(2, "小米", 1, 15),
         new goods(3, "鸡蛋", 1, 15),
@@ -107,9 +143,9 @@ deleteOrder(){
         new goods(6, "煎饼果子", 2, 15)], "order_thumbnail.png"),
     ];
 
-    this.isNoOrder= orderTmp.length!==0?false:true;
-this.orders =  orderTmp;
-     console.log(orderTmp[3].goodsList.length);
+    this.isNoOrder = orderTmp.length !== 0 ? false : true;
+    this.orders = orderTmp;
+    console.log(orderTmp[3].goodsList.length);
   }
 }
 

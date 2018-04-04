@@ -36,7 +36,7 @@ export class SearchDetailPage {
 
   getSearchProductSearch() {
     this.apiService.searchProductSearch(this.queryString, this.shopid)
-      // .map(e => e.json())
+      .map(e => e.json())
       .subscribe(
         (item) => {
           console.log(item);

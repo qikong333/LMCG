@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, Renderer, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
+import { SwitchView } from '@angular/common/src/directives/ng_switch';
 
 @IonicPage({
   name: "MyOrderListPage"
@@ -17,50 +18,115 @@ export class MyOrderListPage {
     private apiService: ApiServiceProvider
   ) {
 
-  // 获取全部的订单列表
-  this.getQueryOrders()
+    // 获取全部的订单列表
+    this.getQueryOrders(1)
+ 
 
   }
 
+  /*************************************订单页面的变量STR*******************************************/
 
+  // tabs页面
+  clickTab: number = 3;
+  tabsArr: Array<string> = ['待付款', '待收货', '已完成', '全部订单'];
+
+  // 订单item
+  orders: any;
+  // 订单产品列表
+  odProductList: any;
+  isNoOrder: boolean = false;
+// 查询状态
+
+ status = 0;
+ 
+  /*************************************订单页面的变量END*******************************************/
+
+  /*************************************订单页面的http请求STR*******************************************/
   // 获取全部的订单列表
 
-  getQueryOrders() {
-    this.apiService.queryOrders()
+  getQueryOrders(eq_orderStatus=1) {
+    
+    this.apiService.queryOrders(eq_orderStatus)
       .map(e => e.json())
       .subscribe(
         (item) => {
-          console.log(item.content)
+        
+          this.orders = item.content;
+          console.log(this.orders)
         },
-        (err)=>{console.error(err)},
-        ()=>{console.log("getQueryOrders() is ends")}
-    )
+        (err) => { console.error(err) },
+        () => {
+ 
+          console.log("getQueryOrders() is ends")
+        }
+      )
   }
 
+  /*************************************订单页面的http请求END*******************************************/
+
+  /*************************************数据结构处理STR*******************************************/
+ 
+  
+
+  //   // 处理订单item
+  //   structureOrders(orders){
+  //     // public id: number,
+  //     // public name: string,
+  //     // public count: number,
+  //     // public unitPrice: number
+
+  //     // 订单数量
+  //     let ordersCount;
+  //     ordersCount = this.orders.odProductList;
+  // console.log(ordersCount);
+  //     // 订单总价
+  //     //     this.isNoOrder = orderTmp.length !== 0 ? false : true;
+  //     // this.orders = orderTmp;
+  //     // console.log(orderTmp[3].goodsList.length);
 
 
 
+  //   }
+  // getGoodList() {
+  //   let orderSumCount = 0;
+  //   let orderSumPrice = 0;
+
+  //   let orderTmp = [
+  //     new Order(1, '南城天安店', -1, [
+  //       new goods(1, "山药", 1, 15),
+  //       new goods(2, "小米", 1, 15),
+  //       new goods(3, "鸡蛋", 1, 15),
+  //       new goods(4, "啤酒", 1, 15),
+  //       new goods(5, "苹果", 1, 15),
+  //       new goods(6, "煎饼果子", 2, 15)], "order_thumbnail.png"),
+
+  //     new Order(1, '南城天安店', 0, [
+  //       new goods(1, "山药", 1, 15),
+  //       new goods(2, "小米", 1, 15)], "order_thumbnail.png"),
+
+  //     new Order(1, '南城天安店', -1, [
+  //       new goods(1, "山药", 1, 15),
+  //       new goods(2, "小米", 1, 15),
+  //       new goods(3, "煎饼果子", 2, 15)], "order_thumbnail.png"),
+
+  //     new Order(1, '南城天安店', 1, [
+  //       new goods(1, "山药", 1, 15),
+  //       new goods(2, "小米", 1, 15),
+  //       new goods(3, "鸡蛋", 1, 15),
+  //       new goods(4, "啤酒", 1, 15),
+  //       new goods(5, "苹果", 1, 15),
+  //       new goods(6, "煎饼果子", 2, 15)], "order_thumbnail.png"),
+  //   ];
 
 
+  // }
+
+  /*************************************数据结构处理END*******************************************/
 
 
-
-
-
-
-
-
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyOrderListPage');
-
-    // 设置已选商品的宽度
-    // this.getGoodList();
-  }
-
+  /*************************************订单页面的DOM操作STR*******************************************/
   ngAfterViewInit() {
-    this.getGoodList();
+    // this.getGoodList();
   }
 
   // 设置已选商品的宽度
@@ -79,82 +145,33 @@ export class MyOrderListPage {
 
     this.renderer.setElementStyle(this.goodsItems.nativeElement, 'width', goodsLi * goodsLength + "px");
 
-
   }
-
-  // tabs页面
-  clickTab: number = 3;
-  tabsArr: Array<string> = ['待付款', '待收货', '已完成', '全部订单'];
-  selectTabs(index) {
-    this.clickTab = index;
-  }
-
 
   // 删除
-
-
-
 
   deleteOrder() {
     alert("是否取消");
   }
 
 
+  // tabs页面
 
-
-
-
-
-
-
-
-
-  // 订单item
-  orders: any;
-  isNoOrder: boolean = true;
-  getGoodList() {
-    let orderSumCount = 0;
-    let orderSumPrice = 0;
-
-    let orderTmp = [
-      new Order(1, '南城天安店', -1, [
-        new goods(1, "山药", 1, 15),
-        new goods(2, "小米", 1, 15),
-        new goods(3, "鸡蛋", 1, 15),
-        new goods(4, "啤酒", 1, 15),
-        new goods(5, "苹果", 1, 15),
-        new goods(6, "煎饼果子", 2, 15)], "order_thumbnail.png"),
-
-      new Order(1, '南城天安店', 0, [
-        new goods(1, "山药", 1, 15),
-        new goods(2, "小米", 1, 15)], "order_thumbnail.png"),
-
-      new Order(1, '南城天安店', -1, [
-        new goods(1, "山药", 1, 15),
-        new goods(2, "小米", 1, 15),
-        new goods(3, "煎饼果子", 2, 15)], "order_thumbnail.png"),
-
-      new Order(1, '南城天安店', 1, [
-        new goods(1, "山药", 1, 15),
-        new goods(2, "小米", 1, 15),
-        new goods(3, "鸡蛋", 1, 15),
-        new goods(4, "啤酒", 1, 15),
-        new goods(5, "苹果", 1, 15),
-        new goods(6, "煎饼果子", 2, 15)], "order_thumbnail.png"),
-    ];
-
-    this.isNoOrder = orderTmp.length !== 0 ? false : true;
-    this.orders = orderTmp;
-    console.log(orderTmp[3].goodsList.length);
+  selectTabs(index) {
+    this.clickTab = index;
   }
+
+
+  /*************************************订单页面的DOM操作END*******************************************/
+
 }
+/***************************************************订单页面的类型约束STR*********************************************************/
 
 // 商品
 // id
 // name名字
 // count数量
 // unitPrice单价
-export class goods {
+export class Goods {
   constructor(
     public id: number,
     public name: string,
@@ -178,7 +195,9 @@ export class Order {
     public id: number,
     public shopName: string,
     public goodsStatus: number,
-    public goodsList: Array<goods>,
+    public goodsList: Array<Goods>,
     public thumbnail: string
   ) { }
 }
+
+/***************************************************订单页面的类型约束END*********************************************************/

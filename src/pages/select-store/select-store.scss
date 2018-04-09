@@ -161,6 +161,7 @@ page-select-store {
                     margin-bottom: 0;
                 }
                 .item-address {
+                    clear:both;
                     margin-top: r(116px);
                     padding-left: r(66px);
                     font-size: r(28px);
@@ -175,7 +176,7 @@ page-select-store {
                         left: r(22px);
                         width: r(30px);
                         height: r(30px);
-                        background-color: #29aff6;
+                        color: #29aff6;
                     }
                 }
                 .item-tel {
@@ -195,7 +196,11 @@ page-select-store {
                         left: r(22px);
                         width: r(30px);
                         height: r(30px);
-                        background-color: #29aff6;
+                        img{
+                            width: r(35px);
+                            height: r(25px);
+                        }
+                        // background-color: #29aff6;
                     }
                 }
             }

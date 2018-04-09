@@ -6,15 +6,14 @@ import { HttpServiceProvider } from '../http-service/http-service';
 import { SERVER_URL } from '../constants/constants';
 
 
-
 @Injectable()
 export class ApiServiceProvider {
 
-  constructor(public http: HttpServiceProvider,public http2: Http) {
+  constructor(public http: HttpServiceProvider, public http2: Http) {
     console.log('Hello ApiServiceProvider Provider');
   }
 
-  public SHOPID;
+
 
 
   /*********************home.ts**************************** */
@@ -27,6 +26,8 @@ export class ApiServiceProvider {
       tokenid: localStorage.getItem('tokenId'),
       userAgent: localStorage.getItem('userAgent'),
     }
+    console.log(params);
+    
     return this.http.get('/api/shop/shopcar/odShopcarDetail/shpocarinfo/' + localStorage.getItem('shopId'), params)
   }
 
@@ -35,7 +36,7 @@ export class ApiServiceProvider {
    * @param itemid 
    */
   itemInfo(itemid) {
-    return this.http.get('/api/shop/product/goods/' + itemid)
+    return this.http.get('/api/shop/product/goods/' + itemid, { tokenid: localStorage.getItem('tokenId')})
   }
 
 
@@ -51,7 +52,9 @@ export class ApiServiceProvider {
       tokenid: localStorage.getItem('tokenId'),
       userAgent: localStorage.getItem('userAgent'),
     }
-    return this.http.post('/api/shop/collection/favorite/', params)
+    console.log(params);
+    
+    return this.http.postFormData('/api/shop/collection/favorite/', params)
   }
 
   /**
@@ -66,11 +69,12 @@ export class ApiServiceProvider {
       tokenid: localStorage.getItem('tokenId'),
       userAgent: localStorage.getItem('userAgent'),
     }
-    return this.http.post('/api/shop/collection/favorite/', params)
+    console.log(params);
+    return this.http.get('/api/shop/collection/cancelcollect', params)
   }
 
   /**
-   * @name 加入购物车
+   * @name 加入购物车/加按钮
    * @param itemid 
    * @param productQty 数量
    */
@@ -85,6 +89,21 @@ export class ApiServiceProvider {
 
     return this.http.postFormData('/api/shop/shopcar/odShopcarDetail/add', params)
   }
+
+  remove(itemid, productQty = 1) {
+    let params = {
+      method: 'decrease',
+      itemid: itemid,
+      productQty: productQty,
+      tokenid: localStorage.getItem('tokenId'),
+      userAgent: localStorage.getItem('userAgent'),
+    }
+    // console.log(params);
+
+    return this.http.postFormData('/api/shop/shopcar/odShopcarDetail/add', params)
+  }
+
+
 
 
   /**
@@ -113,7 +132,7 @@ export class ApiServiceProvider {
       size: size,
       userAgent: localStorage.getItem('userAgent'),
     }
-    console.log(params);
+    // console.log(params);
 
     return this.http.get('/api/shop/couponActivity/couponActivityListByPassId', params)
   }
@@ -233,6 +252,8 @@ export class ApiServiceProvider {
     console.log(params);
 
     return this.http.get('/api/shop/lmcard/confirmPay', params)
+
+
   }
 
 
@@ -283,10 +304,52 @@ export class ApiServiceProvider {
     let params = {
       shopid: localStorage.getItem('shopId'),
     }
-    // console.log(params);
+    console.log(params);
 
     return this.http.get('/api/shop/shopActivity/activity/getDiscountRatio', params)
   }
+
+  /************************car-list.ts 购物车 ***************************************/
+
+  /**
+   * @name 购物车列表
+   */
+  listInfo(page = 0, size = 50) {
+    let params = {
+      shopid: localStorage.getItem('shopId'),
+      page,
+      size,
+      tokenid: localStorage.getItem('tokenId'),
+      userAgent: localStorage.getItem('userAgent'),
+    }
+    console.log(params);
+
+    return this.http.get('/api/shop/shopcar/odShopcarDetail/list', params)
+  }
+
+  /**
+   * @name 删除购物车项目
+   * @param ids 把所有的商品id拼成一个字符串
+   */
+  delete(ids: string) {
+    let params = {
+      tokenid: localStorage.getItem('tokenId'),
+      userAgent: localStorage.getItem('userAgent'),
+    }
+    console.log(params);
+
+    return this.http.postFormData('/api/shop/shopcar/odShopcarDetail/delete/' + ids, params)
+  }
+
+
+
+
+ 
+   
+
+
+
+
 
 
 
@@ -481,30 +544,61 @@ export class ApiServiceProvider {
 
 
 
-  
+
+
   /*****************************高德定位api************************************/
 /**
  * 高德云图定位
  */
-gaode() {
-  let pd = {
-    key: 'e6b86d252ff55da0fda32a48564ca0d4',
-    tableid:'58e44e9aafdf520ea822b318',
-    center: [localStorage.getItem('latname'), localStorage.getItem('lngname')],
-    keywords: "六沐便利店",
-    radius: 50000,
-    sortrule: '_distance',//排序
-  }
-  console.log(pd);
-  
- return this.http2.get('https://yuntuapi.amap.com/datasearch/around', { search: HttpServiceProvider.buildURLSearchParams(pd) })
-
-
+  gaode() {
+    let pd = {
+      key: 'e6b86d252ff55da0fda32a48564ca0d4',
+      tableid:'58e44e9aafdf520ea822b318',
+      center: [localStorage.getItem('latname'), localStorage.getItem('lngname')],
+      keywords: "六沐便利店",
+      radius: 50000,
+      sortrule: '_distance',//排序
+    }
+    console.log(pd);
     
-}
+   return this.http2.get('https://yuntuapi.amap.com/datasearch/around', { search: HttpServiceProvider.buildURLSearchParams(pd) })
+  
+
+      
+  }
 
 
 
+
+
+
+
+
+
+
+
+
+  // list(code) {
+  //   let param = {
+  //     code: code,
+  //   }
+  //   return this.http.get('api/shop/home/list/', param)
+  // }
+
+  // list(code) {
+  //   let param = {
+  //     code: code,
+  //   }
+  //   return this.http.get('api/shop/home/list/', param)
+  // }
+
+
+  // list(code) {
+  //   let param = {
+  //     code: code,
+  //   }
+  //   return this.http.get('api/shop/home/list/', param)
+  // }
 
   //  list(code) {
   //   let param = {

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from "ionic-angular";
+ import {NavController } from "ionic-angular";
 
 //  页面导入列表
 import { SearchPage } from "../../pages/search/search";
 
-
+ 
 @Component({
   selector: 'header-home',
   templateUrl: 'header-home.html'
@@ -37,14 +37,4 @@ export class HeaderHomeComponent {
       uId: localStorage.getItem("userId")
     })
   }
-
-
-
-
-
-
-
-
-  
-
 }

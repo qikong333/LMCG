@@ -31,10 +31,10 @@ export class CreateAddressPage {
 
   }
 
-  // æ¥å—å‚æ•°ç”¨æˆ·ID
+  // ½ÓÊÜ²ÎÊıÓÃ»§ID
   // userId:number=parseInt(localStorage.getItem("userId"));
 
-  // æ¥å—å‚æ•°ç”¨æˆ·ID
+  // ½ÓÊÜ²ÎÊıÓÃ»§ID
   ngOnInit() {
     this.userId = this.navParams.get("uId");
     // console.log(this.userId);
@@ -43,7 +43,7 @@ export class CreateAddressPage {
   }
 
 
-  // DOMæ“ä½œ
+  // DOM²Ù×÷
   @ViewChild("userValue") userValue: ElementRef;
   @ViewChild("telValue") telValue: ElementRef;
   @ViewChild("detailsValue") detailsValue: ElementRef;
@@ -62,7 +62,7 @@ export class CreateAddressPage {
         break;
     }
   }
-  // é¡µé¢åŠ è½½å®Œæ¯•è·å–å€¼
+  // Ò³Ãæ¼ÓÔØÍê±Ï»ñÈ¡Öµ
   ionViewDidLoad() {
     // this.username=this.userValue.nativeElement.value ;
     // this.phone=parseInt(this.telValue.nativeElement.value );
@@ -70,7 +70,7 @@ export class CreateAddressPage {
     // this.addressDetail =this.detailsValue.nativeElement.value ;
   }
 
-  // æˆåŠŸå¢åŠ åœ°å€æ˜¾ç¤ºè’™æ¿å†…å®¹
+  // ³É¹¦Ôö¼ÓµØÖ·ÏÔÊ¾ÃÉ°åÄÚÈİ
   time:number=3;
   showToastBlock() {
     this.renderer.setElementStyle(this.toastBlock.nativeElement,"display","block");
@@ -86,47 +86,47 @@ export class CreateAddressPage {
       this.time -= 1; 
       if(this.time==0||this.time<0){
         clearTimeout(timerInter);
-        // è¿”å›ä¸Šä¸€çº§
+        // ·µ»ØÉÏÒ»¼¶
         this.navCtrl.pop();
       }
    },1000)
 // this.toastBlock
   }
-  // DOMæ“ä½œEND
+  // DOM²Ù×÷END
 
 
   /**
-   * @name å¢åŠ åœ°å€
+   * @name Ôö¼ÓµØÖ·
    * @param    
-   * ç”¨æˆ·ID
+   * ÓÃ»§ID
    *  userId: number,
-   * æ”¶è´§äººçš„åå­—
+   * ÊÕ»õÈËµÄÃû×Ö
    *  username:string,
-   *  æ”¶è´§äººçš„ç”µè¯
+   *  ÊÕ»õÈËµÄµç»°
       phone:number,
-      å“ªä¸ªçœçš„æ•°æ®åº“ä»£ç 
+      ÄÄ¸öÊ¡µÄÊı¾İ¿â´úÂë
       provinceNameCode:number,
-        å“ªä¸ªå¸‚çš„æ•°æ®åº“ä»£ç 
+        ÄÄ¸öÊĞµÄÊı¾İ¿â´úÂë
       cityNameCode:number,
-        å“ªä¸ªåŒºçš„æ•°æ®åº“ä»£ç 
+        ÄÄ¸öÇøµÄÊı¾İ¿â´úÂë
       countyNameCode: number,
   
-      å“ªä¸ªçœçš„åå­—
+      ÄÄ¸öÊ¡µÄÃû×Ö
       provinceName:string,
-      å“ªä¸ªå¸‚çš„åå­—
+      ÄÄ¸öÊĞµÄÃû×Ö
       cityName:string,
-      å“ªä¸ªåŒºçš„åå­—
+      ÄÄ¸öÇøµÄÃû×Ö
       countyName:string,
-      å¯èƒ½éœ€è¦åˆ°çš„è¯¦ç»†çš„åœ°å€
+      ¿ÉÄÜĞèÒªµ½µÄÏêÏ¸µÄµØÖ·
       addressDetail:string,
-      æ ¡éªŒ
+      Ğ£Ñé
       checkedDef:any
    * 
    * 
    * 
    * 
    * 
-  æ–°å¢åŠ ä¸€ä¸ªåœ°å€
+  ĞÂÔö¼ÓÒ»¸öµØÖ·
   */
   userId: number;
 

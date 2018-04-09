@@ -1,3 +1,5 @@
+import { KindPageModule } from './../pages/kind/kind.module';
+import { DirectivesModule } from './../directives/directives.module';
 import { PipesModule } from './../pipes/pipes.module';
 import { ComponentsModule } from './../components/components.module';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -8,7 +10,7 @@ import { Http, XHRBackend, RequestOptions, ConnectionBackend, HttpModule, JsonpM
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 import { KindPage } from '../pages/kind/kind';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -28,12 +30,12 @@ import { MinePage } from '../pages/mine/mine';
     MyApp,
     AboutPage,
     ContactPage, 
-    HomePage,
     KindPage,
     MinePage,
     TabsPage
   ],
   imports: [
+    DirectivesModule,
     HttpModule,
     ComponentsModule,
     PipesModule,
@@ -65,7 +67,6 @@ import { MinePage } from '../pages/mine/mine';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
     KindPage,
     MinePage,
     TabsPage

@@ -1,4 +1,6 @@
-import { Component, Input, OnChanges, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { NativeServiceProvider } from './../../providers/native-service/native-service';
+import { ApiServiceProvider } from './../../providers/api-service/api-service';
+import { Component, Input, OnChanges, Output, EventEmitter, ViewChild } from '@angular/core';
 
 /**
  * Generated class for the NumberItemComponent component.
@@ -31,11 +33,14 @@ export class NumberItemComponent {
   @Input("minQty")
   minQty: number = 0;//最小购买数，默认0
 
+  @Input("apiBoolean")
+  apiBoolen: any = true;//接口开关
+
   disabled: boolean = false;//是否禁止输入，默认允许
   minus: boolean = true;//是否禁用减按钮
   add: boolean = false;//是否禁用加按钮
 
-  constructor() {
+  constructor(public api:ApiServiceProvider,public native:NativeServiceProvider) {
     console.log('Hello NumberItemComponent Component');
   }
 
@@ -74,6 +79,15 @@ export class NumberItemComponent {
 
     if (this.buyNumber && this.buyNumber > this.minQty) {
       this.buyNumber--;
+
+  if (this.apiBoolen) {
+    this.api.remove(this.goods)
+      .map(r => r.json())
+      .subscribe(r => {
+        console.log(r);
+      })
+  }
+      
       //判断是否禁用减按钮
       if (this.buyNumber == this.minQty) {
         this.minus = true;
@@ -91,6 +105,15 @@ export class NumberItemComponent {
   onAdd(event) {
     event.stopPropagation();
     this.buyNumber++;   
+
+    if (this.apiBoolen) {
+      this.api.add(this.goods)
+        .map(r => r.json())
+        .subscribe(r => {
+          console.log(r);
+        })
+    }
+
     if (this.maxQty && this.buyNumber >= this.maxQty) {
       this.add = true;
   
@@ -98,7 +121,7 @@ export class NumberItemComponent {
     this.onEvent();
     this.minus = false;
      
-    console.log(this.buyNumber);
+    // console.log(this.buyNumber);
     
   }
 

@@ -3,8 +3,9 @@ import { ApiServiceProvider } from './../../providers/api-service/api-service';
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { PublicServiceProvider } from '../../providers/public-service/public-service';
-// import { JSEncrypt } from "../../assets/js/jsencrypt.js";
- 
+import { JSEncrypt } from "../../assets/js/jsencrypt.js"
+// import  * as JSEncrypt from "../../assets/js/jsencrypt.js"
+
 
 @IonicPage({
   name: 'OrderSubmissionPage'
@@ -27,12 +28,15 @@ export class OrderSubmissionPage {
   payName = "微信支付"           //支付方式名称
   payUrl = "assets/imgs/weixin.png"     //支付图像
   payTip = false          //支付提示文字
-  isAddress = false;        //是否存在地址
+  isAddress: boolean;        //是否存在地址
   checkedID: number;      //选中的id
-  OrderOkParam=false        //确认订单状态
-  discount        //折扣数
-  discountParams  //折扣数参数
-  discountText    //折扣文字返回
+  OrderOkParam = false        //确认订单状态
+  discount = 1;        //折扣数
+  discountParams;  //折扣数参数
+  discountText;    //折扣文字返回
+  orderID;         //订单号
+  shopName: string; //商店名称
+
 
   odBase = {//提交订单参数1
     shopid: localStorage.getItem('shopId'), //商店ID
@@ -63,7 +67,7 @@ export class OrderSubmissionPage {
   ) {
     this.timeSelect = this.publicservice.nowTimeSelect()
     this.timed = this.timeSelect[0]
-
+    this.shopName = JSON.parse(localStorage.getItem('localshop'))._name;
 
     // 年月日的转换
     const formatDate = (time: any) => {
@@ -79,19 +83,29 @@ export class OrderSubmissionPage {
 
 
 
-  ionViewDidLoad() {
+  ionViewCanEnter() {
 
+    //获取参数
     this.getParams = this.navParams.get('datas')
     console.log(this.getParams);
+    
+    // 算订单总价
+    this.sum();
 
     //默认地址
     this.api.getAddressDefByPassId()
       .map(r => r.json())
       .subscribe(r => {
         console.log(r);
-        this.odBase.userMobile = r.username;
-        this.odBase.userMobile = r.mobileno;
-        this.odBase.userAddress = r.provinceName + r.cityName + r.countyName + r.addressDetail
+        if (r.code == 200) {
+          this.isAddress = true;
+          this.odBase.userMobile = r.username;
+          this.odBase.userMobile = r.mobileno;
+          this.odBase.userAddress = r.provinceName + r.cityName + r.countyName + r.addressDetail
+        } else {
+          this.isAddress = false;
+        }
+
       })
 
     //优惠券
@@ -128,12 +142,12 @@ export class OrderSubmissionPage {
         if (r.code == 200) {
           this.isDiscounts = true;
           this.api.getDiscountRatio()
-          .map(d=>d.json())
-          .subscribe(d=>{
-            console.log(d);
-            this.discountText = d.data
-            
-          })
+            .map(d => d.json())
+            .subscribe(d => {
+              console.log(d);
+              this.discountText = d.data
+
+            })
         } else {
           this.isDiscounts = false;
           this.discountText = r.message;
@@ -148,7 +162,7 @@ export class OrderSubmissionPage {
   //订单提交
   submit() {
 
-    
+
     // 先处理时间的格式
     this.odBase.transportStartTime = this.now + ' ' + this.timed.substr(0, 5) + ':00';
     this.odBase.transportEndTime = this.now + ' ' + this.timed.substr(6, 10) + ':00';
@@ -172,13 +186,8 @@ export class OrderSubmissionPage {
     }
 
     // 算订单总价
-    let sum = 0
-    this.getParams.forEach(e => {
-      sum += e.productTotleprice;
-    })
-    this.odBase.orderTotalprice = sum;  //订单总价(所有商品单价*数量的和)
-    this.odBase.receivable = sum - this.odBase.usedCouponAmount;  //应收(订单总价-优惠券金额)  ==》此版本没有优惠券
-    
+    this.sum();
+
 
     console.log(this.odBase);
 
@@ -194,87 +203,80 @@ export class OrderSubmissionPage {
     }
     console.log(toorderParmas);
 
-    let orderok = this.modalCtrl.create('OrderOkPage', { OrderOkParam: toorderParmas, discountParams: this.discountText});
+    let orderok = this.modalCtrl.create('OrderOkPage', { OrderOkParam: toorderParmas, discountParams: this.discountText });
+    orderok.onDidDismiss(b => {
+      if (b.OrderOkParam) {
+
+        this.api.submitOrder(this.odBase, this.getParams)
+          .map(r => r.json())
+          .subscribe(r => {
+            console.log(r);
+            if (r.code == 200) {
+              this.orderID = r.orderNo;
+              //预支付信息生成
+              this.api.generatePayment(r.orderNo, this.odBase.receivable)
+                .map(t => t.json())
+                .subscribe(t => {
+                  console.log(t);
+
+
+                  // 弹出输入密码界面
+                  this.native.showToast(r.msg);
+                  let profileModal = this.modalCtrl.create('PayPasswordPage');
+                  profileModal.onDidDismiss(d => {
+                    console.log(d);
+                    if (d.pass) {
+                      let encrypt = new JSEncrypt()
+                      encrypt.setPublicKey('-----BEGIN PUBLIC KEY-----' + t.data.publicKey + '-----END PUBLIC KEY-----')
+                      let obj = {
+                        'userToken': localStorage.getItem('userToken'),
+                        'userCode': localStorage.getItem('userCodes'),
+                        'userAgent': localStorage.getItem('userAgent'),
+                        'paymentPassword': d.pass,
+                        'paymentType': this.checkedID,
+                        'prepayNo': t.data.prepayNo,
+                        'timestamp': t.systemTime
+                      }
+                      console.log(obj);
+
+                      let rsajm = encrypt.encryptLong(JSON.stringify(obj))
+
+                      this.api.confirmPay(t.data.prepayNo, t.systemTime, rsajm, (1 - this.discount) * this.odBase.receivable, this.orderID)
+                        .map(a => a.json())
+                        .subscribe(a => {
+                          console.log(a);
+
+                        })
+                    }
+                  });
+                  profileModal.present();
+                })
+
+            } else {
+              this.native.showToast("订单提交失败：" + r.msg);
+            }
+
+          })
+      } else {
+        return
+      }
+    })
     orderok.present();
-    
-    // let orderok = this.modalCtrl.create('OrderOkPage', { OrderOkParam: toorderParmas}); 
-    // orderok.onDidDismiss(b=> {
-    //   console.log(b);
-    //   if (b.OrderOkParam) {
-         
-    //   }else{
-    //     return
-    //   }
-    // })
-    // orderok.present();
-
-    // this.api.submitOrder(this.odBase, this.getParams)
-    //   .map(r => r.json())
-    //   .subscribe(r => {
-    //     console.log(r);
-    //     if (r.code == 200) {
-
-    //       //预支付信息生成
-    //       this.api.generatePayment(r.orderNo, this.odBase.receivable)
-    //         .map(t => t.json())
-    //         .subscribe(t => {
-    //           console.log(t);
 
 
-    //           // 弹出输入密码界面
-    //           this.native.showToast(r.msg);
-    //           let profileModal = this.modalCtrl.create('PayPasswordPage');
-    //           profileModal.onDidDismiss(d => {
-    //             console.log(d);
-    //             if (d.pass) {
+  }
 
-    //               let obj = {
-    //                 'userToken': localStorage.getItem('userToken'),
-    //                 'userCode': localStorage.getItem('userCodes'),
-    //                 'userAgent': localStorage.getItem('userAgent'),
-    //                 'paymentPassword': d.pass,
-    //                 'paymentType': this.checkedID,
-    //                 'prepayNo': t.data.prepayNo,
-    //                 'timestamp': t.systemTime
-    //               }
-    //               console.log(obj);
-    //               let eat = JSON.stringify(obj)
-    //               let encrypt = new JSEncrypt()
-    //               let rsajm = encrypt.encryptLong(JSON.stringify(obj))
+  //M卡支付
+  Mpay() {
 
-    //               this.api.confirmPay(t.data.prepayNo, t.systemTime, rsajm)
-    //               // .map(a=>a.json())
-    //               .subscribe(a=>{
-    //                 console.log(a);
-                    
-    //               })
+  }
 
+  //微信支付
+  wxPay() {
 
-    //             }
-                
-              
-    //           });
-    //           profileModal.present();
-
-
-               
-              
-
-             
-
-    //         })
-
-
-       
-    //     } else {
-    //       this.native.showToast("订单提交失败：" +r.msg);
-    //     }
-
-    //   })
   }
 
 
- 
 
   //打开支付选中方式
   openPaySelect() {
@@ -284,7 +286,7 @@ export class OrderSubmissionPage {
       arr.push(e.pid)
     });
     console.log(arr);
-    this.discountParams =arr;
+    this.discountParams = arr;
 
     console.log("传送的id----------" + this.checkedID);
 
@@ -330,6 +332,29 @@ export class OrderSubmissionPage {
 
   }
 
+  //算总价，优惠价，需付
+  sum() {
+
+    // 算订单总价
+    let sum = 0
+    this.getParams.forEach(e => {
+      sum += e.productTotleprice;
+    })
+    console.log(sum);
+
+    this.odBase.orderTotalprice = sum;  //订单总价(所有商品单价*数量的和)
+    this.odBase.receivable = this.odBase.orderTotalprice - this.odBase.usedCouponAmount;  //应收(订单总价-优惠券金额)  ==》此版本没有优惠券
+
+  }
+
+
+  toReceivingAddress() {
+    this.navCtrl.push('ReceivingAddressPage')
+  }
+
+  toStoreDetails() {
+    this.navCtrl.push('StoreDetailsPage')
+  }
 
 
 }

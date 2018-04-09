@@ -13,6 +13,7 @@ import { HotKeywordsSearchComponent } from './hot-keywords-search/hot-keywords-s
 import { HistorySearchComponent } from './history-search/history-search';
 import { ShopCarComponent } from './shop-car/shop-car';
 import { NumberItemComponent } from './number-item/number-item';
+import { ProdListComponent } from './prod-list/prod-list';
 @NgModule({
 	declarations: [HeaderHomeComponent,
     NoticeHomeComponent,
@@ -26,7 +27,8 @@ import { NumberItemComponent } from './number-item/number-item';
     HotKeywordsSearchComponent,
     HistorySearchComponent,
       ShopCarComponent,
-    NumberItemComponent],
+    NumberItemComponent,
+    ProdListComponent],
 	imports: [
         IonicModule
     ],
@@ -43,7 +45,8 @@ import { NumberItemComponent } from './number-item/number-item';
     HistorySearchComponent,
     
         ShopCarComponent,
-	 NumberItemComponent
+	 NumberItemComponent,
+    ProdListComponent
 	]
 })
 export class ComponentsModule {}

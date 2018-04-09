@@ -10,8 +10,8 @@
         <ion-title>商品详情</ion-title>
         <ion-buttons end>
             <button ion-button icon-only tappable (click)="Collection()" class="collection">
-     <i class="icon-xin1 iconfont" *ngIf="isCollection"></i>  
-     <i class="icon-xin iconfont"  *ngIf="!isCollection"></i>  
+     <!-- <i class="iconfont icon-xin1"  ></i>   -->
+     <i class="iconfont" [ngClass]="{'icon-xin1':isCollection==true,'icon-xin':isCollection==false}" ></i>  
       </button>
         </ion-buttons>
     </ion-navbar>
@@ -58,31 +58,31 @@
             限购数量
         </ion-col>
         <ion-col col-4>
-            <span *ngIf="datas?.available==0">没有库存</span>
-            <number-item *ngIf="datas?.available!=0" [minQty]="1" [maxQty]="datas?.available" [buyNumber]="1" (onUpdate)="onUpdate($event)" [goods]="datas?.pid"></number-item>
+            <span *ngIf="getdatas?.stocknum<1">没有库存</span>
+            <number-item *ngIf="getdatas?.stocknum>0" [minQty]="1" [maxQty]="datas?.available" [apiBoolean]='false' [buyNumber]="1" (onUpdate)="onUpdate($event)" [goods]="datas?.itemid"></number-item>
         </ion-col>
     </ion-row>
 
     <ion-row class="box4">
-        <ion-col col-4>
-            南城天安店
+        <ion-col col-8 text-left>
+            {{shopInfo.shopName}}
         </ion-col>
-        <ion-col col-8>
-            4.5km
+        <ion-col col-4 text-right class="hui">
+            {{shopInfo.shopDistance}}m
         </ion-col>
 
         <ion-col col-4>
             商家电话
         </ion-col>
-        <ion-col col-8>
-            1379483255 | 图标
+        <ion-col col-8 class="hui">
+            {{shopInfo.shopTel}} | <i class="iconfont icon-dianhua"></i>
         </ion-col>
 
         <ion-col col-4>
             地址
         </ion-col>
-        <ion-col col-8>
-            xxxxxxxxxxx
+        <ion-col col-8 class="adress hui">
+            {{shopInfo.shopAdd}}
         </ion-col>
     </ion-row>
 </ion-content>
@@ -94,10 +94,10 @@
             购物车({{cloudNum}})
         </ion-col>
 
-        <button class="f2" col tappable (click)="add()" [disabled]="datas?.available==0">
+        <button class="f2" col tappable (click)="add(getdatas?.itemid)" [disabled]="getdatas?.stocknum<1">
             加入购物车
         </button>
-        <button class="f3" col tappable (click)="toOrderSubmission()" [disabled]="datas?.available==0">
+        <button class="f3" col tappable (click)="toOrderSubmission()" [disabled]="getdatas?.stocknum<1">
             立即购买
        </button>
 
@@ -105,4 +105,6 @@
 
 
     </ion-row>
+
+
 </ion-footer>

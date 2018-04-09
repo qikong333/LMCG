@@ -7,7 +7,10 @@ import { map, filter, scan } from 'rxjs/operators';
 // 测试api,勿删
 import {ApiServiceProvider} from "../../providers/api-service/api-service";
 
- 
+@IonicPage({
+  name:"HomePage"
+})
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -38,35 +41,7 @@ export class HomePage {
 
 
     // this.aipServiceProvider.
+
   }
-
-
-
-
-
-
-/************************************七月*****************************************/
- /**
-  * @name 以下都是push操作
-  * 
-  * 
-  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

@@ -26,7 +26,7 @@
             <i class="icon-btn_arrow iconfont"></i>
         </ion-col>
     </ion-row>
-    <ion-row class="box1_no" *ngIf="!isAddress">
+    <ion-row class="box1_no" *ngIf="!isAddress" tappable (click)="toReceivingAddress()">
 
         <ion-col col-12>
             <i class="iconfont icon-icon_MapMark"></i>
@@ -47,8 +47,8 @@
         <ion-col col-1 text-right>
             <i class="icon-icon_Store iconfont"></i>
         </ion-col>
-        <ion-col col-10>
-            天安数码城
+        <ion-col col-10 tappable (click)="toStoreDetails()">
+            {{shopName}}
         </ion-col>
         <ion-col col-1>
             <i class="icon-btn_arrow iconfont"></i>

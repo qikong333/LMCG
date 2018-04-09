@@ -1,4 +1,7 @@
 page-car-list {
+    .collection {
+        font-size: r(30px)!important;
+    }
     ion-content {
         background: #f4f6f9!important;
     }
@@ -64,6 +67,20 @@ page-car-list {
         // position: relative;
     }
     ion-footer {
+        i.icon-shanchu {
+            color: #a2a6a8;
+            font-size: r(30px)!important;
+            padding-right: 5px;
+        }
+        i.icon-weixuanzhongyuanquan {
+            color: #a2a6a8;
+        }
+        i.icon-dagouyouquan {
+            color: #29aff6;
+        }
+        i.iconfont {
+            font-size: r(46px);
+        }
         height: r(99px);
         background: #fff;
         .foot1 {
@@ -100,6 +117,80 @@ page-car-list {
                 padding: r(21px);
                 font-size: r(26px);
                 color: #a2a6a8;
+            }
+        }
+    }
+    number-item {
+        input {
+            text-align: center;
+            vertical-align: -webkit-baseline-middle;
+        }
+    }
+    ion-list {
+        [col-2] {
+            i.icon-weixuanzhongyuanquan {
+                color: #a2a6a8;
+            }
+            i.icon-dagouyouquan {
+                color: #29aff6;
+            }
+        }
+        .box_img {
+            position: relative;
+        }
+        .noStock {
+            left: 25%;
+            top: 15%;
+            position: absolute;
+            padding: r(25px) 0;
+            text-align: center;
+            height: r(145px);
+            width: r(145px);
+            border-radius: 100px;
+            display: block;
+            opacity: 0.5;
+            background: #2e3133;
+            p {
+                font-size: r(22px);
+                color: #ffffff;
+                position: relative;
+            }
+            p::after {
+                content: ' ';
+                height: 1px;
+                width: 30%;
+                display: block;
+                background: #fff;
+                position: absolute;
+                bottom: r(-10px);
+                left: 10%;
+            }
+            p::before {
+                content: ' ';
+                height: 1px;
+                width: 30%;
+                display: block;
+                background: #fff;
+                position: absolute;
+                bottom: r(-10px);
+                right: 10%;
+            }
+            i {
+                font-family: PingFang-SC-Medium;
+                font-size: r(18px);
+                color: #ffffff;
+                position: relative;
+            }
+            i::before {
+                content: ' ';
+                height: 2px;
+                width: 2px;
+                border-radius: 10px;
+                display: block;
+                position: absolute;
+                top: r(-10px);
+                left: 49%;
+                background: #fff;
             }
         }
     }

@@ -1,3 +1,4 @@
+import { ApiServiceProvider } from './../../providers/api-service/api-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -17,7 +18,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public api:ApiServiceProvider) {
   }
 
   ionViewDidLoad() {
@@ -34,7 +35,15 @@ ngOnInit(): void {
   console.log(  this.userId);
 }
 
-
+aa(){
+  this.api.searchProductSearch("酒")
+    .map(e => e.json())
+    .subscribe(
+      (e) => {
+        console.log(e);
+      }
+    )
+}
 
 
 }

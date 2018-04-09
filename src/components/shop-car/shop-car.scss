@@ -1,7 +1,11 @@
 shop-car {
+    -moz-box-shadow: 0px 2px 11px #706c70;
+    -webkit-box-shadow: 0px 2px 11px #706c70;
+    box-shadow: 0px 2px 11px #706c70;
+    border-top: 1px solid #dde0e4;
     color: #a2a6a8;
     font-size: r(34px);
-    height: r(80px);
+    // height: r(80px);
     position: absolute;
     bottom: r(-3px);
     background: #fff;
@@ -9,12 +13,19 @@ shop-car {
     z-index: 9999;
     .car_l_1 {
         color: #a2a6a8;
+        height: r(80px);
+        line-height: r(70px);
     }
     .car_l_2 {
         color: #2e3133;
+        height: r(80px);
+        line-height: r(70px);
     }
     .car_r {
         background: #dde0e4;
+        height: r(80px);
+        line-height: r(70px);
+        text-align: center;
     }
     ion-col.in {
         background: #149fe8;

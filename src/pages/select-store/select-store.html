@@ -7,92 +7,72 @@
 <ion-header class="select-store-header">
 
 
-  <ion-title class="select-store-title">便利店选择</ion-title>
-  <span class="reset-position">重新定位</span>
+    <ion-title class="select-store-title">便利店选择</ion-title>
+    <span class="reset-position" tappable (click)="Repositioning()">重新定位</span>
 
 </ion-header>
 
 
 <ion-content class="select-content">
-  <div class="select-item">
+    <div class="select-item">
 
-    <div *ngIf="selectCondition" class="select-sussess">
-      <div class="sussess-icon">
+        <div *ngIf="formattedAddress" class="select-sussess">
+            <div class="sussess-icon">
+                <img src="assets/imgs/icon_location_n.png" alt="">
+            </div>
+            <p class="sussess-text">{{formattedAddress}}</p>
+        </div>
 
-      </div>
-      <p class="sussess-text">广东省东莞市南城街道宏伟东四路明致商厦</p>
+        <div *ngIf="!formattedAddress" class="select-fail">
+            <div class="fail-icon">
+                <img src="assets/imgs/icon_location_s.png" alt="">
+            </div>
+            <p class="fail-text">定位失败 请重新定位</p>
+        </div>
+
+        <p class="select-desc">1公里内免费配送，超出范围请到门店自提</p>
     </div>
 
-    <div *ngIf="!selectCondition" class="select-fail">
-      <div class="fail-icon"></div>
-      <p class="fail-text">定位失败 请重新定位</p>
+
+
+    <div class="select-list">
+        <div class="select-title">
+            <span class="thread-left"></span>
+            <span class="center-text">附近便利店</span>
+
+            <span class="thread-right"></span>
+        </div>
+        <div *ngIf="datas!=undefined">
+            <div class="select-item clearfix" *ngFor="let data of datas">
+                <div tappable (click)="Shops()">
+                    <h2 class="item-title">
+                        {{data._name}}
+                    </h2>
+                    <p class="item-distance">{{data._distance}}m</p>
+                    <p class="item-address">
+                        <ion-icon class="address-icon" name="pin"></ion-icon>{{data._address}}</p>
+                    <p class="item-tel">
+                        <span class="tel-icon">
+              <img src="assets/imgs/icon_phone.png" alt="">
+            </span>外送电话：{{data.telephone}} </p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="datat==undefined">
+            <div class="select-item clearfix" *ngFor="let data of datat">
+                <div tappable (click)="Shops()">
+                    <h2 class="item-title">
+                        {{data._name}}
+                    </h2>
+                    <p class="item-address">
+                        <ion-icon class="address-icon" name="pin"></ion-icon>{{data._address}}</p>
+                    <p class="item-tel">
+                        <span class="tel-icon">
+              <img src="assets/imgs/icon_phone.png" alt="">
+            </span>外送电话：{{data.telephone}} </p>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    <p class="select-desc">1公里内免费配送，超出范围请到门店自提</p>
-  </div>
-
-
-
-  <div class="select-list">
-    <div class="select-title">
-      <span class="thread-left"></span>
-      <span class="center-text">附近便利店</span>
-
-      <span class="thread-right"></span>
-    </div>
-    <div class="select-item clearfix">
-      <h2 class="item-title">
-        南城石竹店
-      </h2>
-      <p class="item-distance">2587m</p>
-      <p class="item-address">
-        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
-      <p class="item-tel">
-        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
-    </div>
-
-    <div class="select-item clearfix">
-      <h2 class="item-title">
-        南城石竹店
-      </h2>
-      <p class="item-distance">2587m</p>
-      <p class="item-address">
-        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
-      <p class="item-tel">
-        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
-    </div>
-
-    <div class="select-item clearfix">
-      <h2 class="item-title">
-        南城石竹店
-      </h2>
-      <p class="item-distance">2587m</p>
-      <p class="item-address">
-        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
-      <p class="item-tel">
-        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
-    </div>
-
-    <div class="select-item clearfix">
-      <h2 class="item-title">
-        南城石竹店
-      </h2>
-      <p class="item-distance">2587m</p>
-      <p class="item-address">
-        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
-      <p class="item-tel">
-        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
-    </div>
-
-    <div class="select-item clearfix">
-      <h2 class="item-title">
-        南城石竹店
-      </h2>
-      <p class="item-distance">2587m</p>
-      <p class="item-address">
-        <span class="address-icon"></span>东莞市南城街道石竹花园十六栋M101号铺</p>
-      <p class="item-tel">
-        <span class="tel-icon"></span>外送电话：0769-22808180 </p>
-    </div>
-  </div>
 </ion-content>

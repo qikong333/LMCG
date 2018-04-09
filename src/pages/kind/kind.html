@@ -8,13 +8,21 @@
 
     <ion-navbar>
         <ion-title>产品分类</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only tappable (click)="toSearchPage()" class="collection">
+                 <i class="iconfont icon-sousuo"></i> 
+            </button>
+        </ion-buttons>
     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
     <ion-row>
         <div class="left_box">
             <ul>
@@ -49,22 +57,26 @@
                 </ion-col>
             </ion-row>
             <ion-row class="r_box4">
-                <ion-col col-6 class=" item_box" *ngFor="let item3 of product|orderBy:['sprice']:orderby" tappable (click)="toItemDetail(item3)">
+                <ion-col col-6 class=" item_box" *ngFor="let item3 of product|orderBy:['sprice']:orderby">
 
 
 
-                    <ion-row class="i_box1 ">
-                        <img src=" " alt=" " onerror="src='assets/imgs/erro_img.png'"> </ion-row>
-                    <ion-row class="i_box2 ">
+                    <ion-row class="i_box1 " tappable (click)="toItemDetail(item3)">
+                        <img src=" " [alt]="item3?.mainpic" onerror="src='assets/imgs/erro_img.png'"> </ion-row>
+                    <ion-row class="i_box2 " tappable (click)="toItemDetail(item3)">
                         {{item3.name}}
                     </ion-row>
                     <ion-row class="i_box3 ">
                         ￥{{item3.sprice}}
                     </ion-row>
-                    <number-item (onUpdate)="onUpdate($event)" [goods]="item3.pid" [sprice]="item3.sprice"></number-item>
+                    <ion-row class="i_box4 ">
+                        <number-item [maxQty]="item3?.stocknum" (onUpdate)="onUpdate($event)" [goods]="item3?.itemid" [sprice]="item3?.sprice" *ngIf="item3?.stocknum>0"></number-item>
+                        <span *ngIf="item3?.stocknum<1">没有库存</span>
+                    </ion-row>
+
                 </ion-col>
             </ion-row>
         </ion-col>
     </ion-row>
-    <shop-car [buyNumber]="car_num_sum+local_num_sum" [sprice]="car_sprice_sum+local_sprice_sum" [datas]="Arr_car_end"></shop-car>
+    <shop-car [buyNumber]="car_num_sum+local_num_sum " [sprice]="car_sprice_sum+local_sprice_sum " [datas]="Arr_car_end "></shop-car>
 </ion-content>

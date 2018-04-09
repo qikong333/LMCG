@@ -17,11 +17,11 @@
     </div>
 
     <div class="order-list">
-        <li class="item"><img class="icon icon0" src="assets/imgs/order-icon0.png" />待付款</li>
-        <li class="item"><img class="icon icon1" src="assets/imgs/order-icon1.png" />待收货</li>
-        <li class="item"><img class="icon icon2" src="assets/imgs/order-icon2.png" />已完成</li>
+        <li class="item" tappable  (click)="pushMyOrderList(0)"><img class="icon icon0" src="assets/imgs/order-icon0.png" />待付款</li>
+        <li class="item" tappable  (click)="pushMyOrderList(1)"><img class="icon icon1" src="assets/imgs/order-icon1.png" />待收货</li>
+        <li class="item" tappable  (click)="pushMyOrderList(2)"><img class="icon icon2" src="assets/imgs/order-icon2.png" />已完成</li>
 
-        <li class="item"  (touchend)="pushMyOrderList()"><img class="icon icon3" src="assets/imgs/order-icon3.png"/>全部订单</li>
+        <li class="item" tappable  (click)="pushMyOrderList(3)"><img class="icon icon3" src="assets/imgs/order-icon3.png"/>全部订单</li>
 
         <span class="cut_thread"></span>
     </div>

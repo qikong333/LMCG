@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+// declare var AMap;
 /*
   Generated class for the PublicServiceProvider provider.
 
@@ -30,4 +30,5 @@ export class PublicServiceProvider {
    }
    return  simpleColumns
  }
+
 }

@@ -19,8 +19,8 @@ export class MyOrderListPage {
   ) {
 
     // 获取全部的订单列表
-    this.getQueryOrders(1)
- 
+    // this.getQueryOrders();
+this.selectTabs(this.navParams.get("state"));
 
   }
 
@@ -37,31 +37,60 @@ export class MyOrderListPage {
   isNoOrder: boolean = false;
 // 查询状态
 
- status = 0;
+  
+
  
   /*************************************订单页面的变量END*******************************************/
 
   /*************************************订单页面的http请求STR*******************************************/
   // 获取全部的订单列表
+  /**
+    * @name 查询订单列表 使用页面my-order-list
+    * @param  eq_orderStatus: number, 全部订单0 待付款1  待收获3   待评价4   已完成5
+    * @param  page: number,       //待付款当前页码1 待收货当前页码1 待评价当前页码1 全部订单当前页码1
+    * @param  size: number,      //查询出来的数量
+    * @param  userAgent: string    设备
+    * @param  tokenId: string,    //获取会话密钥
+    */
 
-  getQueryOrders(eq_orderStatus=1) {
-    
-    this.apiService.queryOrders(eq_orderStatus)
-      .map(e => e.json())
-      .subscribe(
-        (item) => {
+    /**************************函数被封装了, 封装到了 selectTabs函数*****************************************/ 
+  // getQueryOrders() {
+  //   let eq_orderStatus=0;
+  // console.log(  this.navParams.get("state")) ;
+  // switch (this.navParams.get("state")){
+  //   // 待付款
+  //   case 0 :
+  //   eq_orderStatus = 1;
+  //   break;
+  //   // 待收货
+  //   case 0 :
+  //   eq_orderStatus = 3;
+  //   break;
+  //   // 已完成
+  //   case 0 :
+  //   eq_orderStatus = 5;
+  //   break;
+  //   // 全部订单
+  //   case 0 :
+  //   eq_orderStatus = 0;
+  //   break;
+  // }
+  //   this.apiService.queryOrders(eq_orderStatus)
+  //     .map(e => e.json())
+  //     .subscribe(
+  //       (item) => {
         
-          this.orders = item.content;
-          console.log(this.orders)
-        },
-        (err) => { console.error(err) },
-        () => {
+  //         this.orders = item.content;
+  //         console.log(this.orders)
+  //       },
+  //       (err) => { console.error(err) },
+  //       () => {
  
-          console.log("getQueryOrders() is ends")
-        }
-      )
-  }
-
+  //         console.log("getQueryOrders() is ends")
+  //       }
+  //     )
+  // }
+    /**************************函数被封装了, 封装到了 selectTabs函数*****************************************/ 
   /*************************************订单页面的http请求END*******************************************/
 
   /*************************************数据结构处理STR*******************************************/
@@ -157,7 +186,42 @@ export class MyOrderListPage {
   // tabs页面
 
   selectTabs(index) {
-    this.clickTab = index;
+    console.log("自己页面http请求"+index);
+    
+    this.clickTab =index;
+    switch (index){
+      // 待付款
+    case 0 :
+    index = 1;
+    break;
+    // 待收货
+    case 1 :
+    index = 3;
+    break;
+    // 已完成
+    case 2 :
+    index = 5;
+    break;
+    // 全部订单
+    case 3 :
+    index = 0;
+    break;
+  }
+ 
+  this.apiService.queryOrders(index)
+      .map(e => e.json())
+      .subscribe(
+        (item) => {
+        
+          this.orders = item.content;
+          console.log(this.orders)
+        },
+        (err) => { console.error(err) },
+        () => {
+ 
+          console.log("getQueryOrders() is ends")
+        }
+      )
   }
 
 

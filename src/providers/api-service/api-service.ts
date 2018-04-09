@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -5,10 +6,11 @@ import { HttpServiceProvider } from '../http-service/http-service';
 import { SERVER_URL } from '../constants/constants';
 
 
+
 @Injectable()
 export class ApiServiceProvider {
 
-  constructor(public http: HttpServiceProvider) {
+  constructor(public http: HttpServiceProvider,public http2: Http) {
     console.log('Hello ApiServiceProvider Provider');
   }
 
@@ -449,7 +451,7 @@ export class ApiServiceProvider {
 
   /**
     * @name 查询订单列表 使用页面my-order-list
-    * @param  eq_orderStatus: number, 全部订单0 待付款1  待收获3   待评价4 
+    * @param  eq_orderStatus: number, 全部订单0 待付款1  待收获3   待评价4   已完成5
     * @param  page: number,       //待付款当前页码1 待收货当前页码1 待评价当前页码1 全部订单当前页码1
     * @param  size: number,      //查询出来的数量
     * @param  userAgent: string    设备
@@ -473,6 +475,36 @@ export class ApiServiceProvider {
     }
     return this.http.get('/api/shop/order/queryOrders', param)
   }
+
+
+
+
+
+
+  
+  /*****************************高德定位api************************************/
+/**
+ * 高德云图定位
+ */
+gaode() {
+  let pd = {
+    key: 'e6b86d252ff55da0fda32a48564ca0d4',
+    tableid:'58e44e9aafdf520ea822b318',
+    center: [localStorage.getItem('latname'), localStorage.getItem('lngname')],
+    keywords: "六沐便利店",
+    radius: 50000,
+    sortrule: '_distance',//排序
+  }
+  console.log(pd);
+  
+ return this.http2.get('https://yuntuapi.amap.com/datasearch/around', { search: HttpServiceProvider.buildURLSearchParams(pd) })
+
+
+    
+}
+
+
+
 
   //  list(code) {
   //   let param = {

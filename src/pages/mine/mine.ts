@@ -29,13 +29,15 @@ export class MinePage {
     this.getMsMember();
 
   }  // DOM页面跳转函数
+ 
+
+ 
 
 
-
-  // 跳转到订单页面全部订单
-  pushMyOrderList() {
+  // 跳转到订单页面
+  pushMyOrderList(state) {
     this.navCtrl.push("MyOrderListPage", {
-      // uId: this.mineInfo.uId
+      state: state
     });
   }
 
@@ -83,7 +85,7 @@ export class MinePage {
    * 
    * **********/
   // 用户基本信息
-  mineInfo: MineInfo;
+  mineInfo: any;
 
 
 
@@ -109,7 +111,7 @@ export class MinePage {
    *  
    */
   getMsMember() {
-    let that = this;
+    // let that = this;
     if (localStorage.getItem('headimgurl')) {
       this.mineInfo.uheaderImg = localStorage.getItem('headimgurl');
 
@@ -122,11 +124,20 @@ export class MinePage {
       .subscribe(
         (item) => {
           if (item.code == 200) {
-            console.log(item);
-            this.mineInfo = new MineInfo(item.nickname, item.memberId, item.avatarpath, that.randomSignature());
+            // console.log(item);
+
+            this.mineInfo = item;
+            // console.log( this.mineInfo);
+            
 
           } else {
-            this.mineInfo = new MineInfo("六沐便利店", 1, item.avatarpath, that.randomSignature());
+            this.mineInfo = {
+              uNickName: "六沐便利店", 
+              uId:localStorage.getItem("userId"),
+              uheaderImg:item.avatarpath, 
+              uSignature: "您没有签名"
+            
+            };
           }
 
         },
@@ -164,18 +175,18 @@ export class MinePage {
 }
 
 // 类型约束
-/**
- * @author 七月
- * @returns [name,id,headerImg,signature]
-*/
-export class MineInfo {
-  constructor(
-    public uNickName: string = "便利店",
-    public uId: number,
-    public uheaderImg: string,
-    public uSignature: string
-  ) { }
-}
+// /**
+//  * @author 七月
+//  * @returns [name,id,headerImg,signature]
+// */
+// export class MineInfo {
+//   constructor(
+//     public uNickName: string = "便利店",
+//     public uId: number,
+//     public uheaderImg: string,
+//     public uSignature: string
+//   ) { }
+// }
 
 
 

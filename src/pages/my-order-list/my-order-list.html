@@ -25,17 +25,17 @@
     <div class="order-item" *ngFor="let order of orders">
         <div class="item-header">
             <div class="item-title">{{order?.shopName}}</div>
-            <div class="status-wait-pay" *ngIf="order.goodsStatus==-1">待付款</div>
-            <div class="status-wait-goods" *ngIf="order.goodsStatus==0">待收货</div>
-            <div class="status-complete" *ngIf="order.goodsStatus==1">已完成</div>
+            <div class="status-wait-pay" *ngIf="order.orderPayStatus==1">待付款</div>
+            <div class="status-wait-goods" *ngIf="order.orderPayStatus==2">待收货</div>
+            <div class="status-complete" *ngIf="order.orderPayStatus==3">已完成</div>
         </div>
         <div class="item-content">
             <ul class="scrool" #goodsItems>
 
 
                 <li class="goods-item" *ngFor="let item of order.odProductList "> 
-                    <!-- <img class="img" src="" alt=""> -->
-                    {{item.imgPath}}
+                    <img class="img" src="http://lmstore.oss-cn-shenzhen.aliyuncs.com/{{item.imgPath}}" onerror="" alt="">
+                  
                 </li>
               
                
@@ -47,9 +47,9 @@
         </div>
         <div class="item-btn clearfix">
             <div class="btn-group">
-                <span class="btn-cancel" (touchend)="deleteOrder()">取消订单</span>
-                <span class="btn-true">确认收货</span>
-                <span class="btn-delete">删除</span>
+                <span class="btn-cancel" *ngIf="order.orderPayStatus==1||order.orderPayStatus==2"  (touchend)="deleteOrder()">取消订单</span>
+                <span class="btn-true" *ngIf="order.orderPayStatus==2">确认收货</span>
+                <span class="btn-delete" *ngIf="order.orderPayStatus==3">删除</span>
             </div>
         </div>
     </div>

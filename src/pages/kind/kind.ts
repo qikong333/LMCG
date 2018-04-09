@@ -1,9 +1,10 @@
+import { PublicServiceProvider } from './../../providers/public-service/public-service';
 import { NativeServiceProvider } from './../../providers/native-service/native-service';
 import { ApiServiceProvider } from './../../providers/api-service/api-service';
 import { Observable } from 'rxjs';
 import { HttpServiceProvider } from './../../providers/http-service/http-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the KindPage page.
@@ -41,17 +42,27 @@ export class KindPage {
     public navParams: NavParams,
     public http: HttpServiceProvider,
     public api: ApiServiceProvider,
-    public native:NativeServiceProvider,
-
+    public native: NativeServiceProvider,
+    public publicservice: PublicServiceProvider,
+    public loadingCtrl: LoadingController,
   ) {
+    let loading = this.loadingCtrl.create({
+      content: '正在为您定位，请稍等...'
+    });
+    loading.present();
+    let shopInfo = JSON.parse(localStorage.getItem('shopInfo')) 
+  
+    setTimeout(() => {
+      if (shopInfo.status == 0) {
+        this.navCtrl.push('SelectStorePage')
+        this.native.showToast('定位失败，' + shopInfo.info)
+      } else {
+        this.native.showToast('定位成功')
+      }
+      loading.dismiss();
+    }, 3000);
 
 
-    this.reqCoupon();
-    this.reqCouponed();
-    this.Distribution();
-    this.shopInfo();
-    this.shopcarNum();
-    this.getCommodity(10, 1);
   }
 
   ionViewDidLoad() {
@@ -60,6 +71,16 @@ export class KindPage {
   }
 
   ionViewWillEnter() {
+    this.reqCoupon();
+    this.reqCouponed();
+    this.Distribution();
+    this.shopInfo();
+    setTimeout(() => {
+      this.shopcarNum();
+    }, 2000);
+     
+    this.getCommodity(10, 1);
+
     this.state = false;
     this.selectKindText = '全部'
   }
@@ -168,13 +189,13 @@ export class KindPage {
       .subscribe(r => {
         console.log('购物车数量')
         console.log(r)
-        if (r.code==200) {
+        if (r.code == 200) {
           this.car_num_sum = r.data.totalCount;
           this.car_sprice_sum = r.data.totalPrice;
-        }else{
+        } else {
           this.native.showToast(r.message);
         }
-        
+
       })
   }
 
@@ -256,5 +277,20 @@ export class KindPage {
   }
 
 
+  toSearchPage() {
+    this.navCtrl.push('SearchPage')
+  }
+
+
+
+  //下拉加载
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 
 }

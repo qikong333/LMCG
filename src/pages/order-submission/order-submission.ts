@@ -17,7 +17,7 @@ import { JSEncrypt } from "../../assets/js/jsencrypt.js"
 export class OrderSubmissionPage {
   username;    //用户名
   usertel;     //用户电话号码
-  address;     //默认地址
+  address;     //默认地址ss
   coupontext;   //优惠券文字
   getParams = [];    //获取传递过来的参数
   timeSelect = [];    //时间选项     

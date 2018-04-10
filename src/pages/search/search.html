@@ -1,13 +1,60 @@
 <!-- 头部 -->
 <ion-header>
-    <input-title-search></input-title-search>
+    <div class="input-title-search" [formGroup]="searchFormModel" (submit)="onSubmit($event)">
+        <div class="input-title">
+          <span class="search-icon"></span>
+          <!-- <span class="default-text" #defaultText (touchend)="clear()" ></span> -->
+          <span class="cancel-text" (touchend)="cancelText()">取消</span>
+          <input type="search" name="search" class="input-text"   formControlName="searchString" (keyup)="onSubmit($event)" />
+        </div>
+      </div>
+
 </ion-header>
 
 <ion-content>
 
-    <button (click)="aa()">aaaa</button>
-    <hot-keywords-search></hot-keywords-search>
+
+    <div class="hot-keywords-search">
+        <div class="keywords-title">
+            <span class="keywords-text">
+                  热门搜索
+            </span>
+        </div> 
+        <div class="kewords-list">
+          <li class="item"><a href="" class="text">年货节</a></li>
+          <li class="item"><a href="" class="text">咖喱鱼蛋</a></li>
+          <li class="item"><a href="" class="text">冰冻饮料</a></li>
+          <li class="item"><a href="" class="text">熟食</a></li>
+          <li class="item"><a href="" class="text">口香糖</a></li>
+          <li class="item"><a href="" class="text">老坛酸菜牛肉面</a></li>
+          <li class="item"><a href="" class="text">热奶茶</a></li>
+       
+            
+        </div> 
+      </div>
     <div class="history-search-margin-top">
-        <history-search></history-search>
+        <div class="history-search">
+
+            <div class="history-title">
+              <span class="history-text">历史搜索</span>
+            </div>
+          
+            <div class="history-item">
+              <li class="item" *ngFor="let item of historySearch,let  i  = index" (click)="pushHistoryPage(i)" tappable><a class="text" href="###"  >{{item}}</a></li>
+              <!-- <li class="item"><a class="text" href="">方便面</a></li>
+              <li class="item"><a class="text" href="">抽纸巾</a></li>
+              <li class="item"><a class="text" href="">雀巢咖啡</a></li>
+              <li class="item"><a class="text" href="">果倍爽</a></li>
+              <li class="item"><a class="text" href="">大可乐</a></li> -->
+            </div>
+          
+            <div class="clear-history">
+              <div class="clear-block">
+                <span class="clear-btn">清除搜索记录</span>
+              </div>
+            </div>
+          
+          </div>
+          
     </div>
 </ion-content>

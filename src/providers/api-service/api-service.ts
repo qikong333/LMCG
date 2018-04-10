@@ -508,7 +508,7 @@ export class ApiServiceProvider {
       querykey,
       shopid
     }
-    return this.http.post('/api/shop/search/searchproduct/search/', param)
+    return this.http.postFormData('/api/shop/search/searchproduct/search/', param)
   }
 
 

@@ -1,11 +1,220 @@
 page-search {
     display: block;
     height: 100%;
-    background-color: #fff;
+    background-color: #fff; display: block;
+    .input-title-search {
+        width: r(750px);
+        height: r(98px);
+        display: block;
+        // margin-top: r(28px)
+        position: relative;
+        .input-title {
+            // 搜索图标
+            .search-icon {
+                display: block;
+                position: absolute;
+                top: r(32px);
+                left: r(92px);
+                z-index: 220;
+                background-image: url("../assets/imgs/header_home_search.svg");
+                background-size: r(22px) r(22px);
+                width: r(22px);
+                height: r(22px);
+                // border: solid 2px #2e3133;
+            }
+            // 默认搜索推荐
+            .default-text {
+                display: block;
+                position: absolute;
+                top: r(28px);
+                left: r(132px);
+                z-index: 220;
+                font-family: "PingFang-SC-Medium";
+                font-size: r(26px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #2e3133;
+            }
+            // 取消
+            .cancel-text {
+                // position: absolute;
+                // display: block;
+                z-index: 220;
+                float: right;
+                height: r(98px);
+                line-height: r(98px);
+                margin-right: r(12px);
+                font-family: "PingFang-SC-Medium";
+                font-size: r(30px);
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 0px;
+                color: #a2a6a8;
+            }
+            // 搜索框
+            .input-text {
+                display: block;
+                //    margin-left: r(72px);
+                //    margin-top: r(18px);
+                position: absolute;
+                z-index: 200;
+                left: r(72px);
+                top: r(18px);
+                border-radius: r(6px);
+                background-color: #dde0e4;
+                height: r(52px);
+                width: r(577px);
+                padding-top: r(13px);
+                padding-bottom: r(14px);
+                padding-left: r(60px);
+                color: #2e3133;
+                padding-right: r(60px);
+                border: 0 none;
+                outline: 0 none;
+                font-size: r(26px);
+            }
+        }
+    }
+    width: r(750px);
+    height: r(270px);
+    background-color: #ffffff;
+    .hot-keywords-search{
+        display: block;
+        width: r(750px);
+        // height: r(270px);
+        .keywords-title{
+            display: block;
+
+            .keywords-text{
+                    display: block;
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(30px);
+                    padding-top: r(32px);
+                    padding-bottom: r(32px);
+                    padding-left: r(22px);
+                    font-weight: normal;
+                    font-stretch: normal;                   
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                 
+            }
+        }
+        // 搜索列表
+        .kewords-list{
+            // padding-left: r(26px);
+            // padding-right: r(31px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            // background: #000;
+            padding-bottom: r(40px);
+            .item{
+
+                display: block;
+                height:r(56px);             
+                background-color: #ffffff;
+                border-radius: r(8px);
+                border: solid 1px #dde0e4;  
+                font-size: r(26px);   
+                margin-left: r(22px);  
+                margin-top: r(22px);
+                
+                .text{
+                    display: block;
+                    padding-left: r(18px);
+                    padding-right: r(18px);
+                    line-height: r(56px);
+                  
+                    font-family: "PingFang-SC-Medium";
+                    font-size: r(26px);
+                    text-decoration: none;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    
+                    letter-spacing: 0px;
+                    color: #2e3133;
+                }
+            }
+        }
+
+
+
+    }
     .history-search-margin-top{
         margin-top: r(22px);
         // background: #ff0;
  
         width: r(750px);
+        .history-search{
+            .history-title{
+                display: block;
+        
+                .history-text{
+                        display: block;
+                        font-family: "PingFang-SC-Medium";
+                        font-size: r(30px);
+                        padding-top: r(32px);
+                        padding-bottom: r(32px);
+                        padding-left: r(22px);
+                        font-weight: normal;
+                        font-stretch: normal;                   
+                        letter-spacing: 0px;
+                        color: #2e3133;
+                     
+                }
+            }
+    
+            .history-item{
+                display: block;
+             
+                .item{
+                    display: block;
+                    height: r(100px);
+                    list-style: none;
+                    padding-left: r(22px);
+                    border-top: 1px solid #dde0e4;
+                    .text{
+                        display: block;
+    
+                        height: r(100px);
+                        line-height: r(100px);
+                        font-size: r(30px);
+                        text-decoration: none;
+                        color: #a2a6a8;
+                    }
+                }
+            }
+    
+    
+            // 清除按钮
+            .clear-history{
+                // margin-top: r(40px);
+                width: 100%;
+                // height: 1000px;
+               
+                // background: #f00;
+                .clear-block{
+                    display: block;
+                    .clear-btn{
+    
+                        display: block;
+                        margin-top: r(40px);
+                        height: r(90px);
+                        font-size: r(34px);
+                        line-height: r(90px);
+                        border-radius: r(45px);
+                        border: solid 1px #29aff6;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        text-align: center;
+                        color: #29aff6;
+                    }
+                }
+            }
+    
+        }
+       
     }
 }

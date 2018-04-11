@@ -29,7 +29,13 @@ export class SearchDetailPage {
     this.getSearchProductSearch();
   }
 
+
+  // 搜索结果的数组变量
+  searchResult;
+  // 查询字符串的变量
   queryString: string;
+
+  // 本地的ID
   shopid: number = Number(localStorage.getItem("shopId"));
 
   /***********************************history-search*****************************************/
@@ -40,8 +46,16 @@ export class SearchDetailPage {
 
   // 得到字符串
   getQueryString() {
-
+    // 得到搜索的词语===.>>重要这里是用户搜索的词语,
     this.queryString = this.navParams.get("queryString");
+    // 得到热门搜索传递过来的参数,hot=666.如果得到了hot参数, 不需要加入本地存储,然后直接return掉,不加入本地存储,STR
+
+    let hot = this.navParams.get("hot");
+    if (hot == 666) {
+      return;
+    }
+    // 得到热门搜索传递过来的参数,hot=666.如果得到了hot参数, 不需要加入本地存储,然后直接return掉,不加入本地存储,END
+
     console.log(this.queryString);
 
     this.historySearch = JSON.parse(localStorage.getItem("historySearch") ? localStorage.getItem("historySearch") : "[]");
@@ -50,8 +64,13 @@ export class SearchDetailPage {
     console.log(this.historySearch);
 
     console.log(this.historySearch.filter(item => item == this.queryString));
-    if (!!!(this.historySearch.filter(item => item == this.queryString))) {
-      this.historySearch.push(this.queryString);
+    if (this.historySearch.filter(item => item == this.queryString).length === 0) {
+
+      // 这里开始处理数组的长度,长度最长不能超过十个, 如果超过了是个,那么需要先pop一个最前的
+      if (this.historySearch.length == 10) {
+        this.historySearch.pop();
+      }
+      this.historySearch.unshift(this.queryString);
     } else {
       console.log("呵呵");
     }
@@ -74,24 +93,12 @@ export class SearchDetailPage {
       .map(e => e.json())
       .subscribe(
         (item) => {
-          console.log(item);
+          this.searchResult= item.data.docs; 
         }
       )
   }
   /****************************辅助类函数********************************/
-  // Array.prototype.in_array = function (element) { 
 
-  //   　　for (var i = 0; i < this.length; i++) { 
-
-  //   　　if (this[i] == element) { 
-
-  //   　　return true; 
-
-  //       } 
-
-  //     } return false; 
-
-  //   }
 
   /************************************************************************************/
 

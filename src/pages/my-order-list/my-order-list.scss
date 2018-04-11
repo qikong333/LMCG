@@ -1,9 +1,15 @@
 page-my-order-list {
+ 
     .order-list {
+ 
+        // &.order-list.content.content-ios .scroll-content{
+        //     padding-top: r(80px);
+        // }
         background-color: #f4f6f9;
-        // width: 100%;
+        width: 100%;
         // height: 100%;
         // position: relative;
+      
         .no-order {
             .no-order-bg {
                 display: block;
@@ -25,6 +31,10 @@ page-my-order-list {
         // tabs导航
         .order-tabs-status {
             // display: flex;
+            position: fixed;
+    
+            background: #fff;
+            z-index: 9999;
             // justify-content: space-around;
             // flex-wrap: wrap;
             // align-items: center;
@@ -58,13 +68,21 @@ page-my-order-list {
                 border-bottom: 2px solid #29aff6;
             }
         }
+        .mtop-order{
+margin-top: r(80px);
+     
         .order-item {
+            
             position: relative;
+            margin-top: r(22px);
             font-size: r(26px);
             .item-header {
+
                 width: r(750px);
                 // height: r(80px);
                 // background-color: #ff0;
+                background: #fff;
+                
                 font-size: r(26px);
                 .item-title {
                     height: r(80px);
@@ -132,6 +150,7 @@ page-my-order-list {
                 }
             }
             .item-content {
+
                 overflow: scroll;
                 //   display: flex;
                 //   justify-content: flex-start;
@@ -154,7 +173,8 @@ page-my-order-list {
                 width: r(750px);
                 height: r(80px);
                 line-height: r(80px);
-                // background-color: #00f;
+                background-color: #fff;
+                border-bottom: 1px solid #dde0e4;
                 // font-size: r(26px);
                 // font-weight: normal;
                 // font-stretch: normal;
@@ -176,77 +196,93 @@ page-my-order-list {
                         color: #ff5733;
                     }
                 }
+                &::before,&::after{
+                    content: "";
+                    display: block;
+                    height: 0;
+                    visibility: hidden;
+                    clear: both;
+                }
             }
             .item-btn {
-                // width: r(750px);
+                background: #fff;
+                &::before,&::after{
+                    content: "";
+                    display: block;
+                    height: 0;
+                    visibility: hidden;
+                    clear: both;
+                }
+                width: r(750px);
                 height: r(90px);
-                // margin: 0 auto;
+                // height: r(58px);
+                line-height: r(58px);
+                // // margin: 0 auto;
                 // background-color: #ff0fff;
-                font-size: r(26px);
-                // font-weight: normal;
-                // font-stretch: normal;
-                // letter-spacing: 0px;
+                // font-size: r(26px);
+                // // font-weight: normal;
+                // // font-stretch: normal;
+                // // letter-spacing: 0px;
   
               
                 .btn-group {
-                    float: right;
+                    background: #fff;
                     .btn-cancel {
+                        float: right;
                         width: r(146px);
                         height: r(58px);
                         background: #fff;
                         text-align: center;
-                        display: inline-block;
+                        display: block;
                         line-height: r(58px);
                         border-radius: r(10px);
                         border: solid 1px #29aff6;
                         margin-top: r(16px);
-                        // // padding-top: r(10px);
+                //         // // padding-top: r(10px);
                         margin-right: r(30px);
                         color: #29aff6;
                     }
                     .btn-true {
+                        float: right;
                         width: r(146px);
                         height: r(58px);
-                        // background: #0ff;
+                        background: #0ff;
                         text-align: center;
-                        display: inline-block;
-                        // text-align: center;
-                        // display: inline-block;
-                        // width: r(146px);
-                        // height: r(58px);
+                        display: block;
+                        text-align: center;
+                //         // display: inline-block;
+                //         // width: r(146px);
+                //         // height: r(58px);
                         line-height: r(58px);
                         border-radius: r(10px);
                         border: solid 1px #29aff6;
                         margin-top: r(16px);
-                        // // padding-top: r(10px);
+                //         // // padding-top: r(10px);
                         margin-right: r(30px);
                         // color: #29aff6;
                         color: #ffffff;
                         background-color: #29aff6;
                     }
                     .btn-delete {
+                        float: right;
                         width: r(146px);
                         height: r(58px);
-                        background: #0ff;
+                        background: #fff;
                         text-align: center;
-                        display: inline-block;
-                        // text-align: center;
-                        // display: inline-block;
-                        // width: r(146px);
-                        // height: r(58px);
+                        display: block;
                         line-height: r(58px);
                         border-radius: r(10px);
                         border: solid 1px #29aff6;
                         margin-top: r(16px);
-                        // // padding-top: r(10px);
+                //         // // padding-top: r(10px);
                         margin-right: r(30px);
                         color: #29aff6;
-                        background: #ffffff;
                     }
                 }
             }
- 
+//  
         }
+    }
         // 内容部分
         // .order-item {
         //     position: relative;

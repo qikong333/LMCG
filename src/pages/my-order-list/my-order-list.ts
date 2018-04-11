@@ -1,7 +1,8 @@
 import { Component, ViewChild, ElementRef, Renderer, AfterViewChecked, AfterViewInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Content } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { SwitchView } from '@angular/common/src/directives/ng_switch';
+// import { Content } from 'ionic-angular/navigation/nav-interfaces';
 
 @IonicPage({
   name: "MyOrderListPage"
@@ -15,12 +16,13 @@ export class MyOrderListPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private renderer: Renderer,
-    private apiService: ApiServiceProvider
+    private apiService: ApiServiceProvider,
+ 
   ) {
 
     // 获取全部的订单列表
     // this.getQueryOrders();
-this.selectTabs(this.navParams.get("state"));
+      this.selectTabs(this.navParams.get("state"));
 
   }
 
@@ -34,10 +36,10 @@ this.selectTabs(this.navParams.get("state"));
   orders: any;
   // 订单产品列表
   odProductList: any;
-  isNoOrder: boolean = false;
+  isOrder: boolean ;
 // 查询状态
 
-  
+@ViewChild(Content) content: Content;
 
  
   /*************************************订单页面的变量END*******************************************/
@@ -193,18 +195,22 @@ this.selectTabs(this.navParams.get("state"));
       // 待付款
     case 0 :
     index = 1;
+  
     break;
     // 待收货
     case 1 :
     index = 3;
+   
     break;
     // 已完成
     case 2 :
     index = 5;
+ 
     break;
     // 全部订单
     case 3 :
     index = 0;
+   
     break;
   }
  
@@ -212,9 +218,23 @@ this.selectTabs(this.navParams.get("state"));
       .map(e => e.json())
       .subscribe(
         (item) => {
-        
+ 
+    //  console.log("这里是请求的东西"+item)
+    //  console.log(item)
           this.orders = item.content;
-          console.log(this.orders)
+         
+          console.log(item)
+          if(item.totalElements==0){
+            this.isOrder=true;
+          }else{
+            this.isOrder=false;
+          }
+
+          // 跳转到顶部
+          if(this.content.scrollToTop){
+            this.content.scrollToTop();
+          }
+     
         },
         (err) => { console.error(err) },
         () => {
@@ -224,7 +244,12 @@ this.selectTabs(this.navParams.get("state"));
       )
   }
 
-
+// 上拉增加
+doInfinite(infiniteScroll) {
+  console.log('Begin async operation');
+ 
+}
+ 
   /*************************************订单页面的DOM操作END*******************************************/
 
 }

@@ -11,13 +11,13 @@
 <ion-content class="order-list">
 
     <div class="order-tabs-status clearfix">
-        <li *ngFor="let item of tabsArr,let i = index" [ngClass]="{'tabs-status':true}" (touchend)="selectTabs(i)">
+        <li *ngFor="let item of tabsArr,let i = index" [ngClass]="{'tabs-status':true}" tappable (click)="getQueryOrdersOrselectTabs(i)">
             <span class="item-text" [ngClass]="{'current':clickTab==i}">{{item}}</span>
 
         </li>
     </div>
 
-    <div class="no-order" *ngIf="isOrder">
+    <div class="no-order" *ngIf="orders.length==0">
         <img class="no-order-bg" src="assets/imgs/no-order.png" alt="">
         <p class="no-order-text">您还没有相关订单哦~~</p>
     </div>
@@ -62,48 +62,11 @@
         </div>
     </div>
 <!-- 加载的内容 -->
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="100px">
-    <div loadingSpinner="bubbles"
-    loadingText="Loading more data..." class="mtop-order">
-            <div class="order-item" *ngFor="let order of orders">
-                <div class="item-header">
-                    <div class="item-title">{{order?.shopName}}</div>
-                    <div class="status-wait-pay" *ngIf="order.orderPayStatus==1">待付款</div>
-                    <div class="status-wait-goods" *ngIf="order.orderPayStatus==2">待收货</div>
-                    <div class="status-complete" *ngIf="order.orderPayStatus==3">已完成</div>
-                </div>
-                <div class="item-content">
-                    <ul class="scrool" #goodsItems>
-    
-    
-                        <li class="goods-item" *ngFor="let item of order.odProductList ">
-                            <img class="img" src="http://lmstore.oss-cn-shenzhen.aliyuncs.com/{{item.imgPath}}" onerror="" alt="">
-    
-                        </li>
-    
-    
-                    </ul>
-                </div>
-                <div class="item-footer clearfix">
-                    <div class="item-goods-sum-price">共{{order?.odProductList.length}}件商品，实付：
-                        <span class="price">&yen; {{order?.receivable}}</span>
-                    </div>
-    
-                </div>
-                <div class="item-btn clearfix">
-                    <div class="btn-group">
-                        <!-- *ngIf="order.orderPayStatus==3" -->
-                        <span class="btn-delete" *ngIf="order.orderPayStatus==3">删除</span>
-                        <span class="btn-true" *ngIf="order.orderPayStatus==2">确认收货</span>
-                        <span class="btn-cancel" *ngIf="order.orderPayStatus==1||order.orderPayStatus==2" (touchend)="deleteOrder()">取消订单</span>
-    
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ion-infinite-scroll>
-
+<!-- 异步加载 -->
+<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+ 
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
 <ion-footer>

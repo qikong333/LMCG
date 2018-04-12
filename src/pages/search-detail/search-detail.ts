@@ -130,6 +130,7 @@ export class SearchDetailPage {
   
   // }
 
+  // 下拉到底部的时候  开始查询字符,每次pagenum增加1
 async doInfinite(){
   this.pagenum++;
   await setTimeout(()=>{

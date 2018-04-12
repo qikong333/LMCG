@@ -12,11 +12,10 @@ import { MinePage } from '../mine/mine';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = 'PayPasswordPage';
-  tab3Root = 'SearchPage';
-  tab4Root = MinePage;
-
+  tab1Root= HomePage;
+  tab2Root= KindPage;
+  tab3Root= MinePage;
+ 
   constructor() {
 
   }

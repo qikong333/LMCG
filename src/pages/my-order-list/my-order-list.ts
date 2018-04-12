@@ -22,7 +22,7 @@ export class MyOrderListPage {
 
     // 获取全部的订单列表
     // this.getQueryOrders();
-      this.selectTabs(this.navParams.get("state"));
+      this.getQueryOrdersOrselectTabs(this.navParams.get("state"),1);
 
   }
 
@@ -33,7 +33,7 @@ export class MyOrderListPage {
   tabsArr: Array<string> = ['待付款', '待收货', '已完成', '全部订单'];
 
   // 订单item
-  orders: any;
+  orders: any=[];
   // 订单产品列表
   odProductList: any;
   isOrder: boolean ;
@@ -187,7 +187,7 @@ export class MyOrderListPage {
 
   // tabs页面
 
-  selectTabs(index) {
+  getQueryOrdersOrselectTabs(index=this.clickTab,num) {
     console.log("自己页面http请求"+index);
     
     this.clickTab =index;
@@ -214,26 +214,26 @@ export class MyOrderListPage {
     break;
   }
  
-  this.apiService.queryOrders(index)
+  this.apiService.queryOrders(index,num)
       .map(e => e.json())
       .subscribe(
         (item) => {
  
     //  console.log("这里是请求的东西"+item)
     //  console.log(item)
-          this.orders = item.content;
+          this.orders =  this.orders.concat(item.content);
          
-          console.log(item)
+          // console.log(item)
           if(item.totalElements==0){
             this.isOrder=true;
           }else{
             this.isOrder=false;
           }
 
-          // 跳转到顶部
-          if(this.content.scrollToTop){
-            this.content.scrollToTop();
-          }
+          // // 跳转到顶部
+          // if(this.content.scrollToTop){
+          //   this.content.scrollToTop();
+          // }
      
         },
         (err) => { console.error(err) },
@@ -244,9 +244,24 @@ export class MyOrderListPage {
       )
   }
 
-// 上拉增加
+  pagename=0;
+  // async doInfinite(infiniteScroll){
+  //   this.pagename++;
+  //   await setTimeout(() => {
+  //     // 这个函数是查询函数,page是这个函数的每次查询的页面而已
+  //     this.getQueryOrdersOrselectTabs(this.pagename)
+  //   }, 500);
+  // }
+// // 上拉增加
 doInfinite(infiniteScroll) {
-  console.log('Begin async operation');
+ this.pagename++;
+ return new Promise((resolve)=>{
+   setTimeout(()=>{
+    this.getQueryOrdersOrselectTabs(this.clickTab,this.pagename)
+    resolve()
+   },500)
+
+ })
  
 }
  

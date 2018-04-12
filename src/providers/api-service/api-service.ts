@@ -540,7 +540,7 @@ export class ApiServiceProvider {
   queryOrders(
     eq_orderStatus: number = 0,
     page: number = 1,
-    size: number = 10,
+    size: number = 5,
     userAgent: string = localStorage.getItem("userAgent"),
     tokenId: string = localStorage.getItem("tokenId"),
   ) {

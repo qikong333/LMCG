@@ -15,20 +15,15 @@
 
 <ion-content class="search-detail">
     <ion-row>
-        <ion-col col-6>
+
+        <prod-list [datas]="searchResult"></prod-list>
 
 
- {{searchResult|json}}
-
-        </ion-col>
-        <ion-col col-6>
-
-
-
-
-        </ion-col>
     </ion-row>
 
-
+    <!-- <shop-car [buyNumber]="car_num_sum+local_num_sum " [sprice]="car_sprice_sum+local_sprice_sum " [datas]="Arr_car_end "></shop-car> -->
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
 </ion-content>

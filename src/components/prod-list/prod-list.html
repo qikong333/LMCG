@@ -1,1 +1,19 @@
- 
+<ion-row>
+
+    <ion-col col-6 class=" item_box" *ngFor="let item of datas">
+
+        <ion-row class="i_box1 " tappable (click)="toItemDetail(item)">
+            <img src=" " [alt]="item?.mainpic" onerror="src='assets/imgs/erro_img.png'"> </ion-row>
+        <ion-row class="i_box2 " tappable (click)="toItemDetail(item)">
+            {{item.name}}
+        </ion-row>
+        <ion-row class="i_box3 ">
+            ￥{{item.sprice}}
+        </ion-row>
+        <ion-row class="i_box4 ">
+            <number-item [maxQty]="item?.stocknum" (onUpdate)="onUpdate($event)" [goods]="item?.itemid" [sprice]="item?.sprice" *ngIf="item?.stocknum>0"></number-item>
+            <span *ngIf="item?.stocknum<1">没有库存</span>
+        </ion-row>
+
+    </ion-col>
+</ion-row>

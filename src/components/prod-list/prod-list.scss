@@ -1,3 +1,30 @@
 prod-list {
-
+    font-size: r(20px);
+    .item_box {
+        border-bottom: 1px solid #dde0e4;
+        .i_box1 {
+            padding: r(55px) 0;
+            img {
+                height: r(200px);
+                // margin: 0 auto;
+            }
+        }
+        .i_box2 {
+            font-size: r(24px);
+            color: #2e3133;
+            padding: 0;
+            margin-bottom: r(15px);
+            height: r(60px);
+        }
+        .i_box3 {
+            font-size: r(34px);
+            color: #ff5733;
+            margin-bottom: r(15px);
+            padding: 0;
+        }
+        .i_box4 {
+            margin-bottom: r(15px);
+            padding: 0;
+        }
+    }
 }

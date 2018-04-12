@@ -491,6 +491,7 @@ export class ApiServiceProvider {
     return this.http.get('/api/shop/address/msAddress/delete/', param)
   }
 
+  /******************************search*********************************************/
   /**
    * @name 搜索商品   一般使用页面 搜索页面(searchPage)
    * @param querykey
@@ -503,14 +504,29 @@ export class ApiServiceProvider {
 
   //  s hopId:Variable.getInstance().shopid}
   // "{"requestId":"396033937370019","code":200,"data":{"queryword":null,"docs":[],"total":0}}"
-  searchProductSearch(querykey:any, shopid: any = localStorage.getItem('shopId')) {
+  // searchProductSearch(querykey:any, shopid: any = localStorage.getItem('shopId')) {
+  //   let param = {
+  //     querykey,
+  //     shopid
+  //   }
+  //   return this.http.postFormData('/api/shop/search/searchproduct/search/', param)
+  // }
+
+  searchProductSearch(querykey: any,pageno: number,) {
     let param = {
       querykey,
-      shopid
+      pageno ,
+      shopid:localStorage.getItem('shopId'),
     }
     return this.http.postFormData('/api/shop/search/searchproduct/search/', param)
   }
 
+
+
+
+
+  /******************************search*********************************************/
+  
 
   /**
     * @name 查询订单列表 使用页面my-order-list
@@ -520,8 +536,7 @@ export class ApiServiceProvider {
     * @param  userAgent: string    设备
     * @param  tokenId: string,    //获取会话密钥
     */
-
-      /************************search.ts 搜索 ***************************************/
+ 
   queryOrders(
     eq_orderStatus: number = 0,
     page: number = 1,

@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, Renderer, AfterViewChecked, AfterViewInit } from '@angular/core';
-import { IonicPage, NavController, NavParams,Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { SwitchView } from '@angular/common/src/directives/ng_switch';
 // import { Content } from 'ionic-angular/navigation/nav-interfaces';
@@ -17,12 +17,12 @@ export class MyOrderListPage {
     public navParams: NavParams,
     private renderer: Renderer,
     private apiService: ApiServiceProvider,
- 
+
   ) {
 
     // 获取全部的订单列表
     // this.getQueryOrders();
-      this.getQueryOrdersOrselectTabs(this.navParams.get("state"),1);
+    this.getQueryOrdersOrselectTabs(this.navParams.get("state"), 1);
 
   }
 
@@ -33,15 +33,15 @@ export class MyOrderListPage {
   tabsArr: Array<string> = ['待付款', '待收货', '已完成', '全部订单'];
 
   // 订单item
-  orders: any=[];
+  orders: any = [];
   // 订单产品列表
   odProductList: any;
-  isOrder: boolean ;
-// 查询状态
+  isOrder: boolean;
+  // 查询状态
 
-@ViewChild(Content) content: Content;
+  @ViewChild(Content) content: Content;
 
- 
+
   /*************************************订单页面的变量END*******************************************/
 
   /*************************************订单页面的http请求STR*******************************************/
@@ -55,7 +55,7 @@ export class MyOrderListPage {
     * @param  tokenId: string,    //获取会话密钥
     */
 
-    /**************************函数被封装了, 封装到了 selectTabs函数*****************************************/ 
+  /**************************函数被封装了, 封装到了 selectTabs函数*****************************************/
   // getQueryOrders() {
   //   let eq_orderStatus=0;
   // console.log(  this.navParams.get("state")) ;
@@ -81,23 +81,23 @@ export class MyOrderListPage {
   //     .map(e => e.json())
   //     .subscribe(
   //       (item) => {
-        
+
   //         this.orders = item.content;
   //         console.log(this.orders)
   //       },
   //       (err) => { console.error(err) },
   //       () => {
- 
+
   //         console.log("getQueryOrders() is ends")
   //       }
   //     )
   // }
-    /**************************函数被封装了, 封装到了 selectTabs函数*****************************************/ 
+  /**************************函数被封装了, 封装到了 selectTabs函数*****************************************/
   /*************************************订单页面的http请求END*******************************************/
 
   /*************************************数据结构处理STR*******************************************/
- 
-  
+
+
 
   //   // 处理订单item
   //   structureOrders(orders){
@@ -187,64 +187,64 @@ export class MyOrderListPage {
 
   // tabs页面
 
-  getQueryOrdersOrselectTabs(index=this.clickTab,num) {
-    console.log("自己页面http请求"+index);
-    
-    this.clickTab =index;
-    switch (index){
+  getQueryOrdersOrselectTabs(index = this.clickTab, num) {
+    console.log("自己页面http请求" + index);
+
+    this.clickTab = index;
+    switch (index) {
       // 待付款
-    case 0 :
-    index = 1;
-  
-    break;
-    // 待收货
-    case 1 :
-    index = 3;
-   
-    break;
-    // 已完成
-    case 2 :
-    index = 5;
- 
-    break;
-    // 全部订单
-    case 3 :
-    index = 0;
-   
-    break;
-  }
- 
-  this.apiService.queryOrders(index,num)
+      case 0:
+        index = 1;
+
+        break;
+      // 待收货
+      case 1:
+        index = 3;
+
+        break;
+      // 已完成
+      case 2:
+        index = 5;
+
+        break;
+      // 全部订单
+      case 3:
+        index = 0;
+
+        break;
+    }
+
+    this.apiService.queryOrders(index, num)
       .map(e => e.json())
       .subscribe(
         (item) => {
- 
-    //  console.log("这里是请求的东西"+item)
-    //  console.log(item)
-          this.orders =  this.orders.concat(item.content);
-         
+
+          //  console.log("这里是请求的东西"+item)
+          //  console.log(item)
+          this.orders = this.orders.concat(item.content);
+
           // console.log(item)
-          if(item.totalElements==0){
-            this.isOrder=true;
-          }else{
-            this.isOrder=false;
+          if (item.totalElements == 0) {
+            this.isOrder = true;
+          } else {
+            this.isOrder = false;
           }
 
           // // 跳转到顶部
           // if(this.content.scrollToTop){
           //   this.content.scrollToTop();
           // }
-     
+
         },
         (err) => { console.error(err) },
         () => {
- 
+
           console.log("getQueryOrders() is ends")
         }
       )
   }
 
-  pagename=0;
+  pagename = 0;
   // async doInfinite(infiniteScroll){
   //   this.pagename++;
   //   await setTimeout(() => {
@@ -252,19 +252,19 @@ export class MyOrderListPage {
   //     this.getQueryOrdersOrselectTabs(this.pagename)
   //   }, 500);
   // }
-// // 上拉增加
-doInfinite(infiniteScroll) {
- this.pagename++;
- return new Promise((resolve)=>{
-   setTimeout(()=>{
-    this.getQueryOrdersOrselectTabs(this.clickTab,this.pagename)
-    resolve()
-   },500)
+  // // 上拉增加
+  doInfinite(infiniteScroll) {
+    this.pagename++;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.getQueryOrdersOrselectTabs(this.clickTab, this.pagename)
+        resolve()
+      }, 500)
 
- })
- 
-}
- 
+    })
+
+  }
+
   /*************************************订单页面的DOM操作END*******************************************/
 
 }
